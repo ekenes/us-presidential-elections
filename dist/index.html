@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>U.S. presidential election results</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.31/@arcgis/core/assets/esri/themes/light/main.css">
+
+    <script type="module" src="https://js.arcgis.com/calcite-components/2.13.0/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.13.0/calcite.css" />
+    <script type="module" crossorigin src="/us-presidential-elections/dist/assets/index-GOO0DjDp.js"></script>
+    <link rel="stylesheet" crossorigin href="/us-presidential-elections/dist/assets/index-D7_X1F0b.css">
+  </head>
+  <body>
+    <calcite-shell>
+      <calcite-shell-panel slot="panel-start" position="start" width-scale="l">
+        <div id="legendDiv" class="calcite-match-height"></div>
+      </calcite-shell-panel>
+      <div id="viewDiv">
+        <arcgis-map id="lower48map" center="-100, 38" scale=15595144></arcgis-map>
+      </div>
+    </calcite-shell>
+  </body>
+</html>

@@ -2,14 +2,7 @@ import Color from "@arcgis/core/Color";
 import Graphic from "@arcgis/core/Graphic";
 import Point from "@arcgis/core/geometry/Point";
 
-export const basemapPortalItem = {
-  // web mercator
-  // id: "fbfb62f3599f41e5a77845f863e2872f"
-  // albers usa
-  id: "1c2dfdb8c339473ab7b0ab11cb561e47"
-  // usa only
-  // id: "0a6c3de1e1d340d5a56826e3abd7c085"
-}
+export const lower48BasePortalItem = "1c2dfdb8c339473ab7b0ab11cb561e47";
 
 export const statesLayerPortalItem = "f2825b56dfc14bb892604637dab45104";
 export const countiesLayerPortalItem = "fe9e032e4a854c74890750214a3edd8b";

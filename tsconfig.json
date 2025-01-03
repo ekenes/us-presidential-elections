@@ -20,5 +20,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "tests", "global.d.ts", "node_modules/@arcgis/map-components/dist/types/components.d.ts"]
 }

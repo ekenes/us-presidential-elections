@@ -1,13 +1,13 @@
 html,
 body,
-#viewDiv {
+#lower48map {
   padding: 0;
   margin: 0;
   height: 100%;
   width: 100%;
 }
 
-#viewDiv .esri-popup__main-container {
+#lower48map .esri-popup__main-container {
   width: 500px;
 }
 
