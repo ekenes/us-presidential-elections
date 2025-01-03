@@ -1,0 +1,16 @@
+#root, html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#root, arcgis-map {
+  height: 49%;
+  width: 100%;
+}
+
+#header-title{
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -1,1 +1,0 @@
-import{dd as c,de as e,df as o}from"./index-GOO0DjDp.js";const d=96;function p(t,n){const r=t.extent,i=t.width,u=c(r==null?void 0:r.spatialReference);return r&&i?r.width/i*u*e*d:0}function m(t,n,r){return f(t,n)&&a(t,r)}function f(t,n){return n===0||o(t,n)||t<n}function a(t,n){return n===0||o(t,n)||t>n}export{m as d,p as i};
