@@ -1,0 +1,27 @@
+{
+  "name": "us-presidential-elections",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build --base=/us-presidential-elections/dist/",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.6.2",
+    "vite": "^6.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekenes/us-presidential-elections.git"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "Kristian Ekenes <kekenes@esri.com>",
+  "license": "ISC",
+  "description": "Visualizes results from U.S. presidential elections 2000 - present.",
+  "dependencies": {
+    "@arcgis/map-components": "^4.31.6"
+  }
+}
