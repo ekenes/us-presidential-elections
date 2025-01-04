@@ -14,6 +14,7 @@ import {
   CalciteTabTitle,
 } from "@esri/calcite-components-react";
 
+
 function AllResults() {
   return (
     <>

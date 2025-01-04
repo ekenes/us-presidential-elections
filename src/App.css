@@ -1,20 +1,22 @@
-#root, html, body {
+#root,
+html,
+body {
   padding: 0;
   margin: 0;
   height: 100%;
   width: 100%;
 }
 
-#root, arcgis-map {
+#root,
+arcgis-map {
   height: 49%;
   width: 100%;
 }
 
-#header-title{
+#header-title {
   padding-left: 10px;
   padding-right: 10px;
 }
-
 
 .esri-popup__main-container {
   width: 500px;
@@ -34,7 +36,6 @@ calcite-shell-panel {
   /* flex-direction: #{column; */
   justify-content: space-between;
 }
-
 
 #current-year {
   text-align: center;
@@ -87,7 +88,6 @@ table.popup tr.head {
   background-color: rgba(224, 206, 0, 0.08);
 }
 
-
 .table-container {
   width: 100%;
   height: 100%;
@@ -122,6 +122,15 @@ table {
 }
 
 .legend {
-    width: 100%;
-    align-self: center;
+  width: 100%;
+  align-self: center;
+}
+
+.slider-container {
+  padding: 10px;
+}
+
+calcite-label {
+  padding-left: 10px;
+  padding-top: 10px;
 }
