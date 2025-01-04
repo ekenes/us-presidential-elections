@@ -27,11 +27,17 @@ import {
 
 import esriConfig from "@arcgis/core/config";
 import Popup from "@arcgis/core/widgets/Popup";
+import { SimpleRenderer } from "@arcgis/core/renderers";
+import { SimpleFillSymbol, SimpleLineSymbol } from "@arcgis/core/symbols";
 
 import { useRef } from "react";
 import Examples from "./Examples";
 import AllResults from "./AllResults";
 import Legends from "./Legends";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
+import { countiesLayerPortalItem, scaleThreshold, statesLayerPortalItem } from "./config";
+import { createRenderer } from "./trendRenderer";
+import { createPopupTemplate } from "./popupUtils";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 
@@ -40,10 +46,59 @@ function App() {
 
   const webmapId = "1c2dfdb8c339473ab7b0ab11cb561e47";
 
+  const stateLayer = new FeatureLayer({
+    portalItem: {
+      id: statesLayerPortalItem,
+    },
+    renderer: createRenderer({
+      level: "state",
+    }),
+    popupTemplate: createPopupTemplate({
+      level: "state",
+    }),
+    maxScale: scaleThreshold,
+    opacity: 1,
+    effect: "drop-shadow(2px, 2px, 2px, lightgray)",
+  });
+
+  const countyLayer = new FeatureLayer({
+    portalItem: {
+      id: countiesLayerPortalItem,
+    },
+    renderer: createRenderer({
+      level: "county",
+    }),
+    popupTemplate: createPopupTemplate({
+      level: "county",
+    }),
+    minScale: scaleThreshold,
+    opacity: 1,
+    effect: "drop-shadow(2px, 2px, 2px, lightgray)",
+  });
+
+  const countyBoundaryLayer = new FeatureLayer({
+    portalItem: {
+      id: "14c5450526a8430298b2fa74da12c2f4",
+    },
+    minScale: scaleThreshold,
+    popupEnabled: false,
+    renderer: new SimpleRenderer({
+      symbol: new SimpleFillSymbol({
+        style: "none",
+        outline: new SimpleLineSymbol({
+          color: [175, 175, 175, 0.35],
+          width: 0.5,
+        }),
+      }),
+    }),
+  });
+
   const initialize = async () => {
     const mapElement = mapRef.current;
 
     if (!mapElement) return;
+
+    mapElement.map?.addMany([stateLayer, countyLayer, countyBoundaryLayer]);
 
     const view = mapElement?.view;
     view.popup = new Popup();
