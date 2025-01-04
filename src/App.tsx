@@ -1,8 +1,9 @@
-import './App.css'
+import "./App.css";
 
 import "@arcgis/map-components/dist/components/arcgis-map";
 import "@arcgis/map-components/dist/components/arcgis-legend";
 import {
+  ArcgisLayerList,
   ArcgisLegend,
   ArcgisMap,
 } from "@arcgis/map-components-react";
@@ -20,17 +21,17 @@ import {
   CalcitePanel,
   CalciteShell,
   CalciteShellPanel,
+  CalciteSlider,
 } from "@esri/calcite-components-react";
 
 import esriConfig from "@arcgis/core/config";
 import Popup from "@arcgis/core/widgets/Popup";
 
-import { useRef } from 'react';
+import { useRef } from "react";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 
 function App() {
-
   const mapRef = useRef<HTMLArcgisMapElement | null>(null);
 
   const webmapId = "1c2dfdb8c339473ab7b0ab11cb561e47";
@@ -47,7 +48,9 @@ function App() {
     };
     const webmap = view?.map as __esri.WebMap;
 
-    const { title } = webmap.portalItem;
+    const title = webmap?.portalItem
+      ? webmap.portalItem.title
+      : "Default Title";
 
     document.querySelector("#header-title")!.textContent = title;
 
@@ -107,7 +110,11 @@ function App() {
     <>
       <CalciteShell contentBehind={true}>
         <h2 id="header-title" slot="header"></h2>
-        <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale='l'>
+        <CalciteShellPanel
+          slot="panel-start"
+          displayMode="float"
+          widthScale="m"
+        >
           <CalciteActionBar slot="action-bar">
             <CalciteAction
               data-action-id="layers"
@@ -115,24 +122,24 @@ function App() {
               text="Layers"
             />
           </CalciteActionBar>
-          <CalcitePanel
-            heading="Layers"
-            scale="l"
-            data-panel-id="layers"
-            hidden
-          >
-            <div>
-              Can content go here?
-              asdfasdf
-              asdfasdfasdf
-
-              asdfasdfasdf
-              asdfasdf
-            </div>
+          <CalcitePanel heading="Layers" id="layers" data-panel-id="layers" scale="m">
+            Select an election year
+            <CalciteSlider
+              min={2000}
+              max={2024}
+              labelHandles
+              labelTicks
+              maxLabel="2024"
+              minLabel="2000"
+              ticks={4}
+              step={4}
+              snap
+            ></CalciteSlider>
           </CalcitePanel>
         </CalciteShellPanel>
         <ArcgisMap
           id="map"
+          class="map-only"
           itemId={webmapId}
           ref={mapRef}
           onArcgisViewReadyChange={initialize}
