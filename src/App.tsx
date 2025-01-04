@@ -36,8 +36,8 @@ import AllResults from "./AllResults";
 import Legends from "./Legends";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import { countiesLayerPortalItem, scaleThreshold, statesLayerPortalItem } from "./config";
-import { createRenderer } from "./trendRenderer";
-import { createPopupTemplate } from "./popupUtils";
+import { createRenderer } from "./trendUtils/trendRenderer";
+import { createPopupTemplate } from "./trendUtils/popupUtils";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 

@@ -5,7 +5,7 @@ import FieldInfoFormat from "@arcgis/core/popup/support/FieldInfoFormat";
 import { convertNumberFormatToIntlOptions, formatNumber } from "@arcgis/core/intl";
 
 import { CustomContent, ExpressionContent } from "@arcgis/core/popup/content";
-import { years, fieldInfos, dColor, rColor, oColor, stateFieldPrefix, startYear, endYear, results } from "./config";
+import { years, fieldInfos, dColor, rColor, oColor, stateFieldPrefix, startYear, endYear, results } from "../config";
 
 function numberToText(num: number): string {
   const numberFormatIntlOptions = convertNumberFormatToIntlOptions({

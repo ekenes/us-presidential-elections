@@ -1,8 +1,8 @@
 import { SimpleRenderer } from "@arcgis/core/renderers";
 import CIMSymbol from "@arcgis/core/symbols/CIMSymbol";
 import { createSquareSymbolLayer } from "./symbolUtils";
-import { createColorPrimitiveOverride, createOffsetXPrimitiveOverride, createSizePrimitiveOverride } from "./expressionUtils";
-import { stateFieldPrefix, years } from "./config";
+import { createColorPrimitiveOverride, createOffsetXPrimitiveOverride, createSizePrimitiveOverride } from "../trendUtils/expressionutils";
+import { stateFieldPrefix, years } from "../config";
 import { PopupTemplateParams } from "./popupUtils";
 
 export function createRenderer (params: PopupTemplateParams): SimpleRenderer {

@@ -1,4 +1,4 @@
-import { countySizeStops, dColorCIM, oColorCIM, rColorCIM, referenceScale, stateChangeSizeStops, stateFieldPrefix, stateReferenceScale, validYears, years } from "./config";
+import { countySizeStops, dColorCIM, oColorCIM, rColorCIM, referenceScale, stateChangeSizeStops, stateFieldPrefix, stateReferenceScale, validYears, years } from "../config";
 
 interface ColorPrimitiveOverrideParams {
   primitiveName: __esri.PrimitiveOverride["primitiveName"];
