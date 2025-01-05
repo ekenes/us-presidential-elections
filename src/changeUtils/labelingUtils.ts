@@ -1,9 +1,9 @@
-import { fieldInfos, dColor, rColor, oColor, haloColor, haloSize } from "../config";
+import { dColor, rColor, oColor, haloColor, haloSize } from "../config";
 
 import LabelClass from "@arcgis/core/layers/support/LabelClass";
 import { TextSymbol, Font } from "@arcgis/core/symbols";
 import Color from "@arcgis/core/Color";
-import { diffLabelText } from "./expressionutils";
+import { diffLabelText } from "./expressionUtils";
 
 
 ////////////////////////////////////////////////////
@@ -15,18 +15,18 @@ import { diffLabelText } from "./expressionutils";
 export const stateChangeLabelingInfo = (year: number) => {
   const currentYear = year;
   const previousYear = year - 4;
-  
+
   return [
 
     // DEMOCRAT label classes
 
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name} - ${fieldInfos.democrat.state.previous.name}) >= 500000`,
+      where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) >= 500000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.state.previous.name};
+          var valueNext = $feature.SUM_dem_${currentYear};
+          var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -46,11 +46,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name} - ${fieldInfos.democrat.state.previous.name}) >= 100000 AND ABS(${fieldInfos.democrat.state.next.name} - ${fieldInfos.democrat.state.previous.name}) < 500000`,
+      where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) >= 100000 AND ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.state.previous.name};
+          var valueNext = $feature.SUM_dem_${currentYear};
+          var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -70,11 +70,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name} - ${fieldInfos.democrat.state.previous.name}) >= 50000 AND ABS(${fieldInfos.democrat.state.next.name} - ${fieldInfos.democrat.state.previous.name}) < 100000`,
+      where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) >= 50000 AND ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) < 100000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.state.previous.name};
+          var valueNext = $feature.SUM_dem_${currentYear};
+          var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -94,11 +94,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name} - ${fieldInfos.democrat.state.previous.name}) >= 10000 AND ABS(${fieldInfos.democrat.state.next.name} - ${fieldInfos.democrat.state.previous.name}) < 50000`,
+      where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) >= 10000 AND ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) < 50000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.state.previous.name};
+          var valueNext = $feature.SUM_dem_${currentYear};
+          var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -118,11 +118,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name} - ${fieldInfos.democrat.state.previous.name}) < 10000`,
+      where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) < 10000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.state.previous.name};
+          var valueNext = $feature.SUM_dem_${currentYear};
+          var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -146,11 +146,11 @@ export const stateChangeLabelingInfo = (year: number) => {
 
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name} - ${fieldInfos.republican.state.previous.name}) >= 500000`,
+      where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) >= 500000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.state.previous.name};
+          var valueNext = $feature.SUM_rep_${currentYear};
+          var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -170,11 +170,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name} - ${fieldInfos.republican.state.previous.name}) >= 100000 AND ABS(${fieldInfos.republican.state.next.name} - ${fieldInfos.republican.state.previous.name}) < 500000`,
+      where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) >= 100000 AND ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.state.previous.name};
+          var valueNext = $feature.SUM_rep_${currentYear};
+          var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -194,11 +194,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name} - ${fieldInfos.republican.state.previous.name}) >= 50000 AND ABS(${fieldInfos.republican.state.next.name} - ${fieldInfos.republican.state.previous.name}) < 100000`,
+      where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) >= 50000 AND ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) < 100000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.state.previous.name};
+          var valueNext = $feature.SUM_rep_${currentYear};
+          var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -218,11 +218,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name} - ${fieldInfos.republican.state.previous.name}) >= 10000 AND ABS(${fieldInfos.republican.state.next.name} - ${fieldInfos.republican.state.previous.name}) < 50000`,
+      where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) >= 10000 AND ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) < 50000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.state.previous.name};
+          var valueNext = $feature.SUM_rep_${currentYear};
+          var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -242,11 +242,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name} - ${fieldInfos.republican.state.previous.name}) < 10000`,
+      where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) < 10000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.state.previous.name};
+          var valueNext = $feature.SUM_rep_${currentYear};
+          var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -269,11 +269,11 @@ export const stateChangeLabelingInfo = (year: number) => {
 
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.other.state.next.name} - ${fieldInfos.other.state.previous.name}) >= 500000`,
+      where: `ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) >= 500000`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.other.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.other.state.previous.name};
+          var valueNext = $feature.SUM_oth_${currentYear};
+          var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -293,11 +293,11 @@ export const stateChangeLabelingInfo = (year: number) => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.other.state.next.name} - ${fieldInfos.other.state.previous.name}) >= 100000 AND ABS(${fieldInfos.other.state.next.name} - ${fieldInfos.other.state.previous.name}) < 500000`,
+      where: `ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) >= 100000 AND ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
-        var valueNext = $feature.${fieldInfos.other.state.next.name};
-        var valuePrevious = $feature.${fieldInfos.other.state.previous.name};
+        var valueNext = $feature.SUM_oth_${currentYear};
+        var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -318,12 +318,12 @@ export const stateChangeLabelingInfo = (year: number) => {
     new LabelClass({
       minScale: 9244700,
       where: `
-        (ABS(${fieldInfos.other.state.next.name} - ${fieldInfos.other.state.previous.name}) >= 50000 AND ABS(${fieldInfos.other.state.next.name} - ${fieldInfos.other.state.previous.name}) < 100000)
+        (ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) >= 50000 AND ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) < 100000)
       `,
       labelExpressionInfo: {
         expression: `
-        var valueNext = $feature.${fieldInfos.other.state.next.name};
-        var valuePrevious = $feature.${fieldInfos.other.state.previous.name};
+        var valueNext = $feature.SUM_oth_${currentYear};
+        var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -345,12 +345,12 @@ export const stateChangeLabelingInfo = (year: number) => {
     new LabelClass({
       minScale: 9244700,
       where: `
-        (ABS(${fieldInfos.other.state.next.name} - ${fieldInfos.other.state.previous.name}) >= 10000 AND ABS(${fieldInfos.other.state.next.name} - ${fieldInfos.other.state.previous.name}) < 50000)
+        (ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) >= 10000 AND ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) < 50000)
       `,
       labelExpressionInfo: {
         expression: `
-        var valueNext = $feature.${fieldInfos.other.state.next.name};
-        var valuePrevious = $feature.${fieldInfos.other.state.previous.name};
+        var valueNext = $feature.SUM_oth_${currentYear};
+        var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -371,12 +371,12 @@ export const stateChangeLabelingInfo = (year: number) => {
     new LabelClass({
       minScale: 9244700,
       where: `
-        (ABS(${fieldInfos.other.state.next.name} - ${fieldInfos.other.state.previous.name}) < 10000)
+        (ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) < 10000)
       `,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.other.state.next.name};
-          var valuePrevious = $feature.${fieldInfos.other.state.previous.name};
+          var valueNext = $feature.SUM_oth_${currentYear};
+          var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -403,17 +403,18 @@ export const stateChangeLabelingInfo = (year: number) => {
 //
 ///////////////////////////////////////////////////
 
-export const stateResultsLabelingInfo = () => {
+export const stateResultsLabelingInfo = (year: number) => {
+  const currentYear = year;
   return [
 
     // DEMOCRAT label classes
 
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name}) >= 5000000`,
+      where: `ABS(SUM_dem_${currentYear}) >= 5000000`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.democrat.state.next.name}, '#,###');
+          Text($feature.SUM_dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -432,10 +433,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name}) >= 1000000 AND ABS(${fieldInfos.democrat.state.next.name}) < 5000000`,
+      where: `ABS(SUM_dem_${currentYear}) >= 1000000 AND ABS(SUM_dem_${currentYear}) < 5000000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.democrat.state.next.name}, '#,###');
+        Text($feature.SUM_dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -454,10 +455,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name}) >= 500000 AND ABS(${fieldInfos.democrat.state.next.name}) < 1000000`,
+      where: `ABS(SUM_dem_${currentYear}) >= 500000 AND ABS(SUM_dem_${currentYear}) < 1000000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.democrat.state.next.name}, '#,###');
+        Text($feature.SUM_dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -476,10 +477,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name}) >= 100000 AND ABS(${fieldInfos.democrat.state.next.name}) < 500000`,
+      where: `ABS(SUM_dem_${currentYear}) >= 100000 AND ABS(SUM_dem_${currentYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.democrat.state.next.name}, '#,###');
+        Text($feature.SUM_dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -498,10 +499,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.democrat.state.next.name}) < 100000`,
+      where: `ABS(SUM_dem_${currentYear}) < 100000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.democrat.state.next.name}, '#,###');
+        Text($feature.SUM_dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -524,10 +525,10 @@ export const stateResultsLabelingInfo = () => {
 
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name}) >= 5000000`,
+      where: `ABS(SUM_rep_${currentYear}) >= 5000000`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.republican.state.next.name}, '#,###');
+          Text($feature.SUM_rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -546,10 +547,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name}) >= 1000000 AND ABS(${fieldInfos.republican.state.next.name}) < 5000000`,
+      where: `ABS(SUM_rep_${currentYear}) >= 1000000 AND ABS(SUM_rep_${currentYear}) < 5000000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.republican.state.next.name}, '#,###');
+        Text($feature.SUM_rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -568,10 +569,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name}) >= 500000 AND ABS(${fieldInfos.republican.state.next.name}) < 1000000`,
+      where: `ABS(SUM_rep_${currentYear}) >= 500000 AND ABS(SUM_rep_${currentYear}) < 1000000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.republican.state.next.name}, '#,###');
+        Text($feature.SUM_rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -590,10 +591,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name}) >= 100000 AND ABS(${fieldInfos.republican.state.next.name}) < 500000`,
+      where: `ABS(SUM_rep_${currentYear}) >= 100000 AND ABS(SUM_rep_${currentYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.republican.state.next.name}, '#,###');
+        Text($feature.SUM_rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -612,10 +613,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.republican.state.next.name}) < 100000`,
+      where: `ABS(SUM_rep_${currentYear}) < 100000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.republican.state.next.name}, '#,###');
+        Text($feature.SUM_rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -637,10 +638,10 @@ export const stateResultsLabelingInfo = () => {
 
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.other.state.next.name}) >= 5000000`,
+      where: `ABS(SUM_oth_${currentYear}) >= 5000000`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.other.state.next.name}, '#,###');
+          Text($feature.SUM_oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -659,10 +660,10 @@ export const stateResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 9244700,
-      where: `ABS(${fieldInfos.other.state.next.name}) >= 1000000 AND ABS(${fieldInfos.other.state.next.name}) < 5000000`,
+      where: `ABS(SUM_oth_${currentYear}) >= 1000000 AND ABS(SUM_oth_${currentYear}) < 5000000`,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.other.state.next.name}, '#,###');
+        Text($feature.SUM_oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -682,11 +683,11 @@ export const stateResultsLabelingInfo = () => {
     new LabelClass({
       minScale: 9244700,
       where: `
-        (ABS(${fieldInfos.other.state.next.name}) >= 500000 AND ABS(${fieldInfos.other.state.next.name}) < 1000000)
+        (ABS(SUM_oth_${currentYear}) >= 500000 AND ABS(SUM_oth_${currentYear}) < 1000000)
       `,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.other.state.next.name}, '#,###');
+        Text($feature.SUM_oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -707,11 +708,11 @@ export const stateResultsLabelingInfo = () => {
     new LabelClass({
       minScale: 9244700,
       where: `
-        (ABS(${fieldInfos.other.state.next.name}) >= 100000 AND ABS(${fieldInfos.other.state.next.name}) < 500000)
+        (ABS(SUM_oth_${currentYear}) >= 100000 AND ABS(SUM_oth_${currentYear}) < 500000)
       `,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.other.state.next.name}, '#,###');
+        Text($feature.SUM_oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -731,11 +732,11 @@ export const stateResultsLabelingInfo = () => {
     new LabelClass({
       minScale: 9244700,
       where: `
-        (ABS(${fieldInfos.other.state.next.name}) < 100000)
+        (ABS(SUM_oth_${currentYear}) < 100000)
       `,
       labelExpressionInfo: {
         expression: `
-        Text($feature.${fieldInfos.other.state.next.name}, '#,###');
+        Text($feature.SUM_oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -762,17 +763,18 @@ export const stateResultsLabelingInfo = () => {
 //
 ///////////////////////////////////////////////////
 
-export const countyResultsLabelingInfo = () => {
+export const countyResultsLabelingInfo = (year: number) => {
+  const currentYear = year;
   return [
 
     // DEMOCRAT label classes
 
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 10`,
+      where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.democrat.county.next.name}, '#,###');
+          Text($feature.dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -792,10 +794,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 5 AND ABS(((${fieldInfos.democrat.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 10`,
+      where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.democrat.county.next.name}, '#,###');
+          Text($feature.dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -815,10 +817,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 1 AND ABS(((${fieldInfos.democrat.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 5`,
+      where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.democrat.county.next.name}, '#,###');
+          Text($feature.dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -838,10 +840,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 0.5 AND ABS(((${fieldInfos.democrat.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 1`,
+      where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.democrat.county.next.name}, '#,###');
+          Text($feature.dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -861,10 +863,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 0.5`,
+      where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.democrat.county.next.name}, '#,###');
+          Text($feature.dem_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -888,10 +890,10 @@ export const countyResultsLabelingInfo = () => {
 
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 10`,
+      where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.republican.county.next.name}, '#,###');
+          Text($feature.rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -911,10 +913,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 5 AND ABS(((${fieldInfos.republican.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 10`,
+      where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.republican.county.next.name}, '#,###');
+          Text($feature.rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -934,10 +936,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 1 AND ABS(((${fieldInfos.republican.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 5`,
+      where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.republican.county.next.name}, '#,###');
+          Text($feature.rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -957,10 +959,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 0.5 AND ABS(((${fieldInfos.republican.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 1`,
+      where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.republican.county.next.name}, '#,###');
+          Text($feature.rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -980,10 +982,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 0.5`,
+      where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.republican.county.next.name}, '#,###');
+          Text($feature.rep_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -1006,10 +1008,10 @@ export const countyResultsLabelingInfo = () => {
 
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.other.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 10`,
+      where: `ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.other.county.next.name}, '#,###');
+          Text($feature.oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -1029,10 +1031,10 @@ export const countyResultsLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.other.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 5 AND ABS(((${fieldInfos.other.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 10`,
+      where: `ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.other.county.next.name}, '#,###');
+          Text($feature.oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -1053,11 +1055,11 @@ export const countyResultsLabelingInfo = () => {
     new LabelClass({
       minScale: 577791,
       where: `
-        (ABS(((${fieldInfos.other.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 1 AND ABS(((${fieldInfos.other.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 5)
+        (ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5)
       `,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.other.county.next.name}, '#,###');
+          Text($feature.oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -1079,11 +1081,11 @@ export const countyResultsLabelingInfo = () => {
     new LabelClass({
       minScale: 577791,
       where: `
-        (ABS(((${fieldInfos.other.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 0.5 AND ABS(((${fieldInfos.other.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 1)
+        (ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1)
       `,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.other.county.next.name}, '#,###');
+          Text($feature.oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -1104,11 +1106,11 @@ export const countyResultsLabelingInfo = () => {
     new LabelClass({
       minScale: 577791,
       where: `
-        (ABS(((${fieldInfos.other.county.next.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 0.5)
+        (ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5)
       `,
       labelExpressionInfo: {
         expression: `
-          Text($feature.${fieldInfos.other.county.next.name}, '#,###');
+          Text($feature.oth_${currentYear}, '#,###');
         `
       },
       deconflictionStrategy: `none`,
@@ -1136,18 +1138,20 @@ export const countyResultsLabelingInfo = () => {
 //
 ///////////////////////////////////////////////////
 
-export const countyChangeLabelingInfo = () => {
+export const countyChangeLabelingInfo = (year: number) => {
+  const currentYear = year;
+  const previousYear = year - 4;
   return [
 
     // DEMOCRAT label classes
 
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name} - ${fieldInfos.democrat.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 10`,
+      where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.county.previous.name};
+          var valueNext = $feature.dem_${currentYear};
+          var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1168,11 +1172,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name} - ${fieldInfos.democrat.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 5 AND ABS(((${fieldInfos.democrat.county.next.name} - ${fieldInfos.democrat.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 10`,
+      where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.county.previous.name};
+          var valueNext = $feature.dem_${currentYear};
+          var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1193,11 +1197,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name} - ${fieldInfos.democrat.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 1 AND ABS(((${fieldInfos.democrat.county.next.name} - ${fieldInfos.democrat.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 5`,
+      where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.county.previous.name};
+          var valueNext = $feature.dem_${currentYear};
+          var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1218,11 +1222,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name} - ${fieldInfos.democrat.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 0.5 AND ABS(((${fieldInfos.democrat.county.next.name} - ${fieldInfos.democrat.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 1`,
+      where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.county.previous.name};
+          var valueNext = $feature.dem_${currentYear};
+          var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1243,11 +1247,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.democrat.county.next.name} - ${fieldInfos.democrat.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 0.5`,
+      where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.democrat.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.democrat.county.previous.name};
+          var valueNext = $feature.dem_${currentYear};
+          var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1272,11 +1276,11 @@ export const countyChangeLabelingInfo = () => {
 
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name} - ${fieldInfos.republican.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 10`,
+      where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.county.previous.name};
+          var valueNext = $feature.rep_${currentYear};
+          var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1297,11 +1301,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name} - ${fieldInfos.republican.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 5 AND ABS(((${fieldInfos.republican.county.next.name} - ${fieldInfos.republican.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 10`,
+      where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.county.previous.name};
+          var valueNext = $feature.rep_${currentYear};
+          var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1322,11 +1326,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name} - ${fieldInfos.republican.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 1 AND ABS(((${fieldInfos.republican.county.next.name} - ${fieldInfos.republican.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 5`,
+      where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.county.previous.name};
+          var valueNext = $feature.rep_${currentYear};
+          var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1347,11 +1351,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name} - ${fieldInfos.republican.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 0.5 AND ABS(((${fieldInfos.republican.county.next.name} - ${fieldInfos.republican.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 1`,
+      where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.county.previous.name};
+          var valueNext = $feature.rep_${currentYear};
+          var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1372,11 +1376,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.republican.county.next.name} - ${fieldInfos.republican.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 0.5`,
+      where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.republican.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.republican.county.previous.name};
+          var valueNext = $feature.rep_${currentYear};
+          var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1400,11 +1404,11 @@ export const countyChangeLabelingInfo = () => {
 
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.other.county.next.name} - ${fieldInfos.other.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 10`,
+      where: `ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.other.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.other.county.previous.name};
+          var valueNext = $feature.oth_${currentYear};
+          var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1425,11 +1429,11 @@ export const countyChangeLabelingInfo = () => {
     }),
     new LabelClass({
       minScale: 577791,
-      where: `ABS(((${fieldInfos.other.county.next.name} - ${fieldInfos.other.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 5 AND ABS(((${fieldInfos.other.county.next.name} - ${fieldInfos.other.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 10`,
+      where: `ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
-        var valueNext = $feature.${fieldInfos.other.county.next.name};
-        var valuePrevious = $feature.${fieldInfos.other.county.previous.name};
+        var valueNext = $feature.oth_${currentYear};
+        var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1451,12 +1455,12 @@ export const countyChangeLabelingInfo = () => {
     new LabelClass({
       minScale: 577791,
       where: `
-        (ABS(((${fieldInfos.other.county.next.name} - ${fieldInfos.other.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 1 AND ABS(((${fieldInfos.other.county.next.name} - ${fieldInfos.other.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 5)
+        (ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5)
       `,
       labelExpressionInfo: {
         expression: `
-        var valueNext = $feature.${fieldInfos.other.county.next.name};
-        var valuePrevious = $feature.${fieldInfos.other.county.previous.name};
+        var valueNext = $feature.oth_${currentYear};
+        var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1479,12 +1483,12 @@ export const countyChangeLabelingInfo = () => {
     new LabelClass({
       minScale: 577791,
       where: `
-        (ABS(((${fieldInfos.other.county.next.name} - ${fieldInfos.other.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) >= 0.5 AND ABS(((${fieldInfos.other.county.next.name} - ${fieldInfos.other.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 1)
+        (ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1)
       `,
       labelExpressionInfo: {
         expression: `
-        var valueNext = $feature.${fieldInfos.other.county.next.name};
-        var valuePrevious = $feature.${fieldInfos.other.county.previous.name};
+        var valueNext = $feature.oth_${currentYear};
+        var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
         `
       },
@@ -1506,12 +1510,12 @@ export const countyChangeLabelingInfo = () => {
     new LabelClass({
       minScale: 577791,
       where: `
-        (ABS(((${fieldInfos.other.county.next.name} - ${fieldInfos.other.county.previous.name}) / ${fieldInfos.normalizationFields.county.next}) * 100) < 0.5)
+        (ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5)
       `,
       labelExpressionInfo: {
         expression: `
-          var valueNext = $feature.${fieldInfos.other.county.next.name};
-          var valuePrevious = $feature.${fieldInfos.other.county.previous.name};
+          var valueNext = $feature.oth_${currentYear};
+          var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
         `
       },

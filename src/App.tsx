@@ -36,7 +36,8 @@ import AllResults from "./AllResults";
 import Legends from "./Legends";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import { countiesLayerPortalItem, scaleThreshold, statesLayerPortalItem } from "./config";
-import { createRenderer } from "./trendUtils/trendRenderer";
+import { createRenderer as createTrendRenderer } from "./trendUtils/trendRenderer";
+import { stateChangeRenderer } from "./changeUtils/changeRenderer";
 import { createPopupTemplate } from "./trendUtils/popupUtils";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
@@ -50,9 +51,7 @@ function App() {
     portalItem: {
       id: statesLayerPortalItem,
     },
-    renderer: createRenderer({
-      level: "state",
-    }),
+    renderer: stateChangeRenderer(2008),
     popupTemplate: createPopupTemplate({
       level: "state",
     }),
@@ -65,7 +64,7 @@ function App() {
     portalItem: {
       id: countiesLayerPortalItem,
     },
-    renderer: createRenderer({
+    renderer: createTrendRenderer({
       level: "county",
     }),
     popupTemplate: createPopupTemplate({

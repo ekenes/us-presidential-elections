@@ -1,51 +1,54 @@
-import { countySizeStops, fieldInfos, referenceScale, stateChangeSizeStops, stateReferenceScale, stateResultsSizeStops } from "../config";
+import { countySizeStops, referenceScale, stateChangeSizeStops, stateReferenceScale, stateResultsSizeStops } from "../config";
 
 export const votesStateNextBase = (year: number) => {
   return `
-    var dem = $feature.${fieldInfos.democrat.state.next.name};
-    var rep = $feature.${fieldInfos.republican.state.next.name};
-    var oth = $feature.${fieldInfos.other.state.next.name};
+    var dem = $feature.SUM_dem_${year};
+    var rep = $feature.SUM_rep_${year};
+    var oth = $feature.SUM_oth_${year};
     var all = [dem, rep, oth];
   `
 };
 
 export const votesCountyNextBase = (year: number) => {
   return `
-    var dem = $feature.${fieldInfos.democrat.county.next.name};
-    var rep = $feature.${fieldInfos.republican.county.next.name};
-    var oth = $feature.${fieldInfos.other.county.next.name};
+    var dem = $feature.dem_${year};
+    var rep = $feature.rep_${year};
+    var oth = $feature.oth_${year};
     var all = [dem, rep, oth];
   `
 };
 
 export const allCountyNextBase = (year: number) => {
   return `
-    var demNext = $feature.${fieldInfos.democrat.county.next.name};
-    var repNext = $feature.${fieldInfos.republican.county.next.name};
-    var othNext = $feature.${fieldInfos.other.county.next.name};
+    var demNext = $feature.dem_${year};
+    var repNext = $feature.rep_${year};
+    var othNext = $feature.oth_${year};
     var allNext = Sum([demNext, repNext, othNext]);
   `
 }
 
 export const allCountyPreviousBase = (year: number) => {
   return `
-    var demPrevious = $feature.${fieldInfos.democrat.county.previous.name};
-    var repPrevious = $feature.${fieldInfos.republican.county.previous.name};
-    var othPrevious = $feature.${fieldInfos.other.county.previous.name};
+    var demPrevious = $feature.dem_${year};
+    var repPrevious = $feature.rep_${year};
+    var othPrevious = $feature.oth_${year};
     var allPrevious = Sum([demPrevious, repPrevious, othPrevious]);
   `
 }
 
 export const shiftCounties = (year: number) => {
+  const currentYear = year;
+  const previousYear = year - 4;
+
   return `
-    var demNext = $feature.${fieldInfos.democrat.county.next.name};
-    var repNext = $feature.${fieldInfos.republican.county.next.name};
-    var othNext = $feature.${fieldInfos.other.county.next.name};
+    var demNext = $feature.dem_${currentYear};
+    var repNext = $feature.rep_${currentYear};
+    var othNext = $feature.oth_${currentYear};
     var allNext = Sum([demNext, repNext, othNext]);
 
-    var demPrevious = $feature.${fieldInfos.democrat.county.previous.name};
-    var repPrevious = $feature.${fieldInfos.republican.county.previous.name};
-    var othPrevious = $feature.${fieldInfos.other.county.previous.name};
+    var demPrevious = $feature.dem_${previousYear};
+    var repPrevious = $feature.rep_${previousYear};
+    var othPrevious = $feature.oth_${previousYear};
     var allPrevious = Sum([demPrevious, repPrevious, othPrevious]);
 
 
@@ -55,44 +58,46 @@ export const shiftCounties = (year: number) => {
   `;
 }
 
-export const shiftCountyTextBase = () => {
+export const shiftCountyTextBase = (year: number) => {
   return `
-    ${shiftCounties()}
+    ${shiftCounties(year)}
 
     var shiftText = IIF(shift > 0, Text(shift, '+#,###.0'), Text(shift, '#,###.0'));
     return shiftText + "%";
   `;
 }
 
-
-export const allStateNextBase = () => {
+export const allStateNextBase = (year: number) => {
   return `
-    var demNext = $feature.${fieldInfos.democrat.state.next.name};
-    var repNext = $feature.${fieldInfos.republican.state.next.name};
-    var othNext = $feature.${fieldInfos.other.state.next.name};
+    var demNext = $feature.SUM_dem_${year};
+    var repNext = $feature.SUM_rep_${year};
+    var othNext = $feature.SUM_oth_${year};
     var allNext = Sum([demNext, repNext, othNext]);
   `
 }
 
-export const allStatePreviousBase = () => {
+export const allStatePreviousBase = (year: number) => {
   return `
-    var demPrevious = $feature.${fieldInfos.democrat.state.previous.name};
-    var repPrevious = $feature.${fieldInfos.republican.state.previous.name};
-    var othPrevious = $feature.${fieldInfos.other.state.previous.name};
+    var demPrevious = $feature.SUM_dem_${year};
+    var repPrevious = $feature.SUM_rep_${year};
+    var othPrevious = $feature.SUM_oth_${year};
     var allPrevious = Sum([demPrevious, repPrevious, othPrevious]);
   `
 }
 
-export const shiftStates = () => {
+export const shiftStates = (year: number) => {
+  const currentYear = year;
+  const previousYear = year - 4;
+
   return `
-    var demNext = $feature.${fieldInfos.democrat.state.next.name};
-    var repNext = $feature.${fieldInfos.republican.state.next.name};
-    var othNext = $feature.${fieldInfos.other.state.next.name};
+    var demNext = $feature.SUM_dem_${currentYear};
+    var repNext = $feature.SUM_rep_${currentYear};
+    var othNext = $feature.SUM_oth_${currentYear};
     var allNext = Sum([demNext, repNext, othNext]);
 
-    var demPrevious = $feature.${fieldInfos.democrat.state.previous.name};
-    var repPrevious = $feature.${fieldInfos.republican.state.previous.name};
-    var othPrevious = $feature.${fieldInfos.other.state.previous.name};
+    var demPrevious = $feature.SUM_dem_${previousYear};
+    var repPrevious = $feature.SUM_rep_${previousYear};
+    var othPrevious = $feature.SUM_oth_${previousYear};
     var allPrevious = Sum([demPrevious, repPrevious, othPrevious]);
 
 
@@ -102,9 +107,9 @@ export const shiftStates = () => {
   `;
 }
 
-export const shiftStatesTextBase = () => {
+export const shiftStatesTextBase = (year: number) => {
   return `
-    ${shiftStates()}
+    ${shiftStates(year)}
 
     var shiftText = IIF(shift > 0, Text(shift, '+#,###.0'), Text(shift, '#,###.0'));
     return shiftText + "%";

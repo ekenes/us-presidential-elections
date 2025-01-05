@@ -12,7 +12,7 @@ import { sizeExpressionBase, sizeTotalChangeExpressionBase } from "./expressionU
 //
 ///////////////////////////////////////////////////
 
-export const swingStateRenderer = (year: number) => {
+export function swingStateRenderer (year: number) {
   const currentYear = year;
   const previousYear = year - 4;
 
@@ -65,7 +65,7 @@ export const swingStateRenderer = (year: number) => {
 //
 ///////////////////////////////////////////////////
 
-export const stateChangeRenderer = (year: number) => {
+export function stateChangeRenderer(year: number) {
   const currentYear = year;
   const previousYear = year - 4;
 
@@ -229,7 +229,7 @@ export const stateChangeRenderer = (year: number) => {
 //
 ///////////////////////////////////////////////////
 
-export const countyChangeRenderer = (year: number) => {
+export function countyChangeRenderer (year: number) {
   const currentYear = year;
   const previousYear = year - 4;
 
