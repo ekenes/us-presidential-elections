@@ -30,16 +30,17 @@ import Popup from "@arcgis/core/widgets/Popup";
 import { SimpleRenderer } from "@arcgis/core/renderers";
 import { SimpleFillSymbol, SimpleLineSymbol } from "@arcgis/core/symbols";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Examples from "./Examples";
 import AllResults from "./AllResults";
 import Legends from "./Legends";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import { countiesLayerPortalItem, scaleThreshold, statesLayerPortalItem } from "./config";
 import { createRenderer as createTrendRenderer } from "./trendUtils/trendRenderer";
-import { stateChangeRenderer } from "./changeUtils/changeRenderer";
+import { countyChangeRenderer, stateChangeRenderer } from "./changeUtils/changeRenderer";
 import { createPopupTemplate } from "./trendUtils/popupUtils";
-import { stateChangeLabelingInfo } from "./changeUtils/labelingUtils";
+import { countyChangeLabelingInfo, stateChangeLabelingInfo } from "./changeUtils/labelingUtils";
+import { countyPopupTemplate, statePopupTemplate } from "./changeUtils/popupUtils";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 
@@ -48,8 +49,8 @@ function App() {
 
   const webmapId = "1c2dfdb8c339473ab7b0ab11cb561e47";
   const [year, setYear] = useState(2024);
-
-  const stateLayer = new FeatureLayer({
+  const [stateLayer, setStateLayer] = useState<FeatureLayer | null>(new FeatureLayer({
+    title: "state-layer",
     portalItem: {
       id: statesLayerPortalItem,
     },
@@ -61,9 +62,9 @@ function App() {
     maxScale: scaleThreshold,
     opacity: 1,
     effect: "drop-shadow(2px, 2px, 2px, lightgray)",
-  });
+  }));
 
-  const countyLayer = new FeatureLayer({
+  const [countyLayer, setCountyLayer] = useState<FeatureLayer | null>(new FeatureLayer({
     portalItem: {
       id: countiesLayerPortalItem,
     },
@@ -76,7 +77,7 @@ function App() {
     minScale: scaleThreshold,
     opacity: 1,
     effect: "drop-shadow(2px, 2px, 2px, lightgray)",
-  });
+  }));
 
   const countyBoundaryLayer = new FeatureLayer({
     portalItem: {
@@ -166,6 +167,16 @@ function App() {
       document.querySelector("calcite-loader") as HTMLCalciteLoaderElement
     ).hidden = true;
   };
+
+  useEffect(() => {
+    console.log("year changed", year);
+    stateLayer!.renderer = stateChangeRenderer(year);
+    stateLayer!.labelingInfo = stateChangeLabelingInfo(year);
+    countyLayer!.renderer = countyChangeRenderer(year);
+    countyLayer!.labelingInfo = countyChangeLabelingInfo(year);
+    stateLayer!.popupTemplate = statePopupTemplate(year);
+    countyLayer!.popupTemplate = countyPopupTemplate(year);
+  }, [countyLayer, stateLayer, year]);
 
   return (
     <>
