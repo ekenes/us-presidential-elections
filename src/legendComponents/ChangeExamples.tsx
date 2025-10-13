@@ -1,4 +1,4 @@
-import "./App.css";
+import "../App.css";
 
 import "@esri/calcite-components/dist/components/calcite-block";
 import "@esri/calcite-components/dist/components/calcite-carousel";
@@ -10,7 +10,7 @@ import {
   CalciteCarouselItem,
 } from "@esri/calcite-components-react";
 
-function TrendExamples() {
+function ChangeExamples() {
   return (
     <>
       <CalciteBlock heading="Examples" open collapsible>
@@ -74,4 +74,4 @@ function TrendExamples() {
   );
 }
 
-export default TrendExamples;
+export default ChangeExamples;

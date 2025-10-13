@@ -1,10 +1,8 @@
-import "./App.css";
+import "../App.css";
 
 import "@esri/calcite-components/dist/components/calcite-block";
 
-import {
-  CalciteBlock,
-} from "@esri/calcite-components-react";
+import { CalciteBlock } from "@esri/calcite-components-react";
 
 function TrendLegend() {
   return (

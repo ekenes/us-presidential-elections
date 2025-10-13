@@ -19,32 +19,19 @@ import "@esri/calcite-components/dist/components/calcite-label";
 import {
   CalciteAction,
   CalciteActionBar,
-  CalciteLabel,
   CalcitePanel,
   CalciteShell,
   CalciteShellPanel,
-  CalciteSlider,
 } from "@esri/calcite-components-react";
 
 import esriConfig from "@arcgis/core/config";
 import Popup from "@arcgis/core/widgets/Popup";
-import { SimpleRenderer } from "@arcgis/core/renderers";
-import { SimpleFillSymbol, SimpleLineSymbol } from "@arcgis/core/symbols";
 
-import { useEffect, useRef, useState } from "react";
-import Examples from "./Examples";
+import { useRef } from "react";
 import AllResults from "./AllResults";
 import Legends from "./Legends";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
-import {
-  countiesLayerPortalItem,
-  scaleThreshold,
-  statesLayerPortalItem,
-} from "./config";
-import { createRenderer as createTrendRenderer } from "./trendUtils/trendRenderer";
-import { stateChangeRenderer } from "./changeUtils/changeRenderer";
-import { createPopupTemplate } from "./trendUtils/popupUtils";
-import { stateChangeLabelingInfo } from "./changeUtils/labelingUtils";
+
 import WebMap from "@arcgis/core/WebMap";
 import { createChangeConfig } from "./changeUtils/createChangeConfig";
 import { createTrendConfig } from "./trendUtils/createTrendConfig";
@@ -62,73 +49,70 @@ function App() {
     },
   });
 
-  const [year, setYear] = useState(2024);
-  const [stateLayer, setStateLayer] = useState<FeatureLayer | null>(
-    new FeatureLayer({
-      title: "state-layer",
-      portalItem: {
-        id: statesLayerPortalItem,
-      },
-      renderer: stateChangeRenderer(year),
-      popupTemplate: createPopupTemplate({
-        level: "state",
-      }),
-      labelingInfo: stateChangeLabelingInfo(year),
-      maxScale: scaleThreshold,
-      opacity: 1,
-      effect: "drop-shadow(2px, 2px, 2px, lightgray)",
-    })
-  );
+  const updateRendererFromYear = async (year: number) => {
+    console.log("update renderer from year: ", year);
+    const mapElement = mapRef.current;
 
-  const [countyLayer, setCountyLayer] = useState<FeatureLayer | null>(
-    new FeatureLayer({
-      portalItem: {
-        id: countiesLayerPortalItem,
-      },
-      renderer: createTrendRenderer({
-        level: "county",
-      }),
-      popupTemplate: createPopupTemplate({
-        level: "county",
-      }),
-      minScale: scaleThreshold,
-      opacity: 1,
-      effect: "drop-shadow(2px, 2px, 2px, lightgray)",
-    })
-  );
+    if (!mapElement || !webmap) return;
 
-  const countyBoundaryLayer = new FeatureLayer({
-    portalItem: {
-      id: "14c5450526a8430298b2fa74da12c2f4",
-    },
-    minScale: scaleThreshold,
-    popupEnabled: false,
-    renderer: new SimpleRenderer({
-      symbol: new SimpleFillSymbol({
-        style: "none",
-        outline: new SimpleLineSymbol({
-          color: [175, 175, 175, 0.35],
-          width: 0.5,
-        }),
-      }),
-    }),
-  });
+    await webmap.load();
+
+    const changeGroupLayer = webmap.allLayers.find(
+      (layer) => layer.title === "Change - all parties"
+    ) as __esri.GroupLayer;
+    if (changeGroupLayer) {
+      console.log("change group layer found");
+      console.log(changeGroupLayer);
+      const countyChangeConfig = createChangeConfig({ level: "county", year });
+      const stateChangeConfig = createChangeConfig({ level: "state", year });
+
+      const changeCountyLayer = changeGroupLayer.layers.find(
+        (layer) => layer.title === "Counties"
+      ) as FeatureLayer;
+
+      changeCountyLayer.renderer = countyChangeConfig.renderer;
+      changeCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
+      changeCountyLayer.labelingInfo = countyChangeConfig.labelingInfo;
+
+      const changeStateLayer = changeGroupLayer.layers.find(
+        (layer) => layer.title === "States"
+      ) as FeatureLayer;
+      changeStateLayer.renderer = stateChangeConfig.renderer;
+      changeStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
+      changeStateLayer.labelingInfo = stateChangeConfig.labelingInfo;
+    }
+
+    const trendGroupLayer = webmap.allLayers.find(
+      (layer) => layer.title === "20-year trend"
+    ) as __esri.GroupLayer;
+
+    if (trendGroupLayer) {
+      console.log("trend group layer found");
+      console.log(trendGroupLayer);
+      const countyTrendConfig = createTrendConfig({ level: "county" });
+      const stateTrendConfig = createTrendConfig({ level: "state" });
+
+      const trendCountyLayer = trendGroupLayer.layers.find(
+        (layer) => layer.title === "Counties"
+      ) as FeatureLayer;
+      trendCountyLayer.renderer = countyTrendConfig.renderer;
+      trendCountyLayer.popupTemplate = countyTrendConfig.popupTemplate;
+
+      const trendStateLayer = trendGroupLayer.layers.find(
+        (layer) => layer.title === "States"
+      ) as FeatureLayer;
+      trendStateLayer.renderer = stateTrendConfig.renderer;
+      trendStateLayer.popupTemplate = stateTrendConfig.popupTemplate;
+    }
+  };
 
   const initialize = async () => {
     const mapElement = mapRef.current;
 
-    if (
-      !mapElement ||
-      !stateLayer ||
-      !countyLayer ||
-      !countyBoundaryLayer ||
-      !webmap
-    )
-      return;
+    if (!mapElement || !webmap) return;
 
     await webmap.load();
-
-    // mapElement.map?.addMany([stateLayer, countyLayer, countyBoundaryLayer]);
+    const year = 2024;
 
     const changeGroupLayer = webmap.allLayers.find(
       (layer) => layer.title === "Change - all parties"
@@ -232,24 +216,7 @@ function App() {
         left: actionBarExpanded ? 135 : 49,
       };
     });
-
-    // (
-    //   document.querySelector("calcite-shell") as HTMLCalciteShellElement
-    // ).hidden = false;
-    // (
-    //   document.querySelector("calcite-loader") as HTMLCalciteLoaderElement
-    // ).hidden = true;
   };
-
-  // useEffect(() => {
-  //   console.log("year changed", year);
-  //   stateLayer!.renderer = stateChangeRenderer(year);
-  //   stateLayer!.labelingInfo = stateChangeLabelingInfo(year);
-  //   countyLayer!.renderer = countyChangeRenderer(year);
-  //   countyLayer!.labelingInfo = countyChangeLabelingInfo(year);
-  //   stateLayer!.popupTemplate = statePopupTemplate(year);
-  //   countyLayer!.popupTemplate = countyPopupTemplate(year);
-  // }, [countyLayer, stateLayer, year]);
 
   return (
     <>
@@ -269,26 +236,12 @@ function App() {
             data-panel-id="layers"
             scale="m"
           >
-            <CalciteLabel layout="inline">Select an election year</CalciteLabel>
-            <div className="slider-container">
-              <CalciteSlider
-                min={2000}
-                max={2024}
-                labelHandles
-                labelTicks
-                maxLabel="2024"
-                minLabel="2000"
-                ticks={4}
-                step={4}
-                value={year}
-                onCalciteSliderInput={(event) => {
-                  setYear(event.target.value as number);
-                }}
-                snap
-              ></CalciteSlider>
-            </div>
-            <Legends />
-            <Examples />
+            <Legends
+              rendererType={"change"}
+              onYearInput={(year) => {
+                updateRendererFromYear(year);
+              }}
+            />
             <AllResults />
           </CalcitePanel>
         </CalciteShellPanel>
