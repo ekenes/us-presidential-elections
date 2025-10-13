@@ -5,7 +5,6 @@ import { TextSymbol, Font } from "@arcgis/core/symbols";
 import Color from "@arcgis/core/Color";
 import { diffLabelText } from "./expressionUtils";
 
-
 ////////////////////////////////////////////////////
 //
 // STATE CHANGE
@@ -17,7 +16,6 @@ export const stateChangeLabelingInfo = (year: number) => {
   const previousYear = year - 4;
 
   return [
-
     // DEMOCRAT label classes
 
     new LabelClass({
@@ -28,21 +26,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_dem_${currentYear};
           var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -50,
-        yoffset: -25
-      })
+        yoffset: -25,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -52,21 +50,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_dem_${currentYear};
           var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -40,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -76,21 +74,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_dem_${currentYear};
           var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -40,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -100,21 +98,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_dem_${currentYear};
           var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -30,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -124,23 +122,22 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_dem_${currentYear};
           var valuePrevious = $feature.SUM_dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
-
 
     // REPUBLICAN label classes
 
@@ -152,21 +149,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_rep_${currentYear};
           var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 50,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -176,21 +173,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_rep_${currentYear};
           var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 35,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -200,21 +197,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_rep_${currentYear};
           var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 30,
-        yoffset: -17
-      })
+        yoffset: -17,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -224,21 +221,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_rep_${currentYear};
           var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 25,
-        yoffset: -12
-      })
+        yoffset: -12,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -248,21 +245,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_rep_${currentYear};
           var valuePrevious = $feature.SUM_rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
 
     // OTHER label classes
@@ -275,21 +272,21 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_oth_${currentYear};
           var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 30
-      })
+        yoffset: 30,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -299,21 +296,21 @@ export const stateChangeLabelingInfo = (year: number) => {
         var valueNext = $feature.SUM_oth_${currentYear};
         var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 30
-      })
+        yoffset: 30,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -325,21 +322,21 @@ export const stateChangeLabelingInfo = (year: number) => {
         var valueNext = $feature.SUM_oth_${currentYear};
         var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 20
-      })
+        yoffset: 20,
+      }),
     }),
 
     new LabelClass({
@@ -352,21 +349,21 @@ export const stateChangeLabelingInfo = (year: number) => {
         var valueNext = $feature.SUM_oth_${currentYear};
         var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 15
-      })
+        yoffset: 15,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -378,22 +375,22 @@ export const stateChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.SUM_oth_${currentYear};
           var valuePrevious = $feature.SUM_oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 10,
-        yoffset: 10
-      })
-    })
+        yoffset: 10,
+      }),
+    }),
   ];
 };
 
@@ -406,7 +403,6 @@ export const stateChangeLabelingInfo = (year: number) => {
 export const stateResultsLabelingInfo = (year: number) => {
   const currentYear = year;
   return [
-
     // DEMOCRAT label classes
 
     new LabelClass({
@@ -415,21 +411,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.SUM_dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -50,
-        yoffset: -25
-      })
+        yoffset: -25,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -437,21 +433,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -40,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -459,21 +455,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -40,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -481,21 +477,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -30,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -503,23 +499,22 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
-
 
     // REPUBLICAN label classes
 
@@ -529,21 +524,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.SUM_rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 60,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -551,21 +546,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 35,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -573,21 +568,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 30,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -595,21 +590,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 25,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -617,21 +612,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
 
     // OTHER label classes
@@ -642,21 +637,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.SUM_oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 35
-      })
+        yoffset: 35,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -664,21 +659,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 30,
-        yoffset: 30
-      })
+        yoffset: 30,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -688,21 +683,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 25
-      })
+        yoffset: 25,
+      }),
     }),
 
     new LabelClass({
@@ -713,21 +708,21 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 15
-      })
+        yoffset: 15,
+      }),
     }),
     new LabelClass({
       minScale: 9244700,
@@ -737,25 +732,24 @@ export const stateResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
         Text($feature.SUM_oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       symbol: new TextSymbol({
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 1,
-        yoffset: 15
-      })
-    })
+        yoffset: 15,
+      }),
+    }),
   ];
 };
-
 
 ////////////////////////////////////////////////////
 //
@@ -766,7 +760,6 @@ export const stateResultsLabelingInfo = (year: number) => {
 export const countyResultsLabelingInfo = (year: number) => {
   const currentYear = year;
   return [
-
     // DEMOCRAT label classes
 
     new LabelClass({
@@ -775,7 +768,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -783,14 +776,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -50,
-        yoffset: -25
-      })
+        yoffset: -25,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -798,7 +791,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -806,14 +799,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -40,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -821,7 +814,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -829,14 +822,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -40,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -844,7 +837,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -852,14 +845,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -30,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -867,7 +860,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.dem_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -875,16 +868,15 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
-
 
     // REPUBLICAN label classes
 
@@ -894,7 +886,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -902,14 +894,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 50,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -917,7 +909,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -925,14 +917,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 40,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -940,7 +932,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -948,14 +940,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 30,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -963,7 +955,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -971,14 +963,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 25,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -986,7 +978,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.rep_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -994,14 +986,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
 
     // OTHER label classes
@@ -1012,7 +1004,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1020,14 +1012,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 30,
-        yoffset: 40
-      })
+        yoffset: 40,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1035,7 +1027,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1043,14 +1035,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 30,
-        yoffset: 40
-      })
+        yoffset: 40,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1060,7 +1052,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1068,14 +1060,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 30,
-        yoffset: 35
-      })
+        yoffset: 35,
+      }),
     }),
 
     new LabelClass({
@@ -1086,7 +1078,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1094,14 +1086,14 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 30
-      })
+        yoffset: 30,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1111,7 +1103,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       labelExpressionInfo: {
         expression: `
           Text($feature.oth_${currentYear}, '#,###');
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1119,16 +1111,15 @@ export const countyResultsLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 15,
-        yoffset: 18
-      })
-    })
-
+        yoffset: 18,
+      }),
+    }),
   ];
 };
 
@@ -1142,7 +1133,6 @@ export const countyChangeLabelingInfo = (year: number) => {
   const currentYear = year;
   const previousYear = year - 4;
   return [
-
     // DEMOCRAT label classes
 
     new LabelClass({
@@ -1153,7 +1143,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.dem_${currentYear};
           var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1161,14 +1151,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -50,
-        yoffset: -25
-      })
+        yoffset: -25,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1178,7 +1168,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.dem_${currentYear};
           var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1186,14 +1176,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -40,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1203,7 +1193,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.dem_${currentYear};
           var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1211,14 +1201,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -40,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1228,7 +1218,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.dem_${currentYear};
           var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1236,14 +1226,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -30,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1253,7 +1243,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.dem_${currentYear};
           var valuePrevious = $feature.dem_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1261,16 +1251,15 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
         xoffset: -20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
-
 
     // REPUBLICAN label classes
 
@@ -1282,7 +1271,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.rep_${currentYear};
           var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1290,14 +1279,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 60,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1307,7 +1296,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.rep_${currentYear};
           var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1315,14 +1304,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 45,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1332,7 +1321,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.rep_${currentYear};
           var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1340,14 +1329,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 30,
-        yoffset: -20
-      })
+        yoffset: -20,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1357,7 +1346,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.rep_${currentYear};
           var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1365,14 +1354,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1382,7 +1371,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.rep_${currentYear};
           var valuePrevious = $feature.rep_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1390,14 +1379,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
         xoffset: 20,
-        yoffset: -10
-      })
+        yoffset: -10,
+      }),
     }),
 
     // OTHER label classes
@@ -1410,7 +1399,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.oth_${currentYear};
           var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1418,14 +1407,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 30,
-        yoffset: 40
-      })
+        yoffset: 40,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1435,7 +1424,7 @@ export const countyChangeLabelingInfo = (year: number) => {
         var valueNext = $feature.oth_${currentYear};
         var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1443,14 +1432,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 30,
-        yoffset: 40
-      })
+        yoffset: 40,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1462,7 +1451,7 @@ export const countyChangeLabelingInfo = (year: number) => {
         var valueNext = $feature.oth_${currentYear};
         var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1470,14 +1459,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 30,
-        yoffset: 35
-      })
+        yoffset: 35,
+      }),
     }),
 
     new LabelClass({
@@ -1490,7 +1479,7 @@ export const countyChangeLabelingInfo = (year: number) => {
         var valueNext = $feature.oth_${currentYear};
         var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1498,14 +1487,14 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 20,
-        yoffset: 30
-      })
+        yoffset: 30,
+      }),
     }),
     new LabelClass({
       minScale: 577791,
@@ -1517,7 +1506,7 @@ export const countyChangeLabelingInfo = (year: number) => {
           var valueNext = $feature.oth_${currentYear};
           var valuePrevious = $feature.oth_${previousYear};
           ${diffLabelText}
-        `
+        `,
       },
       deconflictionStrategy: `none`,
       labelPlacement: `center-center`,
@@ -1525,15 +1514,26 @@ export const countyChangeLabelingInfo = (year: number) => {
         font: new Font({
           weight: `bold`,
           family: `Noto Sans`,
-          size: `10pt`
+          size: `10pt`,
         }),
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
         xoffset: 15,
-        yoffset: 18
-      })
-    })
-
+        yoffset: 18,
+      }),
+    }),
   ];
+};
+
+export interface LabelingInfoParams {
+  level: "county" | "state";
+  year: number;
+}
+
+export const createLabelingInfo = (params: LabelingInfoParams) => {
+  const { level, year } = params;
+  return level === "county"
+    ? countyResultsLabelingInfo(year)
+    : stateResultsLabelingInfo(year);
 };

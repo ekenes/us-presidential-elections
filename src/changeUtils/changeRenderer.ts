@@ -3,8 +3,10 @@ import { CIMSymbol, SimpleFillSymbol } from "@arcgis/core/symbols";
 import { dColor, rColor, dColorCIM, oColorCIM, rColorCIM } from "../config";
 
 import { createCircleSymbolLayer } from "./symbolUtils";
-import { sizeExpressionBase, sizeTotalChangeExpressionBase } from "./expressionUtils";
-
+import {
+  sizeExpressionBase,
+  sizeTotalChangeExpressionBase,
+} from "./expressionUtils";
 
 ////////////////////////////////////////////////////
 //
@@ -12,7 +14,7 @@ import { sizeExpressionBase, sizeTotalChangeExpressionBase } from "./expressionU
 //
 ///////////////////////////////////////////////////
 
-export function swingStateRenderer (year: number) {
+export function swingStateRenderer(year: number) {
   const currentYear = year;
   const previousYear = year - 4;
 
@@ -41,23 +43,26 @@ export function swingStateRenderer (year: number) {
       return Concatenate([winnerPrevious, winnerNext], ", ");
     `,
     defaultSymbol: undefined,
-    uniqueValueInfos: [{
-      value: `Democrat ${previousYear}, Republican ${currentYear}`,
-      label: `Flipped Republican in ${currentYear}`,
-      symbol: new SimpleFillSymbol({
-        color: rColor,
-        outline: undefined
-      })
-    }, {
-      value: `Republican ${previousYear}, Democrat ${currentYear}`,
-      label: `Flipped Democrat in ${currentYear}`,
-      symbol: new SimpleFillSymbol({
-        color: dColor,
-        outline: undefined
-      })
-    }]
+    uniqueValueInfos: [
+      {
+        value: `Democrat ${previousYear}, Republican ${currentYear}`,
+        label: `Flipped Republican in ${currentYear}`,
+        symbol: new SimpleFillSymbol({
+          color: rColor,
+          outline: undefined,
+        }),
+      },
+      {
+        value: `Republican ${previousYear}, Democrat ${currentYear}`,
+        label: `Flipped Democrat in ${currentYear}`,
+        symbol: new SimpleFillSymbol({
+          color: dColor,
+          outline: undefined,
+        }),
+      },
+    ],
   });
-};
+}
 
 ////////////////////////////////////////////////////
 //
@@ -80,25 +85,25 @@ export function stateChangeRenderer(year: number) {
               primitiveName: `democrat-positive-votes`,
               anchorPoint: { x: 0.5, y: 0 },
               color: dColorCIM,
-              donutEnabled: false
+              donutEnabled: false,
             }),
             createCircleSymbolLayer({
               primitiveName: `democrat-negative-votes`,
               anchorPoint: { x: 0.5, y: 0 },
               color: dColorCIM,
-              donutEnabled: true
+              donutEnabled: true,
             }),
             createCircleSymbolLayer({
               primitiveName: `republican-positive-votes`,
               anchorPoint: { x: -0.5, y: 0 },
               color: rColorCIM,
-              donutEnabled: false
+              donutEnabled: false,
             }),
             createCircleSymbolLayer({
               primitiveName: `republican-negative-votes`,
               anchorPoint: { x: -0.5, y: 0 },
               color: rColorCIM,
-              donutEnabled: true
+              donutEnabled: true,
             }),
             createCircleSymbolLayer({
               primitiveName: `other-positive-votes`,
@@ -110,9 +115,9 @@ export function stateChangeRenderer(year: number) {
               primitiveName: `other-negative-votes`,
               anchorPoint: { x: 0, y: -0.75 },
               color: oColorCIM,
-              donutEnabled: true
-            })
-          ]
+              donutEnabled: true,
+            }),
+          ],
         },
         primitiveOverrides: [
           {
@@ -129,8 +134,8 @@ export function stateChangeRenderer(year: number) {
                 var value = IIF( change > 0, change, 0);
                 ${sizeTotalChangeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -146,8 +151,8 @@ export function stateChangeRenderer(year: number) {
                 var value = IIF( change < 0, Abs(change), 0);
                 ${sizeTotalChangeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -163,8 +168,8 @@ export function stateChangeRenderer(year: number) {
                 var value = IIF( change > 0, change, 0);
                 ${sizeTotalChangeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -180,8 +185,8 @@ export function stateChangeRenderer(year: number) {
                 var value = IIF( change < 0, Abs(change), 0);
                 ${sizeTotalChangeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -197,8 +202,8 @@ export function stateChangeRenderer(year: number) {
                 var value = IIF( change > 0, change, 0);
                 ${sizeTotalChangeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -214,14 +219,14 @@ export function stateChangeRenderer(year: number) {
                 var value = IIF( change < 0, Abs(change), 0);
                 ${sizeTotalChangeExpressionBase}
               `,
-              returnType: `Default`
-            }
-          }
-        ]
-      }
-    })
+              returnType: `Default`,
+            },
+          },
+        ],
+      },
+    }),
   });
-};
+}
 
 ////////////////////////////////////////////////////
 //
@@ -229,7 +234,7 @@ export function stateChangeRenderer(year: number) {
 //
 ///////////////////////////////////////////////////
 
-export function countyChangeRenderer (year: number) {
+export function countyChangeRenderer(year: number) {
   const currentYear = year;
   const previousYear = year - 4;
 
@@ -244,39 +249,39 @@ export function countyChangeRenderer (year: number) {
               primitiveName: `democrat-positive-votes`,
               anchorPoint: { x: 0.5, y: 0 },
               color: dColorCIM,
-              donutEnabled: false
+              donutEnabled: false,
             }),
             createCircleSymbolLayer({
               primitiveName: `democrat-negative-votes`,
               anchorPoint: { x: 0.5, y: 0 },
               color: dColorCIM,
-              donutEnabled: true
+              donutEnabled: true,
             }),
             createCircleSymbolLayer({
               primitiveName: `republican-positive-votes`,
               anchorPoint: { x: -0.5, y: 0 },
               color: rColorCIM,
-              donutEnabled: false
+              donutEnabled: false,
             }),
             createCircleSymbolLayer({
               primitiveName: `republican-negative-votes`,
               anchorPoint: { x: -0.5, y: 0 },
               color: rColorCIM,
-              donutEnabled: true
+              donutEnabled: true,
             }),
             createCircleSymbolLayer({
               primitiveName: `other-positive-votes`,
               anchorPoint: { x: 0, y: -0.75 },
               color: oColorCIM,
-              donutEnabled: false
+              donutEnabled: false,
             }),
             createCircleSymbolLayer({
               primitiveName: `other-negative-votes`,
               anchorPoint: { x: 0, y: -0.75 },
               color: oColorCIM,
-              donutEnabled: true
-            })
-          ]
+              donutEnabled: true,
+            }),
+          ],
         },
         primitiveOverrides: [
           {
@@ -294,8 +299,8 @@ export function countyChangeRenderer (year: number) {
                 var percentStateVotes = ( value / $feature.TOTAL_STATE_VOTES_${currentYear} ) * $feature.ev_${currentYear};
                 ${sizeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -312,8 +317,8 @@ export function countyChangeRenderer (year: number) {
                 var percentStateVotes = ( value / $feature.TOTAL_STATE_VOTES_${currentYear} ) * $feature.ev_${currentYear};
                 ${sizeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -330,8 +335,8 @@ export function countyChangeRenderer (year: number) {
                 var percentStateVotes = ( value / $feature.TOTAL_STATE_VOTES_${currentYear} ) * $feature.ev_${currentYear};
                 ${sizeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -348,8 +353,8 @@ export function countyChangeRenderer (year: number) {
                 var percentStateVotes = ( value / $feature.TOTAL_STATE_VOTES_${currentYear} ) * $feature.ev_${currentYear};
                 ${sizeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -366,8 +371,8 @@ export function countyChangeRenderer (year: number) {
                 var percentStateVotes = ( value / $feature.TOTAL_STATE_VOTES_${currentYear} ) * $feature.ev_${currentYear};
                 ${sizeExpressionBase}
               `,
-              returnType: `Default`
-            }
+              returnType: `Default`,
+            },
           },
           {
             type: `CIMPrimitiveOverride`,
@@ -384,11 +389,23 @@ export function countyChangeRenderer (year: number) {
                 var percentStateVotes = ( value / $feature.TOTAL_STATE_VOTES_${currentYear} ) * $feature.ev_${currentYear};
                 ${sizeExpressionBase}
               `,
-              returnType: `Default`
-            }
-          }
-        ]
-      }
-    })
+              returnType: `Default`,
+            },
+          },
+        ],
+      },
+    }),
   });
+}
+
+export interface RendererParams {
+  level: "county" | "state";
+  year: number;
+}
+
+export const createRenderer = (params: RendererParams) => {
+  const { level, year } = params;
+  return level === "state"
+    ? stateChangeRenderer(year)
+    : countyChangeRenderer(year);
 };
