@@ -99,8 +99,8 @@ function Legends(props: LegendsProps) {
               value={[year - 4, year]}
               onCalciteSliderInput={(event) => {
                 const years = event.target.value as number[];
-                // onYearInput(years);
-                setYear(years[years.length - 1]);
+                onYearInput(years);
+                // setYear(years[years.length - 1]);
               }}
               snap
             ></CalciteSlider>
