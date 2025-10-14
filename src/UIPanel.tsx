@@ -2,8 +2,13 @@ import "./App.css";
 
 import "@esri/calcite-components/dist/components/calcite-option";
 import "@esri/calcite-components/dist/components/calcite-select";
+import "@esri/calcite-components/dist/components/calcite-label";
 
-import { CalciteOption, CalciteSelect } from "@esri/calcite-components-react";
+import {
+  CalciteLabel,
+  CalciteOption,
+  CalciteSelect,
+} from "@esri/calcite-components-react";
 import Legends from "./Legends";
 import { useState } from "react";
 import AllResults from "./AllResults";
@@ -30,6 +35,7 @@ function UIPanel(props: UIPanelProps) {
 
   return (
     <>
+      <CalciteLabel layout="inline">Select a variable</CalciteLabel>
       <CalciteSelect
         onCalciteSelectChange={async (event) => {
           const value = event.target.value!;

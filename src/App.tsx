@@ -201,12 +201,7 @@ function App() {
           {appTitle}
         </h2>
         <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale="m">
-          <CalcitePanel
-            heading="Layers"
-            id="layers"
-            data-panel-id="layers"
-            scale="m"
-          >
+          <CalcitePanel id="tools" scale="m">
             <UIPanel
               onYearInput={(year) => {
                 updateRendererFromYear(year);

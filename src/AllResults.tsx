@@ -6,13 +6,7 @@ import "@esri/calcite-components/dist/components/calcite-tab-nav";
 import "@esri/calcite-components/dist/components/calcite-tabs";
 import "@esri/calcite-components/dist/components/calcite-tab-title";
 
-import {
-  CalciteBlock,
-  CalciteTab,
-  CalciteTabNav,
-  CalciteTabs,
-  CalciteTabTitle,
-} from "@esri/calcite-components-react";
+import { CalciteBlock } from "@esri/calcite-components-react";
 
 import "@arcgis/map-components/dist/components/arcgis-features";
 import { ArcgisFeatures } from "@arcgis/map-components-react";
