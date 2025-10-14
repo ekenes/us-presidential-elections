@@ -41,6 +41,7 @@ function UIPanel(props: UIPanelProps) {
       >
         {Object.entries(rendererTypesLayerTitles).map(([value, label]) => (
           <CalciteOption
+            key={value}
             label={label}
             value={value}
             selected={value === rendererType ? true : false}

@@ -19,7 +19,7 @@ function TrendExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="./gradual-d.png"
+                src="../gradual-d.png"
                 alt="Gradual change"
               />
               <span>
@@ -33,7 +33,7 @@ function TrendExamples() {
           </CalciteCarouselItem>
           <CalciteCarouselItem label="Bowtie">
             <div className="custom-content">
-              <img className="examples" src="./flip.png" alt="Bowtie" />
+              <img className="examples" src="../flip.png" alt="Bowtie" />
               <span>
                 <b>Bowtie</b>. In rare scenarios, some counties underwent a
                 dramatic shift in support from one party to another. Anne
@@ -45,7 +45,7 @@ function TrendExamples() {
           </CalciteCarouselItem>
           <CalciteCarouselItem label="No change">
             <div className="custom-content">
-              <img className="examples" src="./solid-r.png" alt="No change" />
+              <img className="examples" src="../solid-r.png" alt="No change" />
               <span>
                 <b>No change.</b> The populations of many areas are consistent
                 in their support for one party over another. Shelby County,
@@ -58,7 +58,11 @@ function TrendExamples() {
           </CalciteCarouselItem>
           <CalciteCarouselItem label="Inconsistent">
             <div className="custom-content">
-              <img className="examples" src="./contested.png" alt="Contested" />
+              <img
+                className="examples"
+                src="../contested.png"
+                alt="Contested"
+              />
               <span>
                 <b>Contested</b>. A few areas, especially in traditional swing
                 states, have shown inconsistent support for either party over

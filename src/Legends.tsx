@@ -5,7 +5,6 @@ import "./App.css";
 import TrendLegend from "./legendComponents/TrendLegend";
 import TrendExamples from "./legendComponents/TrendExamples";
 import ChangeLegend from "./legendComponents/ChangeLegend";
-import ChangeExamples from "./legendComponents/ChangeExamples";
 
 import "@esri/calcite-components/dist/components/calcite-label";
 import "@esri/calcite-components/dist/components/calcite-slider";
@@ -131,7 +130,6 @@ function Legends(props: LegendsProps) {
             ></CalciteSlider>
           </div>
           <ChangeLegend />
-          <ChangeExamples />
         </>
       );
       break;

@@ -21,7 +21,6 @@ import esriConfig from "@arcgis/core/config";
 import Popup from "@arcgis/core/widgets/Popup";
 
 import { useRef } from "react";
-import AllResults from "./AllResults";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 
 import WebMap from "@arcgis/core/WebMap";
@@ -182,6 +181,9 @@ function App() {
     }
 
     view = mapElement?.view;
+    view.constraints = {
+      snapToZoom: false,
+    };
     view.timeExtent = {
       start: new Date(2020, 0, 1),
       end: new Date(2024, 0, 1),
@@ -189,7 +191,7 @@ function App() {
 
     view.popup = new Popup();
     view!.padding = {
-      left: 49,
+      left: 300,
     };
   };
 
@@ -221,7 +223,6 @@ function App() {
               }}
               mapReferenceElement={mapRef.current?.id || undefined}
             />
-            <AllResults />
           </CalcitePanel>
         </CalciteShellPanel>
         <ArcgisMap

@@ -16,11 +16,7 @@ function ChangeLegend() {
           margin of victory for the winner. Smaller squares indicate a closer
           election. Larger squares indicate a larger margin of victory.
         </p>
-        <img
-          src="./trend-legend-horizontal.png"
-          className="legend"
-          alt="Legend"
-        />
+        <img src="../change-legend-2.png" className="legend" alt="Legend" />
       </CalciteBlock>
     </>
   );
