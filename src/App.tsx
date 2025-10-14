@@ -49,7 +49,6 @@ function App() {
   });
 
   const updateRendererFromYear = async (year: number | number[]) => {
-    console.log("update renderer from year: ", year);
     const mapElement = mapRef.current;
 
     if (!mapElement || !webmap) return;
@@ -76,8 +75,6 @@ function App() {
       (layer) => layer.title === "Change - all parties"
     ) as __esri.GroupLayer;
     if (changeGroupLayer && !Array.isArray(year)) {
-      console.log("change group layer found");
-      console.log(changeGroupLayer);
       const countyChangeConfig = createChangeConfig({ level: "county", year });
       const stateChangeConfig = createChangeConfig({ level: "state", year });
 
@@ -102,8 +99,6 @@ function App() {
     ) as __esri.GroupLayer;
 
     if (trendGroupLayer) {
-      console.log("trend group layer found");
-      console.log(trendGroupLayer);
       const countyTrendConfig = createTrendConfig({ level: "county" });
       const stateTrendConfig = createTrendConfig({ level: "state" });
 
@@ -131,61 +126,11 @@ function App() {
     await webmap.load();
     const year = 2024;
 
-    const changeGroupLayer = webmap.allLayers.find(
-      (layer) => layer.title === "Change - all parties"
-    ) as __esri.GroupLayer;
-    if (changeGroupLayer) {
-      console.log("change group layer found");
-      console.log(changeGroupLayer);
-      const countyChangeConfig = createChangeConfig({ level: "county", year });
-      const stateChangeConfig = createChangeConfig({ level: "state", year });
-
-      const changeCountyLayer = changeGroupLayer.layers.find(
-        (layer) => layer.title === "Counties"
-      ) as FeatureLayer;
-
-      changeCountyLayer.renderer = countyChangeConfig.renderer;
-      changeCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
-      changeCountyLayer.labelingInfo = countyChangeConfig.labelingInfo;
-
-      const changeStateLayer = changeGroupLayer.layers.find(
-        (layer) => layer.title === "States"
-      ) as FeatureLayer;
-      changeStateLayer.renderer = stateChangeConfig.renderer;
-      changeStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
-      changeStateLayer.labelingInfo = stateChangeConfig.labelingInfo;
-    }
-
-    const trendGroupLayer = webmap.allLayers.find(
-      (layer) => layer.title === "20-year trend"
-    ) as __esri.GroupLayer;
-
-    if (trendGroupLayer) {
-      console.log("trend group layer found");
-      console.log(trendGroupLayer);
-      const countyTrendConfig = createTrendConfig({ level: "county" });
-      const stateTrendConfig = createTrendConfig({ level: "state" });
-
-      const trendCountyLayer = trendGroupLayer.layers.find(
-        (layer) => layer.title === "Counties"
-      ) as FeatureLayer;
-      trendCountyLayer.renderer = countyTrendConfig.renderer;
-      trendCountyLayer.popupTemplate = countyTrendConfig.popupTemplate;
-
-      const trendStateLayer = trendGroupLayer.layers.find(
-        (layer) => layer.title === "States"
-      ) as FeatureLayer;
-      trendStateLayer.renderer = stateTrendConfig.renderer;
-      trendStateLayer.popupTemplate = stateTrendConfig.popupTemplate;
-    }
+    await updateRendererFromYear(year);
 
     view = mapElement?.view;
     view.constraints = {
       snapToZoom: false,
-    };
-    view.timeExtent = {
-      start: new Date(2020, 0, 1),
-      end: new Date(2024, 0, 1),
     };
 
     view.popup = new Popup();
