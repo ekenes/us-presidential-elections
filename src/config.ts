@@ -2,19 +2,10 @@ import Color from "@arcgis/core/Color";
 import Graphic from "@arcgis/core/Graphic";
 import Point from "@arcgis/core/geometry/Point";
 
-export const basemapPortalItem = {
-  // web mercator
-  // id: "fbfb62f3599f41e5a77845f863e2872f"
-  // albers usa
-  id: "1c2dfdb8c339473ab7b0ab11cb561e47"
-  // usa only
-  // id: "0a6c3de1e1d340d5a56826e3abd7c085"
-}
+export const webmapId = "6e7cf1cccdbd4711b9c79d568d8c108b";
+export const appTitle = "U.S. Presidential Election Trends (2000-2024)";
 
-export const statesLayerPortalItem = "f2825b56dfc14bb892604637dab45104";
-export const countiesLayerPortalItem = "fe9e032e4a854c74890750214a3edd8b";
-
-export const maxScale = 4622324/16;
+export const maxScale = 4622324 / 16;
 export const referenceScale = 2311162;
 export const scaleThreshold = 6645106;
 export const stateReferenceScale = 18489200;
@@ -29,7 +20,7 @@ export const endYear = years[years.length - 1];
 export const usaGraphic = new Graphic({
   geometry: new Point({
     longitude: -98.5795,
-    latitude: 39.8283
+    latitude: 39.8283,
   }),
   attributes: {
     ObjectID: 1776,
@@ -68,117 +59,117 @@ export const usaGraphic = new Graphic({
     rep_2024: 77303573,
     oth_2024: 3101635,
     rep_ev_2024: 312,
-    dem_ev_2024: 226
-  }
+    dem_ev_2024: 226,
+  },
 });
 
 export const results = {
   2000: {
     republican: {
       candidate: "Bush",
-      electoralVotes: 271
+      electoralVotes: 271,
     },
     democrat: {
       candidate: "Gore",
-      electoralVotes: 266
+      electoralVotes: 266,
     },
     other: {
       candidate: "Other",
-      electoralVotes: 0
-    }
+      electoralVotes: 0,
+    },
   },
   2004: {
     republican: {
       candidate: "Bush",
-      electoralVotes: 286
+      electoralVotes: 286,
     },
     democrat: {
       candidate: "Kerry",
-      electoralVotes: 251
+      electoralVotes: 251,
     },
     other: {
       candidate: "Other",
-      electoralVotes: 0
-    }
+      electoralVotes: 0,
+    },
   },
   2008: {
     republican: {
       candidate: "McCain",
-      electoralVotes: 173
+      electoralVotes: 173,
     },
     democrat: {
       candidate: "Obama",
-      electoralVotes: 365
+      electoralVotes: 365,
     },
     other: {
       candidate: "Other",
-      electoralVotes: 0
-    }
+      electoralVotes: 0,
+    },
   },
   2012: {
     republican: {
       candidate: "Romney",
-      electoralVotes: 206
+      electoralVotes: 206,
     },
     democrat: {
       candidate: "Obama",
-      electoralVotes: 332
+      electoralVotes: 332,
     },
     other: {
       candidate: "Other",
-      electoralVotes: 0
-    }
+      electoralVotes: 0,
+    },
   },
   2016: {
     republican: {
       candidate: "Trump",
-      electoralVotes: 304
+      electoralVotes: 304,
     },
     democrat: {
       candidate: "Clinton",
-      electoralVotes: 227
+      electoralVotes: 227,
     },
     other: {
       candidate: "Other",
-      electoralVotes: 0
-    }
+      electoralVotes: 0,
+    },
   },
   2020: {
     republican: {
       candidate: "Trump",
-      electoralVotes: 232
+      electoralVotes: 232,
     },
     democrat: {
       candidate: "Biden",
-      electoralVotes: 306
+      electoralVotes: 306,
     },
     other: {
       candidate: "Other",
-      electoralVotes: 0
-    }
+      electoralVotes: 0,
+    },
   },
   2024: {
     republican: {
       candidate: "Trump",
-      electoralVotes: 312
+      electoralVotes: 312,
     },
     democrat: {
       candidate: "Harris",
-      electoralVotes: 226
+      electoralVotes: 226,
     },
     other: {
       candidate: "Other",
-      electoralVotes: 0
-    }
-  }
-}
+      electoralVotes: 0,
+    },
+  },
+};
 
 export const fieldInfos = {
   title: {
     state: `{state}`,
     county: `{county} County, {state}`,
-    country: `U.S. Presidential Election Results ${startYear}-${endYear}`
-  }
+    country: `U.S. Presidential Election Results ${startYear}-${endYear}`,
+  },
 };
 
 // Renderer config
@@ -192,7 +183,6 @@ export const haloSize = 1;
 export const rColorCIM = rColor.toJSON();
 export const dColorCIM = dColor.toJSON();
 export const oColorCIM = oColor.toJSON();
-
 
 //////////////
 // size stops
@@ -209,7 +199,7 @@ export const stateResultsSizeStops = [
   { value: 100000, size: 10 },
   { value: 500000, size: 15 },
   { value: 4000000, size: 20 },
-  { value: 12000000, size: 50 }
+  { value: 12000000, size: 50 },
 ];
 
 // state change layer
@@ -219,7 +209,7 @@ export const stateChangeSizeStops = [
   { value: 10000, size: 4 },
   { value: 100000, size: 8 },
   { value: 500000, size: 16 },
-  { value: 2000000, size: 32 }
+  { value: 2000000, size: 32 },
 ];
 
 // county layers
@@ -241,5 +231,5 @@ export const countySizeStops = [
   { value: 1000, size: 6 },
   { value: 5000, size: 10 },
   { value: 15000, size: 14 },
-  { value: 30000, size: 20 }
+  { value: 30000, size: 20 },
 ];

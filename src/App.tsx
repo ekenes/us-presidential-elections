@@ -27,6 +27,7 @@ import WebMap from "@arcgis/core/WebMap";
 import { createChangeConfig } from "./changeUtils/createChangeConfig";
 import { createTrendConfig } from "./trendUtils/createTrendConfig";
 import UIPanel from "./UIPanel";
+import { appTitle, webmapId } from "./config";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 
@@ -41,11 +42,9 @@ const rendererTypesLayerTitles: { [key: string]: string } = {
 function App() {
   const mapRef = useRef<HTMLArcgisMapElement | null>(null);
 
-  // const webmapId = "6e7cf1cccdbd4711b9c79d568d8c108b";
   const webmap = new WebMap({
     portalItem: {
-      id: "6e7cf1cccdbd4711b9c79d568d8c108b",
-      // id: "1c2dfdb8c339473ab7b0ab11cb561e47"
+      id: webmapId,
     },
   });
 
@@ -198,7 +197,9 @@ function App() {
   return (
     <>
       <CalciteShell contentBehind={true}>
-        <h2 id="header-title" slot="header"></h2>
+        <h2 id="header-title" slot="header">
+          {appTitle}
+        </h2>
         <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale="m">
           <CalcitePanel
             heading="Layers"
