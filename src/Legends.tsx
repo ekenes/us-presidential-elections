@@ -9,6 +9,7 @@ import ChangeLegend from "./legendComponents/ChangeLegend";
 import "@esri/calcite-components/dist/components/calcite-label";
 import "@esri/calcite-components/dist/components/calcite-slider";
 import { CalciteLabel, CalciteSlider } from "@esri/calcite-components-react";
+import { useEffect, useState } from "react";
 
 export interface LegendsProps {
   rendererType: "winner" | "winner-lean" | "swing" | "trend" | "change";
@@ -18,6 +19,12 @@ export interface LegendsProps {
 
 function Legends(props: LegendsProps) {
   const { onYearInput, mapReferenceElement, rendererType } = props;
+
+  const [year, setYear] = useState<number>(2024);
+
+  useEffect(() => {
+    onYearInput(year);
+  }, [rendererType, year, onYearInput]);
 
   let legendContent;
   switch (rendererType) {
@@ -35,10 +42,11 @@ function Legends(props: LegendsProps) {
               minLabel="2000"
               ticks={4}
               step={4}
-              value={2024}
+              value={year}
               onCalciteSliderInput={(event) => {
                 const year = event.target.value as number;
-                onYearInput(year);
+                // onYearInput(year);
+                setYear(year);
               }}
               snap
             ></CalciteSlider>
@@ -61,10 +69,11 @@ function Legends(props: LegendsProps) {
               minLabel="2000"
               ticks={4}
               step={4}
-              value={2024}
+              value={year}
               onCalciteSliderInput={(event) => {
                 const year = event.target.value as number;
-                onYearInput(year);
+                // onYearInput(year);
+                setYear(year);
               }}
               snap
             ></CalciteSlider>
@@ -87,10 +96,11 @@ function Legends(props: LegendsProps) {
               minLabel="2000"
               ticks={4}
               step={4}
-              value={[2020, 2024]}
+              value={[year - 4, year]}
               onCalciteSliderInput={(event) => {
                 const years = event.target.value as number[];
-                onYearInput(years);
+                // onYearInput(years);
+                setYear(years[years.length - 1]);
               }}
               snap
             ></CalciteSlider>
@@ -121,10 +131,11 @@ function Legends(props: LegendsProps) {
               minLabel="2000"
               ticks={4}
               step={4}
-              value={2024}
+              value={year}
               onCalciteSliderInput={(event) => {
                 const years = event.target.value as number;
-                onYearInput(years);
+                // onYearInput(years);
+                setYear(years);
               }}
               snap
             ></CalciteSlider>
