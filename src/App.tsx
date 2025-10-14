@@ -92,6 +92,35 @@ function App() {
       changeStateLayer.renderer = stateChangeConfig.renderer;
       changeStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
       changeStateLayer.labelingInfo = stateChangeConfig.labelingInfo;
+
+      const winnerGroupLayer = webmap.allLayers.find(
+        (layer) => layer.title === "Winner"
+      ) as __esri.GroupLayer;
+      const winnerStateLayer = winnerGroupLayer.layers.find(
+        (layer) => layer.title === "States"
+      ) as FeatureLayer;
+      const winnerCountyLayer = winnerGroupLayer.layers.find(
+        (layer) => layer.title === "Counties"
+      ) as FeatureLayer;
+      winnerCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
+      winnerStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
+
+      const winnerLeanGroupLayer = webmap.allLayers.find(
+        (layer) => layer.title === "Winner - with lean"
+      ) as __esri.GroupLayer;
+      const winnerLeanStateLayer = winnerLeanGroupLayer.layers.find(
+        (layer) => layer.title === "States"
+      ) as FeatureLayer;
+      const winnerLeanCountyLayer = winnerLeanGroupLayer.layers.find(
+        (layer) => layer.title === "Counties"
+      ) as FeatureLayer;
+      winnerLeanCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
+      winnerLeanStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
+
+      const swingLayer = webmap.allLayers.find(
+        (layer) => layer.title === "Swing - dynamic rotation"
+      ) as FeatureLayer;
+      swingLayer.popupTemplate = countyChangeConfig.popupTemplate;
     }
 
     const trendGroupLayer = webmap.allLayers.find(
