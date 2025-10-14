@@ -5,15 +5,13 @@ import "@esri/calcite-components/dist/components/calcite-select";
 
 import { CalciteOption, CalciteSelect } from "@esri/calcite-components-react";
 import Legends from "./Legends";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AllResults from "./AllResults";
 
 export interface UIPanelProps {
-  // rendererType: "winner" | "winner-lean" | "swing" | "trend" | "change";
   mapReferenceElement?: string;
   onYearInput: (year: number | number[]) => void;
   onRendererTypeChange: (rendererType: string) => void;
-  // onLayerVisibilityChange: (rendererType: string) => void;
 }
 
 const rendererTypesLayerTitles: { [key: string]: string } = {
@@ -29,10 +27,6 @@ function UIPanel(props: UIPanelProps) {
   const [rendererType, setRendererType] = useState<
     "winner" | "winner-lean" | "swing" | "trend" | "change"
   >("winner");
-
-  // useEffect(() => {
-  //   // console.log("renderer type changed: ", rendererType);
-  // }, [rendererType]);
 
   return (
     <>
@@ -50,9 +44,7 @@ function UIPanel(props: UIPanelProps) {
             label={label}
             value={value}
             selected={value === rendererType ? true : false}
-          >
-            {/* {label} */}
-          </CalciteOption>
+          ></CalciteOption>
         ))}
       </CalciteSelect>
       <Legends
