@@ -14,27 +14,27 @@ import {
   CalciteTabTitle,
 } from "@esri/calcite-components-react";
 
+import "@arcgis/map-components/dist/components/arcgis-features";
+import { ArcgisFeatures } from "@arcgis/map-components-react";
+import { createPopupTemplate } from "./trendUtils/popupUtils";
+import { usaGraphic } from "./config";
 
 function AllResults() {
+  const graphic = usaGraphic;
+  graphic.popupTemplate = createPopupTemplate({
+    level: "country",
+  });
   return (
     <>
       <CalciteBlock heading="Historical results" open collapsible>
-       <CalciteTabs>
-        <CalciteTabNav slot="title-group">
-          <CalciteTabTitle selected>
-            Electoral Votes
-          </CalciteTabTitle>
-          <CalciteTabTitle>
-            Popular Votes
-          </CalciteTabTitle>
-        </CalciteTabNav>
-        <CalciteTab selected>
-          content here
-        </CalciteTab>
-        <CalciteTab>
-          content here
-        </CalciteTab>
-       </CalciteTabs>
+        <ArcgisFeatures
+          features={[graphic]}
+          hideActionBar
+          hideCloseButton
+          hideFeatureMenuHeading
+          hideFeatureNavigation
+          hideHeading
+        ></ArcgisFeatures>
       </CalciteBlock>
     </>
   );
