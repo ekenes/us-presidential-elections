@@ -1,4 +1,15 @@
-import { countySizeStops, dColorCIM, oColorCIM, rColorCIM, referenceScale, stateChangeSizeStops, stateFieldPrefix, stateReferenceScale, validYears, years } from "../config";
+import {
+  countyTrendSizeStops,
+  dColorCIM,
+  oColorCIM,
+  rColorCIM,
+  trendReferenceScale,
+  stateTrendSizeStops,
+  stateFieldPrefix,
+  stateReferenceScale,
+  validYears,
+  years,
+} from "../config";
 
 interface ColorPrimitiveOverrideParams {
   primitiveName: __esri.PrimitiveOverride["primitiveName"];
@@ -7,7 +18,9 @@ interface ColorPrimitiveOverrideParams {
   level?: "state" | "county" | "country";
 }
 
-export function createColorPrimitiveOverride(params: ColorPrimitiveOverrideParams): __esri.PrimitiveOverride {
+export function createColorPrimitiveOverride(
+  params: ColorPrimitiveOverrideParams
+): __esri.PrimitiveOverride {
   const { year, primitiveName, fieldPrefix } = params;
 
   return {
@@ -34,9 +47,9 @@ export function createColorPrimitiveOverride(params: ColorPrimitiveOverrideParam
           oColor
         );
       `,
-      returnType: `Default`
-    }
-  }
+      returnType: `Default`,
+    },
+  };
 }
 
 // states change layer renderer expressions
@@ -54,11 +67,31 @@ const scaleFactorStates = `
 
 const sizeFactorStates = `
   var sizeFactor = When(
-    value >= ${stateChangeSizeStops[4].value}, ${stateChangeSizeStops[4].size},
-    value >= ${stateChangeSizeStops[3].value}, ${stateChangeSizeStops[3].size} + (${interpolateBetweenStops(stateChangeSizeStops[3], stateChangeSizeStops[4])} * (value - ${stateChangeSizeStops[3].value})),
-    value >= ${stateChangeSizeStops[2].value}, ${stateChangeSizeStops[2].size} + (${interpolateBetweenStops(stateChangeSizeStops[2], stateChangeSizeStops[3])} * (value - ${stateChangeSizeStops[2].value})),
-    value >= ${stateChangeSizeStops[1].value}, ${stateChangeSizeStops[1].size} + (${interpolateBetweenStops(stateChangeSizeStops[1], stateChangeSizeStops[2])} * (value - ${stateChangeSizeStops[1].value})),
-    value > ${stateChangeSizeStops[0].value}, ${stateChangeSizeStops[0].size} + (${interpolateBetweenStops(stateChangeSizeStops[0], stateChangeSizeStops[1])} * value),
+    value >= ${stateTrendSizeStops[4].value}, ${stateTrendSizeStops[4].size},
+    value >= ${stateTrendSizeStops[3].value}, ${
+  stateTrendSizeStops[3].size
+} + (${interpolateBetweenStops(
+  stateTrendSizeStops[3],
+  stateTrendSizeStops[4]
+)} * (value - ${stateTrendSizeStops[3].value})),
+    value >= ${stateTrendSizeStops[2].value}, ${
+  stateTrendSizeStops[2].size
+} + (${interpolateBetweenStops(
+  stateTrendSizeStops[2],
+  stateTrendSizeStops[3]
+)} * (value - ${stateTrendSizeStops[2].value})),
+    value >= ${stateTrendSizeStops[1].value}, ${
+  stateTrendSizeStops[1].size
+} + (${interpolateBetweenStops(
+  stateTrendSizeStops[1],
+  stateTrendSizeStops[2]
+)} * (value - ${stateTrendSizeStops[1].value})),
+    value > ${stateTrendSizeStops[0].value}, ${
+  stateTrendSizeStops[0].size
+} + (${interpolateBetweenStops(
+  stateTrendSizeStops[0],
+  stateTrendSizeStops[1]
+)} * value),
     0
   );
 `;
@@ -74,17 +107,37 @@ export const sizeExpressionBaseStates = `
 
 const sizeFactorCounties = `
   var sizeFactor = When(
-    value >= ${countySizeStops[4].value}, ${countySizeStops[4].size},
-    value >= ${countySizeStops[3].value}, ${countySizeStops[3].size} + (${interpolateBetweenStops(countySizeStops[3], countySizeStops[4])} * (value - ${countySizeStops[3].value})),
-    value >= ${countySizeStops[2].value}, ${countySizeStops[2].size} + (${interpolateBetweenStops(countySizeStops[2], countySizeStops[3])} * (value - ${countySizeStops[2].value})),
-    value >= ${countySizeStops[1].value}, ${countySizeStops[1].size} + (${interpolateBetweenStops(countySizeStops[1], countySizeStops[2])} * (value - ${countySizeStops[1].value})),
-    value > ${countySizeStops[0].value}, ${countySizeStops[0].size} + (${interpolateBetweenStops(countySizeStops[0], countySizeStops[1])} * value),
+    value >= ${countyTrendSizeStops[4].value}, ${countyTrendSizeStops[4].size},
+    value >= ${countyTrendSizeStops[3].value}, ${
+  countyTrendSizeStops[3].size
+} + (${interpolateBetweenStops(
+  countyTrendSizeStops[3],
+  countyTrendSizeStops[4]
+)} * (value - ${countyTrendSizeStops[3].value})),
+    value >= ${countyTrendSizeStops[2].value}, ${
+  countyTrendSizeStops[2].size
+} + (${interpolateBetweenStops(
+  countyTrendSizeStops[2],
+  countyTrendSizeStops[3]
+)} * (value - ${countyTrendSizeStops[2].value})),
+    value >= ${countyTrendSizeStops[1].value}, ${
+  countyTrendSizeStops[1].size
+} + (${interpolateBetweenStops(
+  countyTrendSizeStops[1],
+  countyTrendSizeStops[2]
+)} * (value - ${countyTrendSizeStops[1].value})),
+    value > ${countyTrendSizeStops[0].value}, ${
+  countyTrendSizeStops[0].size
+} + (${interpolateBetweenStops(
+  countyTrendSizeStops[0],
+  countyTrendSizeStops[1]
+)} * value),
     0
   );
 `;
 
 const scaleFactorCounties = `
-  var scaleFactorBase = Round( ${referenceScale} / $view.scale, 1 );
+  var scaleFactorBase = Round( ${trendReferenceScale} / $view.scale, 1 );
   var scaleFactor = When(
     scaleFactorBase >= 8, scaleFactorBase / 6,
     scaleFactorBase >= 4, scaleFactorBase / 3,
@@ -93,7 +146,7 @@ const scaleFactorCounties = `
     scaleFactorBase >= 0.5, scaleFactorBase * 0.6,
     scaleFactorBase >= 0.25, scaleFactorBase * 0.45,
     scaleFactorBase >= 0.125, scaleFactorBase * 0.3125,
-    scaleFactorBase * 0.1875
+    scaleFactorBase
   );
 `;
 
@@ -104,23 +157,21 @@ export const sizeExpressionBaseCounties = `
   var size = sizeFactor * scaleFactor;
 `;
 
-
 interface SizeStop {
-  value: number,
-  size: number
+  value: number;
+  size: number;
 }
 
-function interpolateBetweenStops(
-  firstStop: SizeStop,
-  nextStop: SizeStop
-) {
+function interpolateBetweenStops(firstStop: SizeStop, nextStop: SizeStop) {
   const sizeRange = nextStop.size - firstStop.size;
   const dataRange = nextStop.value - firstStop.value;
 
   return sizeRange / dataRange;
 }
 
-export function createSizePrimitiveOverride(params: ColorPrimitiveOverrideParams): __esri.PrimitiveOverride {
+export function createSizePrimitiveOverride(
+  params: ColorPrimitiveOverrideParams
+): __esri.PrimitiveOverride {
   const { year, primitiveName, fieldPrefix } = params;
 
   return {
@@ -139,16 +190,22 @@ export function createSizePrimitiveOverride(params: ColorPrimitiveOverrideParams
 
         var value = allVotes[0] - allVotes[1];
 
-        ${fieldPrefix === stateFieldPrefix ? sizeExpressionBaseStates : sizeExpressionBaseCounties}
+        ${
+          fieldPrefix === stateFieldPrefix
+            ? sizeExpressionBaseStates
+            : sizeExpressionBaseCounties
+        }
 
         return size;
       `,
-      returnType: `Default`
-    }
-  }
+      returnType: `Default`,
+    },
+  };
 }
 
-export function createOffsetXPrimitiveOverride(params: ColorPrimitiveOverrideParams): __esri.PrimitiveOverride {
+export function createOffsetXPrimitiveOverride(
+  params: ColorPrimitiveOverrideParams
+): __esri.PrimitiveOverride {
   const { year, primitiveName, fieldPrefix } = params;
 
   return {
@@ -199,7 +256,11 @@ export function createOffsetXPrimitiveOverride(params: ColorPrimitiveOverridePar
 
           var value = allVotes[0] - allVotes[1];
 
-          ${fieldPrefix === stateFieldPrefix ? sizeExpressionBaseStates : sizeExpressionBaseCounties}
+          ${
+            fieldPrefix === stateFieldPrefix
+              ? sizeExpressionBaseStates
+              : sizeExpressionBaseCounties
+          }
 
           var factor = iif(
             (year == yearStart) || (year == yearEnd)
@@ -211,7 +272,7 @@ export function createOffsetXPrimitiveOverride(params: ColorPrimitiveOverridePar
         return offsetX * direction;
 
       `,
-      returnType: `Default`
-    }
-  }
+      returnType: `Default`,
+    },
+  };
 }

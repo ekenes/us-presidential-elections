@@ -6,7 +6,8 @@ export const webmapId = "6e7cf1cccdbd4711b9c79d568d8c108b";
 export const appTitle = "U.S. Presidential Election Trends (2000-2024)";
 
 export const maxScale = 4622324 / 16;
-export const referenceScale = 2311162;
+export const trendReferenceScale = 2311162;
+export const changeReferenceScale = 2311162;
 export const scaleThreshold = 6645106;
 export const stateReferenceScale = 18489200;
 
@@ -212,24 +213,30 @@ export const stateChangeSizeStops = [
   { value: 2000000, size: 32 },
 ];
 
+export const stateTrendSizeStops = [
+  { value: 0, size: 2 },
+  { value: 10000, size: 4 },
+  { value: 100000, size: 8 },
+  { value: 500000, size: 16 },
+  { value: 2000000, size: 32 },
+];
+
 // county layers
 
 // size is votes as a % of total state votes
 
-// export const countySizeStops = [
-//   { value: 0, size: 3 },
-//   { value: 1, size: 3.1 },
-//   { value: 2, size: 3.2 },
-//   // { value: 1000, size: 6 },
-//   { value: 50000, size: 10 },
-//   // { value: 50000, size: 14 },
-//   { value: 100000, size: 20 }
-// ];
+export const countyChangeSizeStops = [
+  { value: 0, size: 6 },
+  { value: 0.1, size: 12 },
+  { value: 1, size: 24 },
+  { value: 2, size: 32 },
+  { value: 3, size: 50 },
+];
 
-export const countySizeStops = [
+export const countyTrendSizeStops = [
   { value: 0, size: 3 },
   { value: 1000, size: 6 },
   { value: 5000, size: 10 },
-  { value: 15000, size: 14 },
-  { value: 30000, size: 20 },
+  { value: 10000, size: 14 },
+  { value: 50000, size: 20 },
 ];

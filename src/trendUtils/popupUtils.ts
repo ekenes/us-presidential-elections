@@ -8,13 +8,13 @@ import {
 
 import { CustomContent, ExpressionContent } from "@arcgis/core/popup/content";
 import {
-  years,
   fieldInfos,
   dColor,
   rColor,
   oColor,
   stateFieldPrefix,
   results,
+  validYears,
 } from "../config";
 
 function numberToText(num: number): string {
@@ -46,11 +46,14 @@ function createFieldInfos(fieldNames: string[]): FieldInfo[] {
 
 export interface PopupTemplateParams {
   level: "country" | "state" | "county";
+  year: validYears;
 }
 
 export const createPopupTemplate = (params: PopupTemplateParams) => {
-  const { level } = params;
+  const { level, year } = params;
   const fieldPrefix = level === "state" ? stateFieldPrefix : "";
+
+  const years = [year - 16, year - 12, year - 8, year - 4, year];
 
   const fieldNames = years
     .map((year) => {

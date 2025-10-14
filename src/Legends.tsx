@@ -112,6 +112,26 @@ function Legends(props: LegendsProps) {
     case "trend":
       legendContent = (
         <>
+          <CalciteLabel layout="inline">Select an election year</CalciteLabel>
+          <div className="slider-container">
+            <CalciteSlider
+              min={2016}
+              max={2024}
+              labelHandles
+              labelTicks
+              maxLabel="2024"
+              minLabel="2016"
+              ticks={4}
+              step={4}
+              value={year}
+              onCalciteSliderInput={(event) => {
+                const year = event.target.value as number;
+                // onYearInput(year);
+                setYear(year);
+              }}
+              snap
+            ></CalciteSlider>
+          </div>
           <TrendLegend />
           <TrendExamples />
         </>
@@ -123,12 +143,12 @@ function Legends(props: LegendsProps) {
           <CalciteLabel layout="inline">Select an election year</CalciteLabel>
           <div className="slider-container">
             <CalciteSlider
-              min={2000}
+              min={2004}
               max={2024}
               labelHandles
               labelTicks
               maxLabel="2024"
-              minLabel="2000"
+              minLabel="2004"
               ticks={4}
               step={4}
               value={year}

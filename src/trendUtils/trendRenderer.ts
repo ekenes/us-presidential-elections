@@ -1,20 +1,31 @@
 import { SimpleRenderer } from "@arcgis/core/renderers";
 import CIMSymbol from "@arcgis/core/symbols/CIMSymbol";
 import { createSquareSymbolLayer } from "./symbolUtils";
-import { createColorPrimitiveOverride, createOffsetXPrimitiveOverride, createSizePrimitiveOverride } from "../trendUtils/expressionutils";
-import { stateFieldPrefix, years } from "../config";
+import {
+  createColorPrimitiveOverride,
+  createOffsetXPrimitiveOverride,
+  createSizePrimitiveOverride,
+} from "../trendUtils/expressionutils";
+import { stateFieldPrefix, validYears } from "../config";
 import { PopupTemplateParams } from "./popupUtils";
 
-export function createRenderer (params: PopupTemplateParams): SimpleRenderer {
-  const { level } = params;
+export function createRenderer(params: PopupTemplateParams): SimpleRenderer {
+  const { level, year } = params;
   return new SimpleRenderer({
-    symbol: createSymbol({ level })
+    symbol: createSymbol({ level, year }),
   });
 }
 
-function createSymbol (params: PopupTemplateParams) {
-  const { level } = params;
+function createSymbol(params: PopupTemplateParams) {
+  const { level, year } = params;
   const fieldPrefix = level === "state" ? stateFieldPrefix : "";
+  const years: validYears[] = [
+    (year - 16) as validYears,
+    (year - 12) as validYears,
+    (year - 8) as validYears,
+    (year - 4) as validYears,
+    year as validYears,
+  ];
 
   return new CIMSymbol({
     data: {
@@ -22,44 +33,44 @@ function createSymbol (params: PopupTemplateParams) {
       symbol: {
         type: `CIMPointSymbol`,
         symbolLayers: [
-          ...years.map(year => {
+          ...years.map((y) => {
             return createSquareSymbolLayer({
-              primitiveName: `election-${year}`,
-              offsetX: years.indexOf(year) - 2,
+              primitiveName: `election-${y}`,
+              offsetX: years.indexOf(y) - 2,
               color: [0, 0, 0, 255],
               donutEnabled: false,
               outline: {
                 color: [255, 255, 255, 100],
-              }
+              },
             });
-          })
-        ]
+          }),
+        ],
       },
       primitiveOverrides: [
-        ...years.map(year => {
+        ...years.map((y) => {
           return createColorPrimitiveOverride({
-            primitiveName: `election-${year}`,
-            year,
-            fieldPrefix
+            primitiveName: `election-${y}`,
+            year: y,
+            fieldPrefix,
           });
         }),
-        ...years.map(year => {
+        ...years.map((y) => {
           return createSizePrimitiveOverride({
-            primitiveName: `election-${year}`,
-            year,
+            primitiveName: `election-${y}`,
+            year: y,
             fieldPrefix,
-            level
+            level,
           });
         }),
-        ...years.map(year => {
+        ...years.map((y) => {
           return createOffsetXPrimitiveOverride({
-            primitiveName: `election-${year}`,
-            year,
+            primitiveName: `election-${y}`,
+            year: y,
             fieldPrefix,
-            level
+            level,
           });
-        })
-      ]
-    }
-  })
+        }),
+      ],
+    },
+  });
 }

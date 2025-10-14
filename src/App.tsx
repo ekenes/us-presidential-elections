@@ -27,7 +27,7 @@ import WebMap from "@arcgis/core/WebMap";
 import { createChangeConfig } from "./changeUtils/createChangeConfig";
 import { createTrendConfig } from "./trendUtils/createTrendConfig";
 import UIPanel from "./UIPanel";
-import { appTitle, webmapId } from "./config";
+import { appTitle, validYears, webmapId } from "./config";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 
@@ -48,7 +48,7 @@ function App() {
     },
   });
 
-  const updateRendererFromYear = async (year: number | number[]) => {
+  const updateRendererFromYear = async (year: validYears | validYears[]) => {
     const mapElement = mapRef.current;
 
     if (!mapElement || !webmap) return;
@@ -128,8 +128,14 @@ function App() {
     ) as __esri.GroupLayer;
 
     if (trendGroupLayer) {
-      const countyTrendConfig = createTrendConfig({ level: "county" });
-      const stateTrendConfig = createTrendConfig({ level: "state" });
+      const countyTrendConfig = createTrendConfig({
+        level: "county",
+        year: year as validYears,
+      });
+      const stateTrendConfig = createTrendConfig({
+        level: "state",
+        year: year as validYears,
+      });
 
       const trendCountyLayer = trendGroupLayer.layers.find(
         (layer) => layer.title === "Counties"
@@ -184,7 +190,7 @@ function App() {
           <CalcitePanel id="tools" scale="m">
             <UIPanel
               onYearInput={(year) => {
-                updateRendererFromYear(year);
+                updateRendererFromYear(year as validYears | validYears[]);
               }}
               onRendererTypeChange={(rendererType) => {
                 const activeLayer = (
