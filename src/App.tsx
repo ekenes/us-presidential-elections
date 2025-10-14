@@ -134,6 +134,12 @@ function App() {
     };
 
     view.popup = new Popup();
+    view.popup.dockEnabled = true;
+    view.popup.dockOptions = {
+      buttonEnabled: false,
+      breakpoint: false,
+      position: "top-right",
+    };
     view!.padding = {
       left: 300,
     };
