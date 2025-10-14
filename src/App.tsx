@@ -29,14 +29,23 @@ import Popup from "@arcgis/core/widgets/Popup";
 
 import { useRef } from "react";
 import AllResults from "./AllResults";
-import Legends from "./Legends";
+// import Legends, { LegendsProps } from "./Legends";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 
 import WebMap from "@arcgis/core/WebMap";
 import { createChangeConfig } from "./changeUtils/createChangeConfig";
 import { createTrendConfig } from "./trendUtils/createTrendConfig";
+import UIPanel from "./UIPanel";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
+
+const rendererTypesLayerTitles: { [key: string]: string } = {
+  winner: "Winner",
+  "winner-lean": "Winner - with lean",
+  swing: "Swing - dynamic rotation",
+  change: "Change - all parties",
+  trend: "20-year trend",
+};
 
 function App() {
   const mapRef = useRef<HTMLArcgisMapElement | null>(null);
@@ -49,7 +58,15 @@ function App() {
     },
   });
 
-  const updateRendererFromYear = async (year: number) => {
+  // const [rendererType, setRendererType] = useState<
+  //   "winner" | "winner-lean" | "swing" | "trend" | "change"
+  // >("winner");
+
+  // useEffect(() => {
+  //   console.log("renderer type changed: ", rendererType);
+  // }, [rendererType]);
+
+  const updateRendererFromYear = async (year: number | number[]) => {
     console.log("update renderer from year: ", year);
     const mapElement = mapRef.current;
 
@@ -57,10 +74,26 @@ function App() {
 
     await webmap.load();
 
+    view = mapElement?.view;
+    if (!view) return;
+
+    let start, end;
+    if (Array.isArray(year)) {
+      start = Math.min(...year);
+      end = Math.max(...year);
+    } else {
+      start = end = year;
+    }
+
+    view.timeExtent = {
+      start: new Date(start, 0, 1),
+      end: new Date(end, 0, 1),
+    };
+
     const changeGroupLayer = webmap.allLayers.find(
       (layer) => layer.title === "Change - all parties"
     ) as __esri.GroupLayer;
-    if (changeGroupLayer) {
+    if (changeGroupLayer && !Array.isArray(year)) {
       console.log("change group layer found");
       console.log(changeGroupLayer);
       const countyChangeConfig = createChangeConfig({ level: "county", year });
@@ -105,6 +138,8 @@ function App() {
       trendStateLayer.popupTemplate = stateTrendConfig.popupTemplate;
     }
   };
+
+  let view: __esri.MapView;
 
   const initialize = async () => {
     const mapElement = mapRef.current;
@@ -162,7 +197,7 @@ function App() {
       trendStateLayer.popupTemplate = stateTrendConfig.popupTemplate;
     }
 
-    const view = mapElement?.view;
+    view = mapElement?.view;
     view.timeExtent = {
       start: new Date(2020, 0, 1),
       end: new Date(2024, 0, 1),
@@ -173,41 +208,55 @@ function App() {
       left: 49,
     };
 
-    let activeWidget: string | null = null;
+    // const activeWidget: string | null = null;
 
-    const handleActionBarClick = (event: Event) => {
-      const { target } = event;
-      if ((target as HTMLCalciteActionElement)!.tagName !== "CALCITE-ACTION") {
-        return;
-      }
+    // const handleActionBarClick = (event: Event) => {
+    //   const { target } = event;
+    //   if ((target as HTMLCalciteActionElement)!.tagName !== "CALCITE-ACTION") {
+    //     return;
+    //   }
 
-      if (activeWidget) {
-        (document.querySelector(
-          `[data-action-id=${activeWidget}]`
-        ) as HTMLCalciteActionElement)!.active = false;
-        (document.querySelector(
-          `[data-panel-id=${activeWidget}]`
-        ) as HTMLCalcitePanelElement)!.hidden = true;
-      }
+    //   console.log("action clicked: ", target);
 
-      const nextWidget: string | null = (target as HTMLCalciteActionElement)
-        .dataset.actionId!;
-      if (nextWidget !== activeWidget) {
-        (document.querySelector(
-          `[data-action-id=${nextWidget}]`
-        ) as HTMLCalciteActionElement)!.active = true;
-        (document.querySelector(
-          `[data-panel-id=${nextWidget}]`
-        ) as HTMLCalcitePanelElement)!.hidden = false;
-        activeWidget = nextWidget;
-      } else {
-        activeWidget = null;
-      }
-    };
+    //   // const activeId = (target as HTMLCalciteActionElement)
+    //   //   .id as LegendsProps["rendererType"];
+
+    //   // const layer = webmap.allLayers.find(
+    //   //   (l) => l.title === rendererTypesLayerTitles[activeId]
+    //   // );
+    //   // if (layer) {
+    //   //   layer.visible = true;
+    //   // }
+    //   // setRendererType(activeId);
+
+    //   // if (activeWidget) {
+    //   //   (document.querySelector(
+    //   //     `[data-action-id=${activeWidget}]`
+    //   //   ) as HTMLCalciteActionElement)!.active = false;
+    //   //   // (document.querySelector(
+    //   //   //   `[data-panel-id=${activeWidget}]`
+    //   //   // ) as HTMLCalcitePanelElement)!.hidden = true;
+    //   //   // document.querySelector("calcite-panel")!.hidden = true;
+    //   // }
+
+    //   // const nextWidget: string | null = (target as HTMLCalciteActionElement)
+    //   //   .dataset.actionId!;
+    //   // if (nextWidget !== activeWidget) {
+    //   //   (document.querySelector(
+    //   //     `[data-action-id=${nextWidget}]`
+    //   //   ) as HTMLCalciteActionElement)!.active = true;
+    //   //   // (document.querySelector(
+    //   //   //   `[data-panel-id=${nextWidget}]`
+    //   //   // ) as HTMLCalcitePanelElement)!.hidden = false;
+    //   //   activeWidget = nextWidget;
+    //   // } else {
+    //   //   activeWidget = null;
+    //   // }
+    // };
 
     const actionBar = document.querySelector("calcite-action-bar")!;
 
-    actionBar.addEventListener("click", handleActionBarClick);
+    // actionBar.addEventListener("click", handleActionBarClick);
 
     let actionBarExpanded = true;
     actionBar.addEventListener("onCalciteActionBarToggle", () => {
@@ -224,11 +273,12 @@ function App() {
         <h2 id="header-title" slot="header"></h2>
         <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale="m">
           <CalciteActionBar slot="action-bar">
-            <CalciteAction
-              data-action-id="layers"
-              icon="layers"
-              text="Layers"
-            />
+            <CalciteAction id="winner" icon="layers" text="Layers" />
+            <CalciteAction id="winner-lean" icon="layers" text="Layers" />
+
+            <CalciteAction id="swing" icon="layers" text="Layers" />
+            <CalciteAction id="change" icon="layers" text="Layers" />
+            <CalciteAction id="trend" icon="layers" text="Layers" />
           </CalciteActionBar>
           <CalcitePanel
             heading="Layers"
@@ -236,19 +286,38 @@ function App() {
             data-panel-id="layers"
             scale="m"
           >
-            <Legends
-              rendererType={"change"}
+            <UIPanel
               onYearInput={(year) => {
                 updateRendererFromYear(year);
               }}
+              onRendererTypeChange={(rendererType) => {
+                const activeLayer = (
+                  webmap.layers.find(
+                    (layer) => layer.title === "Election Visualizations"
+                  ) as __esri.GroupLayer
+                ).layers.find(
+                  (layer) =>
+                    layer.title === rendererTypesLayerTitles[rendererType]
+                )!;
+                console.log("active layer: ", activeLayer.title);
+                activeLayer.visible = true;
+              }}
+              mapReferenceElement={mapRef.current?.id || undefined}
             />
+            {/* <Legends
+              rendererType={rendererType}
+              // mapElement={mapRef.current || undefined} --- IGNORE ---
+              onYearInput={(year) => {
+                updateRendererFromYear(year);
+              }}
+              mapReferenceElement={mapRef.current?.id || undefined}
+            /> */}
             <AllResults />
           </CalcitePanel>
         </CalciteShellPanel>
         <ArcgisMap
           id="map"
           class="map-only"
-          // itemId={webmapId}
           map={webmap}
           ref={mapRef}
           onArcgisViewReadyChange={initialize}
