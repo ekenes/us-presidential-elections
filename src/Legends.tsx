@@ -22,14 +22,50 @@ export interface LegendsProps {
   onYearInput: (year: number | number[]) => void;
 }
 
+const defaultMin = 2004;
+const defaultMax = 2024;
+
 function Legends(props: LegendsProps) {
   const { onYearInput, rendererType } = props;
 
-  const [year, setYear] = useState<number>(2024);
+  const [year, setYear] = useState<number>(defaultMax);
+  const [sliderMin, setSliderMin] = useState<number>(defaultMin);
+  const [sliderMax, setSliderMax] = useState<number>(defaultMax);
 
   useEffect(() => {
     onYearInput(year);
-  }, [rendererType, year, onYearInput]);
+    if (rendererType === "winner" || rendererType === "winner-lean") {
+      setSliderMin(defaultMin);
+      setSliderMax(defaultMax);
+      if (year < defaultMin) {
+        setYear(defaultMin);
+        onYearInput(defaultMin);
+      } else if (year > defaultMax) {
+        setYear(defaultMax);
+        onYearInput(defaultMax);
+      }
+    } else if (rendererType === "swing" || rendererType === "change") {
+      setSliderMin(defaultMin);
+      setSliderMax(defaultMax);
+      if (year < defaultMin) {
+        setYear(defaultMin);
+        onYearInput(defaultMin);
+      } else if (year > defaultMax) {
+        setYear(defaultMax);
+        onYearInput(defaultMax);
+      }
+    } else if (rendererType === "trend") {
+      setSliderMin(2016);
+      setSliderMax(defaultMax);
+      if (year < 2016) {
+        setYear(2016);
+        onYearInput(2016);
+      } else if (year > defaultMax) {
+        setYear(defaultMax);
+        onYearInput(defaultMax);
+      }
+    }
+  }, [rendererType, year, onYearInput, setYear]);
 
   let legendContent;
   switch (rendererType) {
@@ -39,12 +75,12 @@ function Legends(props: LegendsProps) {
           <CalciteLabel layout="inline">Select an election year</CalciteLabel>
           <div className="slider-container">
             <CalciteSlider
-              min={2000}
-              max={2024}
+              min={sliderMin}
+              max={sliderMax}
               labelHandles
               labelTicks
-              maxLabel="2024"
-              minLabel="2000"
+              maxLabel={sliderMax.toString()}
+              minLabel={sliderMin.toString()}
               ticks={4}
               step={4}
               value={year}
@@ -66,12 +102,12 @@ function Legends(props: LegendsProps) {
           <CalciteLabel layout="inline">Select an election year</CalciteLabel>
           <div className="slider-container">
             <CalciteSlider
-              min={2000}
-              max={2024}
+              min={sliderMin}
+              max={sliderMax}
               labelHandles
               labelTicks
-              maxLabel="2024"
-              minLabel="2000"
+              maxLabel={sliderMax.toString()}
+              minLabel={sliderMin.toString()}
               ticks={4}
               step={4}
               value={year}
@@ -94,12 +130,12 @@ function Legends(props: LegendsProps) {
           <CalciteLabel layout="inline">Select an election year</CalciteLabel>
           <div className="slider-container">
             <CalciteSlider
-              min={2004}
-              max={2024}
+              min={sliderMin}
+              max={sliderMax}
               labelHandles
               labelTicks
-              maxLabel="2024"
-              minLabel="2004"
+              maxLabel={sliderMax.toString()}
+              minLabel={sliderMin.toString()}
               ticks={4}
               step={4}
               value={year}
@@ -122,12 +158,12 @@ function Legends(props: LegendsProps) {
           <CalciteLabel layout="inline">Select an election year</CalciteLabel>
           <div className="slider-container">
             <CalciteSlider
-              min={2016}
-              max={2024}
+              min={sliderMin}
+              max={sliderMax}
               labelHandles
               labelTicks
-              maxLabel="2024"
-              minLabel="2016"
+              maxLabel={sliderMax.toString()}
+              minLabel={sliderMin.toString()}
               ticks={4}
               step={4}
               value={year}
@@ -150,12 +186,12 @@ function Legends(props: LegendsProps) {
           <CalciteLabel layout="inline">Select an election year</CalciteLabel>
           <div className="slider-container">
             <CalciteSlider
-              min={2004}
-              max={2024}
+              min={sliderMin}
+              max={sliderMax}
               labelHandles
               labelTicks
-              maxLabel="2024"
-              minLabel="2004"
+              maxLabel={sliderMax.toString()}
+              minLabel={sliderMin.toString()}
               ticks={4}
               step={4}
               value={year}

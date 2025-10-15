@@ -21,7 +21,7 @@ function AllResults() {
   });
   return (
     <>
-      <CalciteBlock heading="Historical results" collapsible>
+      <CalciteBlock heading="Election results" collapsible>
         <ArcgisFeatures
           features={[graphic]}
           hideActionBar

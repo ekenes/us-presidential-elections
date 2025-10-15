@@ -45,25 +45,34 @@ function UIPanel(props: UIPanelProps) {
       <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale="m">
         <CalcitePanel id="tools" scale="m" heading={heading}>
           <CalciteLabel layout="inline">Select a variable</CalciteLabel>
-          <CalciteSelect
-            onCalciteSelectChange={async (event) => {
-              const value = event.target.value!;
-              setRendererType(
-                value as "winner" | "winner-lean" | "swing" | "trend" | "change"
-              );
-              onRendererTypeChange(value);
-              setHeading(rendererTypesLayerTitles[value]);
-            }}
-          >
-            {Object.entries(rendererTypesLayerTitles).map(([value, label]) => (
-              <CalciteOption
-                key={value}
-                label={label}
-                value={value}
-                selected={value === rendererType ? true : false}
-              ></CalciteOption>
-            ))}
-          </CalciteSelect>
+          <div className="slider-container">
+            <CalciteSelect
+              onCalciteSelectChange={async (event) => {
+                const value = event.target.value!;
+                setRendererType(
+                  value as
+                    | "winner"
+                    | "winner-lean"
+                    | "swing"
+                    | "trend"
+                    | "change"
+                );
+                onRendererTypeChange(value);
+                setHeading(rendererTypesLayerTitles[value]);
+              }}
+            >
+              {Object.entries(rendererTypesLayerTitles).map(
+                ([value, label]) => (
+                  <CalciteOption
+                    key={value}
+                    label={label}
+                    value={value}
+                    selected={value === rendererType ? true : false}
+                  ></CalciteOption>
+                )
+              )}
+            </CalciteSelect>
+          </div>
           <Legends rendererType={rendererType} onYearInput={onYearInput} />
           <AllResults />
         </CalcitePanel>
