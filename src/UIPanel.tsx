@@ -1,20 +1,23 @@
 import "./App.css";
 
+import "@esri/calcite-components/dist/components/calcite-label";
 import "@esri/calcite-components/dist/components/calcite-option";
 import "@esri/calcite-components/dist/components/calcite-select";
-import "@esri/calcite-components/dist/components/calcite-label";
+import "@esri/calcite-components/dist/components/calcite-panel";
+import "@esri/calcite-components/dist/components/calcite-shell-panel";
 
 import {
   CalciteLabel,
   CalciteOption,
+  CalcitePanel,
   CalciteSelect,
+  CalciteShellPanel,
 } from "@esri/calcite-components-react";
 import Legends from "./Legends";
 import { useState } from "react";
 import AllResults from "./AllResults";
 
 export interface UIPanelProps {
-  mapReferenceElement?: string;
   onYearInput: (year: number | number[]) => void;
   onRendererTypeChange: (rendererType: string) => void;
 }
@@ -28,38 +31,43 @@ const rendererTypesLayerTitles: { [key: string]: string } = {
 };
 
 function UIPanel(props: UIPanelProps) {
-  const { mapReferenceElement, onYearInput, onRendererTypeChange } = props;
+  const { onYearInput, onRendererTypeChange } = props;
   const [rendererType, setRendererType] = useState<
     "winner" | "winner-lean" | "swing" | "trend" | "change"
   >("winner");
 
+  const [heading, setHeading] = useState<string>(
+    rendererTypesLayerTitles[rendererType]
+  );
+
   return (
     <>
-      <CalciteLabel layout="inline">Select a variable</CalciteLabel>
-      <CalciteSelect
-        onCalciteSelectChange={async (event) => {
-          const value = event.target.value!;
-          setRendererType(
-            value as "winner" | "winner-lean" | "swing" | "trend" | "change"
-          );
-          onRendererTypeChange(value);
-        }}
-      >
-        {Object.entries(rendererTypesLayerTitles).map(([value, label]) => (
-          <CalciteOption
-            key={value}
-            label={label}
-            value={value}
-            selected={value === rendererType ? true : false}
-          ></CalciteOption>
-        ))}
-      </CalciteSelect>
-      <Legends
-        rendererType={rendererType}
-        onYearInput={onYearInput}
-        mapReferenceElement={mapReferenceElement || undefined}
-      />
-      <AllResults />
+      <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale="m">
+        <CalcitePanel id="tools" scale="m" heading={heading}>
+          <CalciteLabel layout="inline">Select a variable</CalciteLabel>
+          <CalciteSelect
+            onCalciteSelectChange={async (event) => {
+              const value = event.target.value!;
+              setRendererType(
+                value as "winner" | "winner-lean" | "swing" | "trend" | "change"
+              );
+              onRendererTypeChange(value);
+              setHeading(rendererTypesLayerTitles[value]);
+            }}
+          >
+            {Object.entries(rendererTypesLayerTitles).map(([value, label]) => (
+              <CalciteOption
+                key={value}
+                label={label}
+                value={value}
+                selected={value === rendererType ? true : false}
+              ></CalciteOption>
+            ))}
+          </CalciteSelect>
+          <Legends rendererType={rendererType} onYearInput={onYearInput} />
+          <AllResults />
+        </CalcitePanel>
+      </CalciteShellPanel>
     </>
   );
 }

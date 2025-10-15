@@ -19,7 +19,6 @@ import WinnerLegend from "./legendComponents/WinnerLegend";
 
 export interface LegendsProps {
   rendererType: "winner" | "winner-lean" | "swing" | "trend" | "change";
-  mapReferenceElement?: string;
   onYearInput: (year: number | number[]) => void;
 }
 

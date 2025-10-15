@@ -7,15 +7,9 @@ setAssetPath("https://js.arcgis.com/calcite-components/3.2.1/assets");
 import "@arcgis/map-components/dist/components/arcgis-map";
 import { ArcgisMap } from "@arcgis/map-components-react";
 
-import "@esri/calcite-components/dist/components/calcite-panel";
 import "@esri/calcite-components/dist/components/calcite-shell";
-import "@esri/calcite-components/dist/components/calcite-shell-panel";
 
-import {
-  CalcitePanel,
-  CalciteShell,
-  CalciteShellPanel,
-} from "@esri/calcite-components-react";
+import { CalciteShell } from "@esri/calcite-components-react";
 
 import esriConfig from "@arcgis/core/config";
 import Popup from "@arcgis/core/widgets/Popup";
@@ -192,27 +186,21 @@ function App() {
         <h2 id="header-title" slot="header">
           {appTitle}
         </h2>
-        <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale="m">
-          <CalcitePanel id="tools" scale="m">
-            <UIPanel
-              onYearInput={(year) => {
-                updateRendererFromYear(year as validYears | validYears[]);
-              }}
-              onRendererTypeChange={(rendererType) => {
-                const activeLayer = (
-                  webmap.layers.find(
-                    (layer) => layer.title === "Election Visualizations"
-                  ) as __esri.GroupLayer
-                ).layers.find(
-                  (layer) =>
-                    layer.title === rendererTypesLayerTitles[rendererType]
-                )!;
-                activeLayer.visible = true;
-              }}
-              mapReferenceElement={mapRef.current?.id || undefined}
-            />
-          </CalcitePanel>
-        </CalciteShellPanel>
+        <UIPanel
+          onYearInput={(year) => {
+            updateRendererFromYear(year as validYears | validYears[]);
+          }}
+          onRendererTypeChange={(rendererType) => {
+            const activeLayer = (
+              webmap.layers.find(
+                (layer) => layer.title === "Election Visualizations"
+              ) as __esri.GroupLayer
+            ).layers.find(
+              (layer) => layer.title === rendererTypesLayerTitles[rendererType]
+            )!;
+            activeLayer.visible = true;
+          }}
+        />
         <ArcgisMap
           id="map"
           class="map-only"
