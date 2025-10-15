@@ -21,7 +21,7 @@ function ChangeExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../change-ut-2004.png"
+                src="./change-ut-2004.png"
                 alt="Gradual change"
               />
               <span>
@@ -33,7 +33,7 @@ function ChangeExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../change-ut-2008.png"
+                src="./change-ut-2008.png"
                 alt="Bowtie"
               />
               <span>
@@ -46,7 +46,7 @@ function ChangeExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../change-ut-2012.png"
+                src="./change-ut-2012.png"
                 alt="No change"
               />
               <span>
@@ -58,7 +58,7 @@ function ChangeExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../change-ut-2016.png"
+                src="./change-ut-2016.png"
                 alt="Contested"
               />
               <span>
@@ -72,7 +72,7 @@ function ChangeExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../change-ut-2020.png"
+                src="./change-ut-2020.png"
                 alt="Contested"
               />
               <span>
@@ -85,7 +85,7 @@ function ChangeExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../change-ut-2024.png"
+                src="./change-ut-2024.png"
                 alt="Contested"
               />
               <span>

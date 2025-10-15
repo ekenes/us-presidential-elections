@@ -19,7 +19,7 @@ function SwingExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../swing-slight-dem.png"
+                src="./swing-slight-dem.png"
                 alt="Slight Democratic swing"
                 style={{ width: "400px" }}
               />
@@ -35,7 +35,7 @@ function SwingExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../swing-strong-r.png"
+                src="./swing-strong-r.png"
                 alt="Dramatic Republican swing"
                 style={{ width: "400px" }}
               />
@@ -51,7 +51,7 @@ function SwingExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../swing-strong-other.png"
+                src="./swing-strong-other.png"
                 alt="Dramatic third party swing"
                 style={{ width: "400px" }}
               />
@@ -68,7 +68,7 @@ function SwingExamples() {
             <div className="custom-content">
               <img
                 className="examples"
-                src="../swing-both.png"
+                src="./swing-both.png"
                 alt="Dramatic swings both directions"
                 style={{ width: "400px" }}
               />

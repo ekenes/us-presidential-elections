@@ -14,7 +14,7 @@ function SwingLegend() {
         </p>
         <div className="legendElement">
           <img
-            src="../legend-swing.png"
+            src="./legend-swing.png"
             className="legend"
             alt="Legend"
             style={{ width: "300px" }}
@@ -23,7 +23,7 @@ function SwingLegend() {
         <div className="legendElement">
           <b style={{ fontSize: "12pt" }}>Swing states</b>
           <img
-            src="../change-states.png"
+            src="./change-states.png"
             className="legend"
             alt="Legend"
             style={{ width: "200px" }}
@@ -35,7 +35,7 @@ function SwingLegend() {
         </p>
         <div className="legendElement">
           <img
-            src="../legend-swing-arrow.png"
+            src="./legend-swing-arrow.png"
             className="legend"
             alt="Legend"
             style={{ width: "180px" }}

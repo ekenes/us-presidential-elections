@@ -17,7 +17,7 @@ function LeanLegend() {
         <div className="legendElement">
           <b>Lean</b>
           <img
-            src="../legend-lean.png"
+            src="./legend-lean.png"
             className="legend"
             alt="Legend"
             style={{ width: "300px" }}
@@ -30,7 +30,7 @@ function LeanLegend() {
         <div className="legendElement">
           <b>Margin of victory</b>
           <img
-            src="../legend-swing-arrow.png"
+            src="./legend-swing-arrow.png"
             className="legend"
             alt="Legend"
             style={{ width: "180px" }}

@@ -15,7 +15,7 @@ function ChangeLegend() {
         </p>
         <div className="legendElement">
           <img
-            src="../legend-change-parties.png"
+            src="./legend-change-parties.png"
             className="legend"
             alt="Legend"
             style={{ width: "300px" }}
@@ -30,7 +30,7 @@ function ChangeLegend() {
         </p>
         <div className="legendElement">
           <img
-            src="../legend-change.png"
+            src="./legend-change.png"
             className="legend"
             alt="Legend"
             style={{ width: "120px" }}
@@ -39,7 +39,7 @@ function ChangeLegend() {
         <div className="legendElement">
           <b style={{ fontSize: "12pt" }}>Swing states</b>
           <img
-            src="../change-states.png"
+            src="./change-states.png"
             className="legend"
             alt="Legend"
             style={{ width: "200px" }}

@@ -18,7 +18,7 @@ function TrendLegend() {
           election. Larger squares indicate a larger margin of victory.
         </p>
         <img
-          src="../trend-legend-horizontal.png"
+          src="./trend-legend-horizontal.png"
           className="legend"
           alt="Legend"
         />

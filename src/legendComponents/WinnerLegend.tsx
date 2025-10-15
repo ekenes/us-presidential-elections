@@ -12,7 +12,7 @@ function WinnerLegend() {
           level.
         </p>
         <div className="legendElement">
-          <img src="../legend-winner.png" className="legend" alt="Legend" />
+          <img src="./legend-winner.png" className="legend" alt="Legend" />
         </div>
       </CalciteBlock>
     </>

@@ -174,7 +174,7 @@ function App() {
       position: "top-right",
     };
     view.padding = {
-      left: 49,
+      left: 49 + 419,
     };
 
     view.when(() => {
