@@ -1,5 +1,7 @@
 import "./App.css";
 
+import "@esri/calcite-components/dist/components/calcite-action";
+import "@esri/calcite-components/dist/components/calcite-action-bar";
 import "@esri/calcite-components/dist/components/calcite-label";
 import "@esri/calcite-components/dist/components/calcite-option";
 import "@esri/calcite-components/dist/components/calcite-select";
@@ -7,6 +9,8 @@ import "@esri/calcite-components/dist/components/calcite-panel";
 import "@esri/calcite-components/dist/components/calcite-shell-panel";
 
 import {
+  CalciteAction,
+  CalciteActionBar,
   CalciteLabel,
   CalciteOption,
   CalcitePanel,
@@ -43,7 +47,19 @@ function UIPanel(props: UIPanelProps) {
   return (
     <>
       <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale="m">
-        <CalcitePanel id="tools" scale="m" heading={heading}>
+        <CalciteActionBar slot="action-bar">
+          <CalciteAction
+            data-action-id="information"
+            icon="information"
+            text="Information"
+          ></CalciteAction>
+        </CalciteActionBar>
+        <CalcitePanel
+          id="tools"
+          scale="m"
+          heading={heading}
+          data-panel-id="information"
+        >
           <CalciteLabel layout="inline">Select a variable</CalciteLabel>
           <div className="slider-container">
             <CalciteSelect

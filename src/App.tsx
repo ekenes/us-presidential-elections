@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "./App.css";
 
 import { setAssetPath } from "@esri/calcite-components/dist/components";
@@ -172,9 +173,91 @@ function App() {
       breakpoint: false,
       position: "top-right",
     };
-    view!.padding = {
-      left: 300,
+    view.padding = {
+      left: 49,
     };
+
+    view.when(() => {
+      let activeWidget: any = null;
+
+      const handleActionBarClick = ({ target }: any) => {
+        if (!document) {
+          return;
+        }
+        if (target.tagName !== "CALCITE-ACTION") {
+          return;
+        }
+
+        const calciteShellPanel = document.querySelector(
+          "calcite-shell-panel"
+        ) as any;
+
+        if (activeWidget) {
+          (document as any).querySelector(
+            `[data-action-id=${activeWidget}]`
+          ).active = false;
+          (document as any).querySelector(
+            `[data-panel-id=${activeWidget}]`
+          ).closed = true;
+        }
+
+        const nextWidget = target.dataset.actionId;
+        if (nextWidget !== activeWidget) {
+          calciteShellPanel!.collapsed = false;
+          view.padding = {
+            left: actionBarExpanded ? 135 + 419 : 49 + 419,
+          };
+          (document as any).querySelector(
+            `[data-action-id=${nextWidget}]`
+          ).active = true;
+          (document as any).querySelector(
+            `[data-panel-id=${nextWidget}]`
+          ).closed = false;
+          activeWidget = nextWidget;
+          (document as any)
+            .querySelector(`[data-panel-id=${nextWidget}]`)
+            .setFocus();
+        } else {
+          activeWidget = null;
+          calciteShellPanel!.collapsed = true;
+          view.padding = {
+            left: actionBarExpanded ? 135 : 49,
+          };
+        }
+      };
+
+      let actionBarExpanded = false;
+
+      // Panel interaction
+      const panelEls = document.querySelectorAll("calcite-panel");
+      for (let i = 0; i < panelEls.length; i++) {
+        panelEls[i].addEventListener("calcitePanelClose", () => {
+          const calciteShellPanel = document.querySelector(
+            "calcite-shell-panel"
+          ) as any;
+          calciteShellPanel!.collapsed = true;
+
+          (document as any).querySelector(
+            `[data-action-id=${activeWidget}]`
+          ).active = false;
+          (document as any)
+            .querySelector(`[data-action-id=${activeWidget}]`)
+            .setFocus();
+          activeWidget = null;
+        });
+      }
+
+      (document as any)
+        .querySelector("calcite-action-bar")
+        .addEventListener("click", handleActionBarClick);
+
+      document.addEventListener("calciteActionBarToggle", () => {
+        actionBarExpanded = !actionBarExpanded;
+        view.padding = {
+          left: actionBarExpanded ? 135 : 49, // with panel 468
+        };
+      });
+    });
   };
 
   return (
