@@ -1,1 +1,2 @@
 import{a3 as m}from"./index-C9i_GUWP.js";import{m as s}from"./queryTopFeatures-B1f9y1yR.js";import e from"./TopFeaturesQuery-clSAyDxK.js";async function n(o,r,t){const a=m(o);return(await s(a,e.from(r),{...t})).data.objectIds}export{n as executeForTopIds};
+//# sourceMappingURL=executeForTopIds-UtTCH41m.js.map

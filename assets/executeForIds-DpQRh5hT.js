@@ -1,1 +1,2 @@
 import{a3 as o,hx as f,b_ as u,hy as c}from"./index-C9i_GUWP.js";async function p(n,a,s,r){const i=o(n),{data:t}=await f(i,u.from(a),s,r);return t.count}async function d(n,a,s,r){const i=o(n),{data:t}=await c(i,u.from(a),s,r);return t.objectIds??y(t.uniqueIds)??[]}function e(n){return!Array.isArray(n[0])}function y(n){if(n)return e(n)?n:n.map((a=>JSON.stringify(a)))}export{d as i,p as s};
+//# sourceMappingURL=executeForIds-DpQRh5hT.js.map

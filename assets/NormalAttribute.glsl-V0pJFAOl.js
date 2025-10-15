@@ -9,3 +9,4 @@ return normal;
 }`);break;case a.ScreenDerivative:e.fragment.code.add(s`vec3 screenDerivativeNormal(vec3 positionView) {
 return normalize(cross(dFdx(positionView), dFdy(positionView)));
 }`);break;default:m(o.normalType);case a.COUNT:}}var a;(function(e){e[e.Attribute=0]="Attribute",e[e.Compressed=1]="Compressed",e[e.ScreenDerivative=2]="ScreenDerivative",e[e.COUNT=3]="COUNT"})(a||(a={}));export{a,T as e,r as n,y as r,C as t};
+//# sourceMappingURL=NormalAttribute.glsl-V0pJFAOl.js.map

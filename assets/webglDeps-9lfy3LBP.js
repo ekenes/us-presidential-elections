@@ -5,3 +5,4 @@ import{a as c}from"./ProgramTemplate-BYCfsIii.js";import{E as h,e as _,o as g,b 
 `}else{const n=o.options;let r=0;for(const s in n)e+=`#define ${n[s]} ${(r++).toFixed()}
 `;e+=`#define ${t} ${n[o.value]}
 `}}return e}export{h as BufferObject,v as FramebufferObject,c as Program,$ as ProgramCache,F as Renderbuffer,_ as ShaderCompiler,P as Texture,g as VertexArrayObject,y as createProgram,d as glslifyDefineMap};
+//# sourceMappingURL=webglDeps-9lfy3LBP.js.map

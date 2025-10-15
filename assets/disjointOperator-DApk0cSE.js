@@ -1,1 +1,2 @@
 import{u as r}from"./ProjectionTransformation-BkuLwbmX.js";import{fromGeometry as m,fromGeometryToGXGeometry as i}from"./jsonConverter-Ci2MuO3f.js";import"./Envelope2D-DJjAtNGr.js";import"./Point2D-BRB9V_5r.js";import"./Transformation2D-CqNH2kL4.js";import"./SimpleGeometryCursor-B92kdZ15.js";import"./index-C9i_GUWP.js";import"./OperatorDefinitions-DP7_WWTp.js";const p=new r;function x(t,o){const e=m(t);return p.execute(e.getGeometry(),i(o),e.getSpatialReference())}export{x as execute};
+//# sourceMappingURL=disjointOperator-DApk0cSE.js.map

@@ -8,3 +8,4 @@ import{dS as d,gv as y,b8 as g,bw as T,bO as v,X as c,Y as f,$ as x}from"./index
 `);console.log(`${this.debugName}: Updating: ${o}
 -> Handles: ${this._updatingHandles.updating}
 ${t}`)}return o}addUpdateTracking(o,t){const a=v((()=>t.updating),(i=>this._idToUpdatingState.set(o,i)),{sync:!0});this.addHandles(a)}addPromise(o){return this._updatingHandles.addPromise(o)}};c([f({constructOnly:!0})],m.prototype,"debugName",void 0),c([f({readOnly:!0})],m.prototype,"updating",null),m=c([x("esri.views.2d.layers.support.UpdateTracking2D")],m);export{M as a,m as d,G as e,j as f,P as g,k as n,H as o,B as r,I as s,u as t,h as y};
+//# sourceMappingURL=UpdateTracking2D-I6HId1xZ.js.map

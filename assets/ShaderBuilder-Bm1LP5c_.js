@@ -41,3 +41,4 @@ ${$.join(`
 
  invariant gl_Position;
  `;export{k as i};
+//# sourceMappingURL=ShaderBuilder-Bm1LP5c_.js.map
