@@ -110,17 +110,14 @@ function App() {
       ) as FeatureLayer;
       winnerLeanCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
       winnerLeanStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
-    }
 
-    if (Array.isArray(year)) {
-      const countyChangeConfig = createChangeConfig({
-        level: "county",
-        year: year[1],
-      });
-      const swingLayer = webmap.allLayers.find(
+      const swingGroupLayer = webmap.allLayers.find(
         (layer) => layer.title === "Swing - dynamic rotation"
+      ) as __esri.GroupLayer;
+      const swingCountyLayer = swingGroupLayer.layers.find(
+        (layer) => layer.title === "Counties"
       ) as FeatureLayer;
-      swingLayer.popupTemplate = countyChangeConfig.popupTemplate;
+      swingCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
     }
 
     const trendGroupLayer = webmap.allLayers.find(

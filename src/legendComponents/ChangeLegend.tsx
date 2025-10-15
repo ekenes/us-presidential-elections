@@ -33,7 +33,16 @@ function ChangeLegend() {
             src="../legend-change.png"
             className="legend"
             alt="Legend"
-            style={{ width: "180px" }}
+            style={{ width: "120px" }}
+          />
+        </div>
+        <div className="legendElement">
+          <b style={{ fontSize: "12pt" }}>Swing states</b>
+          <img
+            src="../change-states.png"
+            className="legend"
+            alt="Legend"
+            style={{ width: "200px" }}
           />
         </div>
       </CalciteBlock>
