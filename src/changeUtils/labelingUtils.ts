@@ -1,7 +1,8 @@
 import { dColor, rColor, oColor, haloColor, haloSize } from "../config";
 
 import LabelClass from "@arcgis/core/layers/support/LabelClass";
-import { TextSymbol, Font } from "@arcgis/core/symbols";
+import TextSymbol from "@arcgis/core/symbols/TextSymbol";
+import Font from "@arcgis/core/symbols/Font";
 import Color from "@arcgis/core/Color";
 import { diffLabelText } from "./expressionUtils";
 

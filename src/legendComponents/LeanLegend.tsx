@@ -6,7 +6,7 @@ import { CalciteBlock } from "@esri/calcite-components-react";
 function LeanLegend() {
   return (
     <>
-      <CalciteBlock heading="Legend" collapsible open>
+      <CalciteBlock heading="Legend" collapsible expanded>
         <p>
           This map shows the winner of the election. The shade of the state
           indicates the party awarded electoral votes in the given election. The

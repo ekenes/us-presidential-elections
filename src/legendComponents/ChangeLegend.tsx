@@ -6,7 +6,7 @@ import { CalciteBlock } from "@esri/calcite-components-react";
 function ChangeLegend() {
   return (
     <>
-      <CalciteBlock heading="Legend" collapsible open>
+      <CalciteBlock heading="Legend" collapsible expanded>
         <p>
           This map shows the change in votes for each party compared to the
           previous presidential election. The symbol is composed of three parts:

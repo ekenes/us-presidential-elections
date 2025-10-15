@@ -1,4 +1,4 @@
-import { SimpleRenderer } from "@arcgis/core/renderers";
+import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer";
 import CIMSymbol from "@arcgis/core/symbols/CIMSymbol";
 import { createSquareSymbolLayer } from "./symbolUtils";
 import {

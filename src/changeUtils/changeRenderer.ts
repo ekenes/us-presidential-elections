@@ -1,5 +1,7 @@
-import { SimpleRenderer, UniqueValueRenderer } from "@arcgis/core/renderers";
-import { CIMSymbol, SimpleFillSymbol } from "@arcgis/core/symbols";
+import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer";
+import UniqueValueRenderer from "@arcgis/core/renderers/UniqueValueRenderer";
+import CIMSymbol from "@arcgis/core/symbols/CIMSymbol";
+import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
 import { dColor, rColor, dColorCIM, oColorCIM, rColorCIM } from "../config";
 
 import { createCircleSymbolLayer } from "./symbolUtils";
