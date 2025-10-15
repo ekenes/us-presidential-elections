@@ -7,7 +7,7 @@ export default defineConfig({
   base: "/us-presidential-elections/",
   build: {
     outDir: "dist",
-    assetsDir: "public",
+    assetsDir: "assets",
     sourcemap: true,
     rollupOptions: {
       output: {
