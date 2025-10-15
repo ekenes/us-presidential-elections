@@ -17,10 +17,11 @@ function AllResults() {
   const graphic = usaGraphic;
   graphic.popupTemplate = createPopupTemplate({
     level: "country",
+    year: 2024,
   });
   return (
     <>
-      <CalciteBlock heading="Historical results" open collapsible>
+      <CalciteBlock heading="Historical results" collapsible>
         <ArcgisFeatures
           features={[graphic]}
           hideActionBar

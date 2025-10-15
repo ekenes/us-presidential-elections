@@ -11,6 +11,11 @@ import { diffLabelText } from "./expressionUtils";
 //
 ///////////////////////////////////////////////////
 
+const offsetXFactor = 0.8;
+const offsetYFactor = 0.8;
+const minScaleState = 12244700;
+const minScaleCounty = 577791;
+
 export const stateChangeLabelingInfo = (year: number) => {
   const currentYear = year;
   const previousYear = year - 4;
@@ -19,7 +24,7 @@ export const stateChangeLabelingInfo = (year: number) => {
     // DEMOCRAT label classes
 
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) >= 500000`,
       labelExpressionInfo: {
         expression: `
@@ -38,12 +43,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
-        xoffset: -50,
-        yoffset: -25,
+        xoffset: -50 * offsetXFactor,
+        yoffset: -25 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) >= 100000 AND ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
@@ -62,12 +67,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
-        xoffset: -40,
-        yoffset: -20,
+        xoffset: -40 * offsetXFactor,
+        yoffset: -20 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) >= 50000 AND ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) < 100000`,
       labelExpressionInfo: {
         expression: `
@@ -86,12 +91,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
-        xoffset: -40,
-        yoffset: -10,
+        xoffset: -40 * offsetXFactor,
+        yoffset: -10 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) >= 10000 AND ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) < 50000`,
       labelExpressionInfo: {
         expression: `
@@ -110,12 +115,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
-        xoffset: -30,
-        yoffset: -10,
+        xoffset: -30 * offsetXFactor,
+        yoffset: -10 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear} - SUM_dem_${previousYear}) < 10000`,
       labelExpressionInfo: {
         expression: `
@@ -134,15 +139,15 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(dColor),
-        xoffset: -20,
-        yoffset: -10,
+        xoffset: -20 * offsetXFactor,
+        yoffset: -10 * offsetYFactor,
       }),
     }),
 
     // REPUBLICAN label classes
 
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) >= 500000`,
       labelExpressionInfo: {
         expression: `
@@ -161,12 +166,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
-        xoffset: 50,
-        yoffset: -20,
+        xoffset: 50 * offsetXFactor,
+        yoffset: -20 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) >= 100000 AND ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
@@ -185,12 +190,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
-        xoffset: 35,
-        yoffset: -20,
+        xoffset: 35 * offsetXFactor,
+        yoffset: -20 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) >= 50000 AND ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) < 100000`,
       labelExpressionInfo: {
         expression: `
@@ -209,12 +214,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
-        xoffset: 30,
-        yoffset: -17,
+        xoffset: 30 * offsetXFactor,
+        yoffset: -17 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) >= 10000 AND ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) < 50000`,
       labelExpressionInfo: {
         expression: `
@@ -233,12 +238,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
-        xoffset: 25,
-        yoffset: -12,
+        xoffset: 25 * offsetXFactor,
+        yoffset: -12 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear} - SUM_rep_${previousYear}) < 10000`,
       labelExpressionInfo: {
         expression: `
@@ -257,15 +262,15 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(rColor),
-        xoffset: 20,
-        yoffset: -10,
+        xoffset: 20 * offsetXFactor,
+        yoffset: -10 * offsetYFactor,
       }),
     }),
 
     // OTHER label classes
 
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) >= 500000`,
       labelExpressionInfo: {
         expression: `
@@ -284,12 +289,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
-        xoffset: 20,
-        yoffset: 30,
+        xoffset: 20 * offsetXFactor,
+        yoffset: 30 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) >= 100000 AND ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
@@ -308,12 +313,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
-        xoffset: 20,
-        yoffset: 30,
+        xoffset: 20 * offsetXFactor,
+        yoffset: 30 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `
         (ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) >= 50000 AND ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) < 100000)
       `,
@@ -334,13 +339,13 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
-        xoffset: 20,
-        yoffset: 20,
+        xoffset: 20 * offsetXFactor,
+        yoffset: 20 * offsetYFactor,
       }),
     }),
 
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `
         (ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) >= 10000 AND ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) < 50000)
       `,
@@ -361,12 +366,12 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
-        xoffset: 20,
-        yoffset: 15,
+        xoffset: 20 * offsetXFactor,
+        yoffset: 15 * offsetYFactor,
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `
         (ABS(SUM_oth_${currentYear} - SUM_oth_${previousYear}) < 10000)
       `,
@@ -387,8 +392,8 @@ export const stateChangeLabelingInfo = (year: number) => {
         haloColor: new Color(haloColor),
         haloSize,
         color: new Color(oColor),
-        xoffset: 10,
-        yoffset: 10,
+        xoffset: 10 * offsetXFactor,
+        yoffset: 10 * offsetYFactor,
       }),
     }),
   ];
@@ -406,7 +411,7 @@ export const stateResultsLabelingInfo = (year: number) => {
     // DEMOCRAT label classes
 
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear}) >= 5000000`,
       labelExpressionInfo: {
         expression: `
@@ -428,7 +433,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear}) >= 1000000 AND ABS(SUM_dem_${currentYear}) < 5000000`,
       labelExpressionInfo: {
         expression: `
@@ -450,7 +455,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear}) >= 500000 AND ABS(SUM_dem_${currentYear}) < 1000000`,
       labelExpressionInfo: {
         expression: `
@@ -472,7 +477,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear}) >= 100000 AND ABS(SUM_dem_${currentYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
@@ -494,7 +499,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_dem_${currentYear}) < 100000`,
       labelExpressionInfo: {
         expression: `
@@ -519,7 +524,7 @@ export const stateResultsLabelingInfo = (year: number) => {
     // REPUBLICAN label classes
 
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear}) >= 5000000`,
       labelExpressionInfo: {
         expression: `
@@ -541,7 +546,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear}) >= 1000000 AND ABS(SUM_rep_${currentYear}) < 5000000`,
       labelExpressionInfo: {
         expression: `
@@ -563,7 +568,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear}) >= 500000 AND ABS(SUM_rep_${currentYear}) < 1000000`,
       labelExpressionInfo: {
         expression: `
@@ -585,7 +590,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear}) >= 100000 AND ABS(SUM_rep_${currentYear}) < 500000`,
       labelExpressionInfo: {
         expression: `
@@ -607,7 +612,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_rep_${currentYear}) < 100000`,
       labelExpressionInfo: {
         expression: `
@@ -632,7 +637,7 @@ export const stateResultsLabelingInfo = (year: number) => {
     // OTHER label classes
 
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_oth_${currentYear}) >= 5000000`,
       labelExpressionInfo: {
         expression: `
@@ -654,7 +659,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `ABS(SUM_oth_${currentYear}) >= 1000000 AND ABS(SUM_oth_${currentYear}) < 5000000`,
       labelExpressionInfo: {
         expression: `
@@ -676,7 +681,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `
         (ABS(SUM_oth_${currentYear}) >= 500000 AND ABS(SUM_oth_${currentYear}) < 1000000)
       `,
@@ -701,7 +706,7 @@ export const stateResultsLabelingInfo = (year: number) => {
     }),
 
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `
         (ABS(SUM_oth_${currentYear}) >= 100000 AND ABS(SUM_oth_${currentYear}) < 500000)
       `,
@@ -725,7 +730,7 @@ export const stateResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 9244700,
+      minScale: minScaleState,
       where: `
         (ABS(SUM_oth_${currentYear}) < 100000)
       `,
@@ -763,7 +768,7 @@ export const countyResultsLabelingInfo = (year: number) => {
     // DEMOCRAT label classes
 
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
@@ -786,7 +791,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
@@ -809,7 +814,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5`,
       labelExpressionInfo: {
         expression: `
@@ -832,7 +837,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1`,
       labelExpressionInfo: {
         expression: `
@@ -855,7 +860,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5`,
       labelExpressionInfo: {
         expression: `
@@ -881,7 +886,7 @@ export const countyResultsLabelingInfo = (year: number) => {
     // REPUBLICAN label classes
 
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
@@ -904,7 +909,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
@@ -927,7 +932,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5`,
       labelExpressionInfo: {
         expression: `
@@ -950,7 +955,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1`,
       labelExpressionInfo: {
         expression: `
@@ -973,7 +978,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5`,
       labelExpressionInfo: {
         expression: `
@@ -999,7 +1004,7 @@ export const countyResultsLabelingInfo = (year: number) => {
     // OTHER label classes
 
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
@@ -1022,7 +1027,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
@@ -1045,7 +1050,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `
         (ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5)
       `,
@@ -1071,7 +1076,7 @@ export const countyResultsLabelingInfo = (year: number) => {
     }),
 
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `
         (ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1)
       `,
@@ -1096,7 +1101,7 @@ export const countyResultsLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `
         (ABS(((oth_${currentYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5)
       `,
@@ -1136,7 +1141,7 @@ export const countyChangeLabelingInfo = (year: number) => {
     // DEMOCRAT label classes
 
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
@@ -1161,7 +1166,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
@@ -1186,7 +1191,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5`,
       labelExpressionInfo: {
         expression: `
@@ -1211,7 +1216,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1`,
       labelExpressionInfo: {
         expression: `
@@ -1236,7 +1241,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((dem_${currentYear} - dem_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5`,
       labelExpressionInfo: {
         expression: `
@@ -1264,7 +1269,7 @@ export const countyChangeLabelingInfo = (year: number) => {
     // REPUBLICAN label classes
 
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
@@ -1289,7 +1294,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
@@ -1314,7 +1319,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5`,
       labelExpressionInfo: {
         expression: `
@@ -1339,7 +1344,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1`,
       labelExpressionInfo: {
         expression: `
@@ -1364,7 +1369,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((rep_${currentYear} - rep_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5`,
       labelExpressionInfo: {
         expression: `
@@ -1392,7 +1397,7 @@ export const countyChangeLabelingInfo = (year: number) => {
     // OTHER label classes
 
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 10`,
       labelExpressionInfo: {
         expression: `
@@ -1417,7 +1422,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 5 AND ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 10`,
       labelExpressionInfo: {
         expression: `
@@ -1442,7 +1447,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `
         (ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 1 AND ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 5)
       `,
@@ -1470,7 +1475,7 @@ export const countyChangeLabelingInfo = (year: number) => {
     }),
 
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `
         (ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) >= 0.5 AND ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 1)
       `,
@@ -1497,7 +1502,7 @@ export const countyChangeLabelingInfo = (year: number) => {
       }),
     }),
     new LabelClass({
-      minScale: 577791,
+      minScale: minScaleCounty,
       where: `
         (ABS(((oth_${currentYear} - oth_${previousYear}) / TOTAL_STATE_VOTES_${currentYear}) * 100) < 0.5)
       `,
@@ -1536,4 +1541,11 @@ export const createLabelingInfo = (params: LabelingInfoParams) => {
   return level === "county"
     ? countyResultsLabelingInfo(year)
     : stateResultsLabelingInfo(year);
+};
+
+export const createChangeLabelingInfo = (params: LabelingInfoParams) => {
+  const { level, year } = params;
+  return level === "county"
+    ? countyChangeLabelingInfo(year)
+    : stateChangeLabelingInfo(year);
 };

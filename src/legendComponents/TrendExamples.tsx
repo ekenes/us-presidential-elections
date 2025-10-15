@@ -13,7 +13,7 @@ import {
 function TrendExamples() {
   return (
     <>
-      <CalciteBlock heading="Examples" open collapsible>
+      <CalciteBlock heading="Examples" collapsible>
         <CalciteCarousel label="Examples">
           <CalciteCarouselItem label="Gradual change">
             <div className="custom-content">

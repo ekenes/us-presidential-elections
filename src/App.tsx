@@ -116,7 +116,13 @@ function App() {
       ) as FeatureLayer;
       winnerLeanCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
       winnerLeanStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
+    }
 
+    if (Array.isArray(year)) {
+      const countyChangeConfig = createChangeConfig({
+        level: "county",
+        year: year[1],
+      });
       const swingLayer = webmap.allLayers.find(
         (layer) => layer.title === "Swing - dynamic rotation"
       ) as FeatureLayer;

@@ -1,6 +1,6 @@
 import { createPopupTemplate } from "./popupUtils";
 import { createRenderer } from "./changeRenderer";
-import { createLabelingInfo } from "./labelingUtils";
+import { createChangeLabelingInfo } from "./labelingUtils";
 
 interface ChangeConfigParams {
   level: "county" | "state";
@@ -11,6 +11,6 @@ export const createChangeConfig = (params: ChangeConfigParams) => {
   return {
     popupTemplate: createPopupTemplate(params),
     renderer: createRenderer(params),
-    labelingInfo: createLabelingInfo(params),
+    labelingInfo: createChangeLabelingInfo(params),
   };
 };

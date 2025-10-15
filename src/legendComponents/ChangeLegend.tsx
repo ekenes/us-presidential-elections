@@ -6,21 +6,36 @@ import { CalciteBlock } from "@esri/calcite-components-react";
 function ChangeLegend() {
   return (
     <>
-      <CalciteBlock
-        heading="Change in votes for each party compared to previous election"
-        collapsible
-        open
-      >
+      <CalciteBlock heading="Legend" collapsible open>
         <p>
-          This map shows the results of each of the previous 5 U.S. presidential
-          elections from 2000 to 2024. Each square represents the election
-          winner for the given area in one year. The most recent election (2024)
-          is represented as the right-most square. Each square's color
-          represents the winner of the election; its size is proportional to the
-          margin of victory for the winner. Smaller squares indicate a closer
-          election. Larger squares indicate a larger margin of victory.
+          This map shows the change in votes for each party compared to the
+          previous presidential election. The symbol is composed of three parts:
+          a red circle for Republican change, a blue circle for Democratic
+          change, and a yellow circle for third party change.
         </p>
-        <img src="../change-legend-2.png" className="legend" alt="Legend" />
+        <div className="legendElement">
+          <img
+            src="../legend-change-parties.png"
+            className="legend"
+            alt="Legend"
+            style={{ width: "300px" }}
+          />
+        </div>
+        <p>
+          Solid circles indicate an increase in votes for that party compared to
+          the previous election. Hollow circles indicate a decrease in votes for
+          that party compared to the previous election. The size of each circle
+          indicates the magnitude of change, with larger circles indicating a
+          larger change in votes.
+        </p>
+        <div className="legendElement">
+          <img
+            src="../legend-change.png"
+            className="legend"
+            alt="Legend"
+            style={{ width: "180px" }}
+          />
+        </div>
       </CalciteBlock>
     </>
   );

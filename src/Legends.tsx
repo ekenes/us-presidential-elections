@@ -10,6 +10,12 @@ import "@esri/calcite-components/dist/components/calcite-label";
 import "@esri/calcite-components/dist/components/calcite-slider";
 import { CalciteLabel, CalciteSlider } from "@esri/calcite-components-react";
 import { useEffect, useState } from "react";
+import ChangeExamples from "./legendComponents/ChangeExamples";
+import SwingExamples from "./legendComponents/SwingExamples";
+import SwingLegend from "./legendComponents/SwingLegend";
+import LeanLegend from "./legendComponents/LeanLegend";
+import LeanExamples from "./legendComponents/LeanExamples";
+import WinnerLegend from "./legendComponents/WinnerLegend";
 
 export interface LegendsProps {
   rendererType: "winner" | "winner-lean" | "swing" | "trend" | "change";
@@ -18,7 +24,7 @@ export interface LegendsProps {
 }
 
 function Legends(props: LegendsProps) {
-  const { onYearInput, mapReferenceElement, rendererType } = props;
+  const { onYearInput, rendererType } = props;
 
   const [year, setYear] = useState<number>(2024);
 
@@ -51,7 +57,7 @@ function Legends(props: LegendsProps) {
               snap
             ></CalciteSlider>
           </div>
-          <ArcgisLegend />
+          <WinnerLegend />
         </>
       );
       break;
@@ -78,7 +84,8 @@ function Legends(props: LegendsProps) {
               snap
             ></CalciteSlider>
           </div>
-          <ArcgisLegend referenceElement={mapReferenceElement}></ArcgisLegend>
+          <LeanLegend />
+          <LeanExamples />
         </>
       );
       break;
@@ -105,7 +112,8 @@ function Legends(props: LegendsProps) {
               snap
             ></CalciteSlider>
           </div>
-          <ArcgisLegend />
+          <SwingLegend />
+          <SwingExamples />
         </>
       );
       break;
@@ -161,6 +169,7 @@ function Legends(props: LegendsProps) {
             ></CalciteSlider>
           </div>
           <ChangeLegend />
+          <ChangeExamples />
         </>
       );
       break;

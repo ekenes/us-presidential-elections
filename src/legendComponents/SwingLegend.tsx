@@ -1,0 +1,40 @@
+import "../App.css";
+
+import "@esri/calcite-components/dist/components/calcite-block";
+import { CalciteBlock } from "@esri/calcite-components-react";
+
+function SwingLegend() {
+  return (
+    <>
+      <CalciteBlock heading="Legend" collapsible open>
+        <p>
+          This map shows the swing in support from the selected election
+          compared to the previous. The magnitude of the swing is represented by
+          the degree and orientation of the arrow.
+        </p>
+        <div className="legendElement">
+          <img
+            src="../legend-swing.png"
+            className="legend"
+            alt="Legend"
+            style={{ width: "300px" }}
+          />
+        </div>
+        <p>
+          The size of each arrow corresponds to the change in votes in favor of
+          the party with the most change.
+        </p>
+        <div className="legendElement">
+          <img
+            src="../legend-swing-arrow.png"
+            className="legend"
+            alt="Legend"
+            style={{ width: "180px" }}
+          />
+        </div>
+      </CalciteBlock>
+    </>
+  );
+}
+
+export default SwingLegend;
