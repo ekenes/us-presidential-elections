@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+# Visualize voting trends with more than 20 years of U.S. election data
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This talk explores various approaches to visualizing voting trends in U.S. presidential elections from 2000-2024 using an interactive web map. The app allows users to view election results from year to year using animations and composite multivariate symbols. I’ll introduce a map style that combines results from multiple elections into a single symbol, making it easy to see how support for a political party grew, shrunk, or maintained constant support over time in various regions of the United States. I’ll summarize the strengths and weaknesses of each visualization approach and propose when each visualization style is appropriate for specific audiences and situations.
 
-Currently, two official plugins are available:
+## Authors
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Kristian Ekenes
 
-## Expanding the ESLint configuration
+- [Email](mailto:kekenes@esri.com)
+- [LinkedIn](https://www.linkedin.com/in/kristian-ekenes/)
+- [GitHub](https://github.com/ekenes)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Video
 
-- Configure the top-level `parserOptions` property like this:
+Will share when posted
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Slides
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+[Download PDF slides](https://raw.githubusercontent.com/ekenes/nacis-2025/refs/heads/main/slides.pdf)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Web app - U.S. Presidential Election Trends (2000-2024)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- [Live app](https://ekenes.github.io/us-presidential-elections/) (best viewed on desktop)
+- [Code](https://github.com/ekenes/us-presidential-elections)
+
+## Article describing process
+
+- [Visualize voting trends in 20 years’ worth of U.S. election data](https://www.esri.com/arcgis-blog/products/js-api-arcgis/mapping/visualize-voting-trends-in-20-years-worth-of-u-s-election-data)
+
+## Additional Resources
+
+- [Visualize electoral swing using composite symbols](https://www.esri.com/arcgis-blog/products/js-api-arcgis/mapping/visualize-electoral-swing-using-composite-symbols)
+- [Electoral swing in the 2020 U.S. presidential election](https://www.esri.com/arcgis-blog/products/js-api-arcgis/mapping/electoral-swing-in-the-2020-u-s-presidential-election)
+- [Mapping large datasets on the web](https://www.esri.com/arcgis-blog/products/js-api-arcgis/mapping/mapping-large-datasets-on-the-web)
+- [Mapping change and progress with dynamic multivariate composite symbols - Kristian Ekenes, Esri](https://www.youtube.com/watch?v=Q28OL6F3fQs)
