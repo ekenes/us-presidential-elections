@@ -29,9 +29,9 @@ esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 const rendererTypesLayerTitles: { [key: string]: string } = {
   winner: "Winner",
   "winner-lean": "Winner - with lean",
-  swing: "Swing - dynamic rotation",
+  swing: "Swing",
   change: "Change - all parties",
-  trend: "20-year trend",
+  trend: "Trend",
 };
 
 function App() {
@@ -113,7 +113,7 @@ function App() {
       winnerLeanStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
 
       const swingGroupLayer = webmap.allLayers.find(
-        (layer) => layer.title === "Swing - dynamic rotation"
+        (layer) => layer.title === "Swing"
       ) as __esri.GroupLayer;
       const swingCountyLayer = swingGroupLayer.layers.find(
         (layer) => layer.title === "Counties"
@@ -122,7 +122,7 @@ function App() {
     }
 
     const trendGroupLayer = webmap.allLayers.find(
-      (layer) => layer.title === "20-year trend"
+      (layer) => layer.title === "Trend"
     ) as __esri.GroupLayer;
 
     if (trendGroupLayer) {

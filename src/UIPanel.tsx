@@ -29,9 +29,9 @@ export interface UIPanelProps {
 const rendererTypesLayerTitles: { [key: string]: string } = {
   winner: "Winner",
   "winner-lean": "Winner with lean",
-  swing: "Swing - dynamic rotation",
+  swing: "Swing",
   change: "Change - all parties",
-  trend: "20-year trend",
+  trend: "Trend",
 };
 
 function UIPanel(props: UIPanelProps) {
