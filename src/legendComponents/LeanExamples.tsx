@@ -47,22 +47,6 @@ function LeanExamples() {
               </span>
             </div>
           </CalciteCarouselItem>
-          <CalciteCarouselItem label="Dramatic Republican swing">
-            <div className="custom-content">
-              <img
-                className="examples"
-                src="./swing-strong-r.png"
-                alt="Dramatic Republican swing"
-                style={{ width: "400px" }}
-              />
-              <span>
-                <b>Dramatic Republican swing</b>. Many rural counties in the
-                midwest tend to have dramatic swings toward Republican support
-                when an incumbent Democratic president (who performed well in
-                those same counties) is running for re-election.
-              </span>
-            </div>
-          </CalciteCarouselItem>
         </CalciteCarousel>
       </CalciteBlock>
     </>
