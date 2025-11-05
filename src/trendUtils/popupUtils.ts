@@ -15,6 +15,9 @@ import {
   stateFieldPrefix,
   results,
   validYears,
+  tableClass,
+  headTrClass,
+  tdPadding,
 } from "../config";
 
 function numberToText(num: number): string {
@@ -76,13 +79,11 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
         const container = document.createElement("div");
         container.id = "electoral-vote-results";
 
-        let evTable = "<table class='esri-widget popup'>";
-        evTable +=
-          "<tr class='head'><td>Year</td><td>Republican</td><td>Votes</td><td>+/-</td><td>Democrat</td><td>Votes</td><td>+/-</td></tr>";
+        let evTable = `<table ${tableClass}>`;
+        evTable += `<tr ${headTrClass}><td ${tdPadding}>Year</td><td ${tdPadding}>Republican</td><td ${tdPadding}>Votes</td><td ${tdPadding}>+/-</td><td ${tdPadding}>Democrat</td><td ${tdPadding}>Votes</td><td ${tdPadding}>+/-</td></tr>`;
 
-        let pvTable = "<table class='esri-widget popup'>";
-        pvTable +=
-          "<tr class='head'><td>Year</td><td>Republican</td><td>Votes</td><td>%</td><td>Democrat</td><td>Votes</td><td>%</td></tr>";
+        let pvTable = `<table ${tableClass}>`;
+        pvTable += `<tr ${headTrClass}><td ${tdPadding}>Year</td><td ${tdPadding}>Republican</td><td ${tdPadding}>Votes</td><td ${tdPadding}>%</td><td ${tdPadding}>Democrat</td><td ${tdPadding}>Votes</td><td ${tdPadding}>%</td></tr>`;
 
         const candidates = JSON.parse(JSON.stringify(results));
 
@@ -97,14 +98,14 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
               name: candidates[y].republican.candidate,
               votes: candidates[y].republican.electoralVotes,
               weight: "normal",
-              class: "none",
+              class: "",
               margin: "-",
             },
             d: {
               name: candidates[y].democrat.candidate,
               votes: candidates[y].democrat.electoralVotes,
               weight: "normal",
-              class: "none",
+              class: "",
               margin: "-",
             },
           };
@@ -114,14 +115,14 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
               name: candidates[y].republican.candidate,
               votes: graphic.attributes[`rep_${y}`],
               weight: "normal",
-              class: "none",
+              class: "",
               margin: "-",
             },
             d: {
               name: candidates[y].democrat.candidate,
               votes: graphic.attributes[`dem_${y}`],
               weight: "normal",
-              class: "none",
+              class: "",
               margin: "-",
             },
           };
@@ -133,10 +134,10 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
           evResults[evWinner].weight = "bolder";
 
           if (evWinner === "r") {
-            evResults.r.class = "rep";
+            evResults.r.class = "background-color: rgba(220, 75, 0, 0.08);";
           }
           if (evWinner === "d") {
-            evResults.d.class = "dem";
+            evResults.d.class = "background-color: rgba(60, 108, 204, 0.08);";
           }
 
           const allPVvotes = [pvResults.r.votes, pvResults.d.votes];
@@ -146,10 +147,10 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
           pvResults[pvWinner].weight = "bolder";
 
           if (pvWinner === "r") {
-            pvResults.r.class = "rep";
+            pvResults.r.class = "background-color: rgba(220, 75, 0, 0.08);";
           }
           if (pvWinner === "d") {
-            pvResults.d.class = "dem";
+            pvResults.d.class = "background-color: rgba(60, 108, 204, 0.08);";
           }
 
           const allEVvotesSorted = allEVvotes.sort((a, b) => b - a);
@@ -177,46 +178,46 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
           pvResults[pvWinner].margin = marginPVtotal;
 
           let evtr = "";
-          evtr += `<tr><td>${y}</td>`;
+          evtr += `<tr><td ${tdPadding}>${y}</td>`;
 
-          evtr += `<td class='${evResults.r.class}'><span style='color:${red}; font-weight: ${evResults.r.weight}'>${evResults.r.name}</span></td>`;
-          evtr += `<td class='${
+          evtr += `<td style='${evResults.r.class}'><span style='color:${red}; font-weight: ${evResults.r.weight}'>${evResults.r.name}</span></td>`;
+          evtr += `<td style='${
             evResults.r.class
           }'><span style='color:${red}; font-weight: ${
             evResults.r.weight
           }'>${numberToText(evResults.r.votes)}</span></td>`;
-          evtr += `<td class='${evResults.r.class}'><span style='color:${red}; font-weight: ${evResults.r.weight}'>${evResults.r.margin}</span></td>`;
+          evtr += `<td style='${evResults.r.class}'><span style='color:${red}; font-weight: ${evResults.r.weight}'>${evResults.r.margin}</span></td>`;
 
-          evtr += `<td class='${evResults.d.class}'><span style='color:${blue}; font-weight: ${evResults.d.weight}'>${evResults.d.name}</span></td>`;
-          evtr += `<td class='${
+          evtr += `<td style='${evResults.d.class}'><span style='color:${blue}; font-weight: ${evResults.d.weight}'>${evResults.d.name}</span></td>`;
+          evtr += `<td style='${
             evResults.d.class
           }'><span style='color:${blue}; font-weight: ${
             evResults.d.weight
           }'>${numberToText(evResults.d.votes)}</span></td>`;
-          evtr += `<td class='${evResults.d.class}'><span style='color:${blue}; font-weight: ${evResults.d.weight}'>${evResults.d.margin}</span></td>`;
+          evtr += `<td style='${evResults.d.class}'><span style='color:${blue}; font-weight: ${evResults.d.weight}'>${evResults.d.margin}</span></td>`;
 
           evtr += "</tr>";
 
           evTable += evtr;
 
           let pvtr = "";
-          pvtr += `<tr><td>${y}</td>`;
+          pvtr += `<tr><td ${tdPadding}>${y}</td>`;
 
-          pvtr += `<td class='${pvResults.r.class}'><span style='color:${red}; font-weight: ${pvResults.r.weight}'>${pvResults.r.name}</span></td>`;
-          pvtr += `<td class='${
+          pvtr += `<td style='${pvResults.r.class}'><span style='color:${red}; font-weight: ${pvResults.r.weight}'>${pvResults.r.name}</span></td>`;
+          pvtr += `<td style='${
             pvResults.r.class
           }'><span style='color:${red}; font-weight: ${
             pvResults.r.weight
           }'>${numberToText(pvResults.r.votes)}</span></td>`;
-          pvtr += `<td class='${pvResults.r.class}'><span style='color:${red}; font-weight: ${pvResults.r.weight}'>${pvResults.r.margin}</span></td>`;
+          pvtr += `<td style='${pvResults.r.class}'><span style='color:${red}; font-weight: ${pvResults.r.weight}'>${pvResults.r.margin}</span></td>`;
 
-          pvtr += `<td class='${pvResults.d.class}'><span style='color:${blue}; font-weight: ${pvResults.d.weight}'>${pvResults.d.name}</span></td>`;
-          pvtr += `<td class='${
+          pvtr += `<td style='${pvResults.d.class}'><span style='color:${blue}; font-weight: ${pvResults.d.weight}'>${pvResults.d.name}</span></td>`;
+          pvtr += `<td style='${
             pvResults.d.class
           }'><span style='color:${blue}; font-weight: ${
             pvResults.d.weight
           }'>${numberToText(pvResults.d.votes)}</span></td>`;
-          pvtr += `<td class='${pvResults.d.class}'><span style='color:${blue}; font-weight: ${pvResults.d.weight}'>${pvResults.d.margin}</span></td>`;
+          pvtr += `<td style='${pvResults.d.class}'><span style='color:${blue}; font-weight: ${pvResults.d.weight}'>${pvResults.d.margin}</span></td>`;
 
           pvtr += "</tr>";
 
@@ -440,8 +441,8 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
             };
 
 
-            var table = "<table class='esri-widget popup'>";
-            table += "<tr class='head'><td>Year</td><td>Republican</td><td>Votes</td><td>%</td><td>Democrat</td><td>Votes</td><td>%</td></tr>";
+            var table = "<table ${tableClass}>";
+            table += "<tr ${headTrClass}><td ${tdPadding}>Year</td><td ${tdPadding}>Republican</td><td ${tdPadding}>Votes</td><td ${tdPadding}>%</td><td ${tdPadding}>Democrat</td><td ${tdPadding}>Votes</td><td ${tdPadding}>%</td></tr>";
 
             // var results = {};
 
@@ -483,10 +484,10 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
               results[winner].weight = "bolder";
 
               if(winner == "r"){
-                results.r.class = "rep";
+                results.r.class = "background-color: rgba(220, 75, 0, 0.08);";
               }
               if(winner == "d"){
-                results.d.class = "dem";
+                results.d.class = "background-color: rgba(60, 108, 204, 0.08);";
               }
 
 
@@ -496,18 +497,18 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
               results[winner].margin = marginPercent;
 
               var tr = "";
-              tr += \`<tr><td>\${y}</td>\`;
+              tr += \`<tr><td ${tdPadding}>\${y}</td>\`;
 
               var rColor = "rgba(${rColor.toRgba()})";
               var dColor = "rgba(${dColor.toRgba()})";
 
-              tr += \`<td class='\${results.r.class}'><span style='color:\${rColor}; font-weight: \${results.r.weight}'>\${results.r.name}</span></td>\`;
-              tr += \`<td class='\${results.r.class}'><span style='color:\${rColor}; font-weight: \${results.r.weight}'>\${Text(results.r.votes, "#,###")}</span></td>\`;
-              tr += \`<td class='\${results.r.class}'><span style='color:\${rColor}; font-weight: \${results.r.weight}'>\${results.r.margin}</span></td>\`;
+              tr += \`<td style='\${results.r.class}'><span style='color:\${rColor}; font-weight: \${results.r.weight}'>\${results.r.name}</span></td>\`;
+              tr += \`<td style='\${results.r.class}'><span style='color:\${rColor}; font-weight: \${results.r.weight}'>\${Text(results.r.votes, "#,###")}</span></td>\`;
+              tr += \`<td style='\${results.r.class}'><span style='color:\${rColor}; font-weight: \${results.r.weight}'>\${results.r.margin}</span></td>\`;
 
-              tr += \`<td class='\${results.d.class}'><span style='color:\${dColor}; font-weight: \${results.d.weight}'>\${results.d.name}</span></td>\`;
-              tr += \`<td class='\${results.d.class}'><span style='color:\${dColor}; font-weight: \${results.d.weight}'>\${Text(results.d.votes, "#,###")}</span></td>\`;
-              tr += \`<td class='\${results.d.class}'><span style='color:\${dColor}; font-weight: \${results.d.weight}'>\${results.d.margin}</span></td>\`;
+              tr += \`<td style='\${results.d.class}'><span style='color:\${dColor}; font-weight: \${results.d.weight}'>\${results.d.name}</span></td>\`;
+              tr += \`<td style='\${results.d.class}'><span style='color:\${dColor}; font-weight: \${results.d.weight}'>\${Text(results.d.votes, "#,###")}</span></td>\`;
+              tr += \`<td style='\${results.d.class}'><span style='color:\${dColor}; font-weight: \${results.d.weight}'>\${results.d.margin}</span></td>\`;
 
               tr += "</tr>";
 

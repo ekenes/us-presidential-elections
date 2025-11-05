@@ -173,6 +173,19 @@ export const fieldInfos = {
   },
 };
 
+// popup styles
+
+export const demTrStyle = "style='background-color: rgba(60, 108, 204, 0.08);'";
+export const repTrStyle = "style='background-color: rgba(220, 75, 0, 0.08);'";
+export const othTrStyle = "style='background-color: rgba(224, 206, 0, 0.08);'";
+export const tableContainerStyle =
+  "style='width: 100%; height: 100%; text-align: center;'";
+export const centerTableStyle = "style='margin: 0 auto;'";
+export const numberTdClass = "style='text-align: right; padding: 3px;";
+export const tdPadding = "style='padding: 3px;'";
+export const tableClass = "style='margin: 0 auto;'";
+export const headTrClass = "style='text-align: center; font-weight: bold;'";
+
 // Renderer config
 
 export const rColor = new Color("rgba(220, 75, 0, 1)");

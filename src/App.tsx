@@ -4,10 +4,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import "./App.css";
 
-import { setAssetPath } from "@esri/calcite-components/dist/components";
-// CDN hosted assets
-setAssetPath("https://js.arcgis.com/calcite-components/3.3.3/assets");
-
 import "@arcgis/map-components/dist/components/arcgis-map";
 
 import "@esri/calcite-components/dist/components/calcite-shell";

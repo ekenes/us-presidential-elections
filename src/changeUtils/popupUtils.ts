@@ -1,7 +1,21 @@
 import PopupTemplate from "@arcgis/core/PopupTemplate";
 import ExpressionInfo from "@arcgis/core/popup/ExpressionInfo";
 
-import { fieldInfos, dColor, rColor, oColor, results } from "../config";
+import {
+  fieldInfos,
+  dColor,
+  rColor,
+  oColor,
+  results,
+  othTrStyle,
+  repTrStyle,
+  demTrStyle,
+  tableContainerStyle,
+  numberTdClass,
+  tableClass,
+  headTrClass,
+  tdPadding,
+} from "../config";
 import {
   colorDiffPopupBase,
   votesCountyNextBase,
@@ -85,49 +99,53 @@ export const statePopupTemplate = (year: number) => {
     content: [
       new TextContent({
         text: `
-          <span style='color: {expression/winner-color}; font-weight:bolder'>{expression/winner}</span>
-          won ${fieldInfos.title.state}'s <strong>{ev_${currentYear}}</strong> electoral votes by a margin of <span style='color: {expression/winner-color}; font-weight:bolder'>{expression/winner-margin-votes}</span> votes (<span style='color: {expression/winner-color}; font-weight:bolder'>{expression/winner-margin}</span> points).
+          <span style='color: {expression/winner-color}; font-weight:bolder;'>{expression/winner}</span>
+          won ${fieldInfos.title.state}'s <strong>{ev_${currentYear}}</strong> electoral votes by a margin of <span style='color: {expression/winner-color}; font-weight:bolder;'>{expression/winner-margin-votes}</span> votes (<span style='color: {expression/winner-color}; font-weight:bolder;'>{expression/winner-margin}</span> points).
           The {expression/winner-votes} votes cast for {expression/winner} comprise
           {expression/winner-percent-state-votes} of the total votes cast in the state.
         `,
       }),
       new TextContent({
         text: `
-          <div class="table-container">
+          <div ${tableContainerStyle}>
             Votes in ${currentYear} and the change from ${previousYear}
             <br/>
             <br/>
-            <table class="esri-widget popup">
-              <tr class="head"><td>Party</td><td>Votes</td><td>+/-</td><td>%</td><td>+/-</td><td>% Change</td></tr>
+            <table ${tableClass}>
+              <tr ${headTrClass}><td ${tdPadding}>Party</td><td ${tdPadding}>Votes</td><td ${tdPadding}>+/-</td><td ${tdPadding}>%</td><td ${tdPadding}>+/-</td><td ${tdPadding}>% Change</td></tr>
 
-              <tr class="dem"><td><span style='color:${dColor}; font-weight:bolder'>${
+              <tr ${demTrStyle}>
+                <td ${tdPadding}><span style='color:${dColor}; font-weight:bolder;'>${
           results[currentYear as keyof typeof results].democrat.candidate
-        }</span></td><td class="num">{SUM_dem_${currentYear}}</td><td class="num"><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}diff${currentYear}}</span></td>
+        }</span></td>
+                <td ${numberTdClass}>{SUM_dem_${currentYear}}</td>
+                <td ${numberTdClass}><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}diff${currentYear}}</span></td>
 
-              <td class="num">{expression/demShare${currentYear}}</td>
-              <td class="num"><span style='color: {expression/dem-shift-color}'>{expression/dem${previousYear}shift${currentYear}}</span></td>
+                <td ${numberTdClass}>{expression/demShare${currentYear}}</td>
+                <td ${numberTdClass}><span style='color: {expression/dem-shift-color};'>{expression/dem${previousYear}shift${currentYear}}</span></td>
 
-              <td class="num"><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}change${currentYear}}</span></td></tr>
+                <td ${numberTdClass}><span style='color: {expression/dem-change-color};'>{expression/dem${previousYear}change${currentYear}}</span></td>
+              </tr>
 
 
-              <tr class="rep"><td><span style='color:${rColor}; font-weight:bolder'>${
+              <tr ${repTrStyle}><td ${tdPadding}><span style='color:${rColor}; font-weight:bolder'>${
           results[currentYear as keyof typeof results].republican.candidate
-        }</span></td><td class="num">{SUM_rep_${currentYear}}</td><td class="num"><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}diff${currentYear}}</span></td>
+        }</span></td><td ${numberTdClass}>{SUM_rep_${currentYear}}</td><td ${numberTdClass}><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}diff${currentYear}}</span></td>
 
-              <td class="num">{expression/repShare${currentYear}}</td>
-              <td class="num"><span style='color: {expression/rep-shift-color}'>{expression/rep${previousYear}shift${currentYear}}</span></td>
+              <td ${numberTdClass}>{expression/repShare${currentYear}}</td>
+              <td ${numberTdClass}><span style='color: {expression/rep-shift-color}'>{expression/rep${previousYear}shift${currentYear}}</span></td>
 
-              <td class="num"><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}change${currentYear}}</span></td></tr>
+              <td ${numberTdClass}><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}change${currentYear}}</span></td></tr>
 
 
-              <tr class="oth"><td><span style='color:${oColor}; font-weight:bolder'>${
+              <tr ${othTrStyle}><td ${tdPadding}><span style='color:${oColor}; font-weight:bolder'>${
           results[currentYear as keyof typeof results].other.candidate
-        }</span></td><td class="num">{SUM_oth_${currentYear}}</td><td class="num"><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}diff${currentYear}}</span></td>
+        }</span></td><td ${numberTdClass}>{SUM_oth_${currentYear}}</td><td ${numberTdClass}><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}diff${currentYear}}</span></td>
 
-              <td class="num">{expression/othShare${currentYear}}</td>
-              <td class="num"><span style='color: {expression/oth-shift-color}'>{expression/oth${previousYear}shift${currentYear}}</span></td>
+              <td ${numberTdClass}>{expression/othShare${currentYear}}</td>
+              <td ${numberTdClass}><span style='color: {expression/oth-shift-color}'>{expression/oth${previousYear}shift${currentYear}}</span></td>
 
-              <td class="num"><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}change${currentYear}}</span></td></tr>
+              <td ${numberTdClass}><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}change${currentYear}}</span></td></tr>
             </table>
           </div>
         `,
@@ -478,41 +496,41 @@ export const countyPopupTemplate = (year: number) => {
       }),
       new TextContent({
         text: `
-          <div class="table-container">
+          <div ${tableContainerStyle}>
             Votes in ${currentYear} and the change from ${previousYear}
             <br/>
             <br/>
-            <table class="esri-widget popup">
-              <tr class="head"><td>Party</td><td>Votes</td><td>+/-</td><td>%</td><td>+/-</td><td>% Change</td></tr>
+            <table ${tableClass}>
+              <tr ${headTrClass}><td ${tdPadding}>Party</td><td ${tdPadding}>Votes</td><td ${tdPadding}>+/-</td><td ${tdPadding}>%</td><td ${tdPadding}>+/-</td><td ${tdPadding}>% Change</td></tr>
 
-              <tr class="dem"><td><span style='color:${dColor}; font-weight:bolder'>${
+              <tr ${demTrStyle}><td ${tdPadding}><span style='color:${dColor}; font-weight:bolder'>${
           results[currentYear as keyof typeof results].democrat.candidate
-        }</span></td><td class="num">{${`dem_${currentYear}`}}</td><td class="num"><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}diff${currentYear}}</span></td>
+        }</span></td><td ${numberTdClass}>{${`dem_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}diff${currentYear}}</span></td>
 
-              <td class="num">{expression/demShare${currentYear}}</td>
-              <td class="num"><span style='color: {expression/dem-shift-color}'>{expression/dem${previousYear}shift${currentYear}}</span></td>
+              <td ${numberTdClass}>{expression/demShare${currentYear}}</td>
+              <td ${numberTdClass}><span style='color: {expression/dem-shift-color}'>{expression/dem${previousYear}shift${currentYear}}</span></td>
 
-              <td class="num"><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}change${currentYear}}</span></td></tr>
+              <td ${numberTdClass}><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}change${currentYear}}</span></td></tr>
 
 
-              <tr class="rep"><td><span style='color:${rColor}; font-weight:bolder'>${
+              <tr ${repTrStyle}><td ${tdPadding}><span style='color:${rColor}; font-weight:bolder'>${
           results[currentYear as keyof typeof results].republican.candidate
-        }</span></td><td class="num">{${`rep_${currentYear}`}}</td><td class="num"><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}diff${currentYear}}</span></td>
+        }</span></td><td ${numberTdClass}>{${`rep_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}diff${currentYear}}</span></td>
 
-              <td class="num">{expression/repShare${currentYear}}</td>
-              <td class="num"><span style='color: {expression/rep-shift-color}'>{expression/rep${previousYear}shift${currentYear}}</span></td>
+              <td ${numberTdClass}>{expression/repShare${currentYear}}</td>
+              <td ${numberTdClass}><span style='color: {expression/rep-shift-color}'>{expression/rep${previousYear}shift${currentYear}}</span></td>
 
-              <td class="num"><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}change${currentYear}}</span></td></tr>
+              <td ${numberTdClass}><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}change${currentYear}}</span></td></tr>
 
 
-              <tr class="oth"><td><span style='color:${oColor}; font-weight:bolder'>${
+              <tr ${othTrStyle}><td ${tdPadding}><span style='color:${oColor}; font-weight:bolder'>${
           results[currentYear as keyof typeof results].other.candidate
-        }</span></td><td class="num">{${`oth_${currentYear}`}}</td><td class="num"><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}diff${currentYear}}</span></td>
+        }</span></td><td ${numberTdClass}>{${`oth_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}diff${currentYear}}</span></td>
 
-              <td class="num">{expression/othShare${currentYear}}</td>
-              <td class="num"><span style='color: {expression/oth-shift-color}'>{expression/oth${previousYear}shift${currentYear}}</span></td>
+              <td ${numberTdClass}>{expression/othShare${currentYear}}</td>
+              <td ${numberTdClass}><span style='color: {expression/oth-shift-color}'>{expression/oth${previousYear}shift${currentYear}}</span></td>
 
-              <td class="num"><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}change${currentYear}}</span></td></tr>
+              <td ${numberTdClass}><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}change${currentYear}}</span></td></tr>
             </table>
           </div>
         `,
@@ -523,9 +541,9 @@ export const countyPopupTemplate = (year: number) => {
         title: `winner % of state votes`,
         name: `winner-percent-state-votes`,
         expression: `
-          var dem = $feature.${`dem_${currentYear}`};
-          var rep = $feature.${`rep_${currentYear}`};
-          var oth = $feature.${`oth_${currentYear}`};
+          var dem = $feature.dem_${currentYear};
+          var rep = $feature.rep_${currentYear};
+          var oth = $feature.oth_${currentYear};
           var all = [dem, rep, oth];
 
           var winnerTotal = Max(all);
@@ -579,8 +597,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Democrat change from ${previousYear}`,
         name: `dem${previousYear}change${currentYear}`,
         expression: `
-          var votesNext = $feature.${`dem_${currentYear}`};
-          var votesPrevious = $feature.${`dem_${previousYear}`};
+          var votesNext = $feature.dem_${currentYear};
+          var votesPrevious = $feature.dem_${previousYear};
           ${diffTextBase}
           return changeText;
         `,
@@ -589,8 +607,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Republican change from ${previousYear}`,
         name: `rep${previousYear}change${currentYear}`,
         expression: `
-          var votesNext = $feature.${`rep_${currentYear}`};
-          var votesPrevious = $feature.${`rep_${previousYear}`};
+          var votesNext = $feature.rep_${currentYear};
+          var votesPrevious = $feature.rep_${previousYear};
           ${diffTextBase}
           return changeText;
         `,
@@ -599,8 +617,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Other change from ${previousYear}`,
         name: `oth${previousYear}change${currentYear}`,
         expression: `
-          var votesNext = $feature.${`oth_${currentYear}`};
-          var votesPrevious = $feature.${`oth_${previousYear}`};
+          var votesNext = $feature.oth_${currentYear};
+          var votesPrevious = $feature.oth_${previousYear};
           ${diffTextBase}
           return changeText;
         `,
@@ -609,8 +627,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Democrat diff from ${previousYear}`,
         name: `dem${previousYear}diff${currentYear}`,
         expression: `
-          var votesNext = $feature.${`dem_${currentYear}`};
-          var votesPrevious = $feature.${`dem_${previousYear}`};
+          var votesNext = $feature.dem_${currentYear};
+          var votesPrevious = $feature.dem_${previousYear};
           ${diffTextBase}
           return diffText;
         `,
@@ -619,8 +637,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Republican diff from ${previousYear}`,
         name: `rep${previousYear}diff${currentYear}`,
         expression: `
-          var votesNext = $feature.${`rep_${currentYear}`};
-          var votesPrevious = $feature.${`rep_${previousYear}`};
+          var votesNext = $feature.rep_${currentYear};
+          var votesPrevious = $feature.rep_${previousYear};
           ${diffTextBase}
           return diffText;
         `,
@@ -629,8 +647,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Other diff from ${previousYear}`,
         name: `oth${previousYear}diff${currentYear}`,
         expression: `
-          var votesNext = $feature.${`oth_${currentYear}`};
-          var votesPrevious = $feature.${`oth_${previousYear}`};
+          var votesNext = $feature.oth_${currentYear};
+          var votesPrevious = $feature.oth_${previousYear};
           ${diffTextBase}
           return diffText;
         `,
@@ -639,8 +657,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Republican shift from ${previousYear}`,
         name: `rep${previousYear}shift${currentYear}`,
         expression: `
-          var votesNext = $feature.${`rep_${currentYear}`};
-          var votesPrevious = $feature.${`rep_${previousYear}`};
+          var votesNext = $feature.rep_${currentYear};
+          var votesPrevious = $feature.rep_${previousYear};
 
           ${shiftCountyTextBase(currentYear)}
         `,
@@ -649,8 +667,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Democrat shift from ${previousYear}`,
         name: `dem${previousYear}shift${currentYear}`,
         expression: `
-          var votesNext = $feature.${`dem_${currentYear}`};
-          var votesPrevious = $feature.${`dem_${previousYear}`};
+          var votesNext = $feature.dem_${currentYear};
+          var votesPrevious = $feature.dem_${previousYear};
 
           ${shiftCountyTextBase(currentYear)}
         `,
@@ -659,8 +677,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `Other shift from ${previousYear}`,
         name: `oth${previousYear}shift${currentYear}`,
         expression: `
-          var votesNext = $feature.${`oth_${currentYear}`};
-          var votesPrevious = $feature.${`oth_${previousYear}`};
+          var votesNext = $feature.oth_${currentYear};
+          var votesPrevious = $feature.oth_${previousYear};
 
           ${shiftCountyTextBase(currentYear)}
         `,
@@ -671,7 +689,7 @@ export const countyPopupTemplate = (year: number) => {
         expression: `
           ${allCountyNextBase(currentYear)}
 
-          var votes = $feature.${`rep_${currentYear}`};
+          var votes = $feature.rep_${currentYear};
 
           ${shareTextBase}
         `,
@@ -682,7 +700,7 @@ export const countyPopupTemplate = (year: number) => {
         expression: `
           ${allCountyNextBase(currentYear)}
 
-          var votes = $feature.${`dem_${currentYear}`};
+          var votes = $feature.dem_${currentYear};
 
           ${shareTextBase}
         `,
@@ -693,7 +711,7 @@ export const countyPopupTemplate = (year: number) => {
         expression: `
           ${allCountyNextBase(currentYear)}
 
-          var votes = $feature.${`oth_${currentYear}`};
+          var votes = $feature.oth_${currentYear};
 
           ${shareTextBase}
         `,
@@ -702,8 +720,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `shift-color`,
         name: `dem-shift-color`,
         expression: `
-          var votesNext = $feature.${`dem_${currentYear}`};
-          var votesPrevious = $feature.${`dem_${previousYear}`};
+          var votesNext = $feature.dem_${currentYear};
+          var votesPrevious = $feature.dem_${previousYear};
           ${shiftCounties(currentYear)}
           ${colorShiftPopupBase}
         `,
@@ -712,8 +730,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `shift-color`,
         name: `rep-shift-color`,
         expression: `
-          var votesNext = $feature.${`rep_${currentYear}`};
-          var votesPrevious = $feature.${`rep_${previousYear}`};
+          var votesNext = $feature.rep_${currentYear};
+          var votesPrevious = $feature.rep_${previousYear};
           ${shiftCounties(currentYear)}
           ${colorShiftPopupBase}
         `,
@@ -722,8 +740,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `shift-color`,
         name: `oth-shift-color`,
         expression: `
-          var votesNext = $feature.${`oth_${currentYear}`};
-          var votesPrevious = $feature.${`oth_${previousYear}`};
+          var votesNext = $feature.oth_${currentYear};
+          var votesPrevious = $feature.oth_${previousYear};
           ${shiftCounties(currentYear)}
           ${colorShiftPopupBase}
         `,
@@ -732,8 +750,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `change-color`,
         name: `dem-change-color`,
         expression: `
-          var votesNext = $feature.${`dem_${currentYear}`};
-          var votesPrevious = $feature.${`dem_${previousYear}`};
+          var votesNext = $feature.dem_${currentYear};
+          var votesPrevious = $feature.dem_${previousYear};
           ${colorDiffPopupBase}
         `,
       }),
@@ -741,8 +759,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `change-color`,
         name: `rep-change-color`,
         expression: `
-          var votesNext = $feature.${`rep_${currentYear}`};
-          var votesPrevious = $feature.${`rep_${previousYear}`};
+          var votesNext = $feature.rep_${currentYear};
+          var votesPrevious = $feature.rep_${previousYear};
           ${colorDiffPopupBase}
         `,
       }),
@@ -750,8 +768,8 @@ export const countyPopupTemplate = (year: number) => {
         title: `change-color`,
         name: `oth-change-color`,
         expression: `
-          var votesNext = $feature.${`oth_${currentYear}`};
-          var votesPrevious = $feature.${`oth_${previousYear}`};
+          var votesNext = $feature.oth_${currentYear};
+          var votesPrevious = $feature.oth_${previousYear};
           ${colorDiffPopupBase}
         `,
       }),
@@ -760,9 +778,9 @@ export const countyPopupTemplate = (year: number) => {
         name: `winner-margin`,
         expression: `
           var fields = [
-            $feature.${`dem_${currentYear}`},
-            $feature.${`rep_${currentYear}`},
-            $feature.${`oth_${currentYear}`}
+            $feature.dem_${currentYear},
+            $feature.rep_${currentYear},
+            $feature.oth_${currentYear}
           ];
 
           var top2 = Top(Reverse(Sort(fields)), 2);
@@ -777,9 +795,9 @@ export const countyPopupTemplate = (year: number) => {
         name: `winner-margin-votes`,
         expression: `
           var fields = [
-            $feature.${`dem_${currentYear}`},
-            $feature.${`rep_${currentYear}`},
-            $feature.${`oth_${currentYear}`}
+            $feature.dem_${currentYear},
+            $feature.rep_${currentYear},
+            $feature.oth_${currentYear}
           ];
 
           var top2 = Top(Reverse(Sort(fields)), 2);
