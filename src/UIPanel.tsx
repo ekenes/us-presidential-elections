@@ -8,15 +8,6 @@ import "@esri/calcite-components/dist/components/calcite-select";
 import "@esri/calcite-components/dist/components/calcite-panel";
 import "@esri/calcite-components/dist/components/calcite-shell-panel";
 
-import {
-  CalciteAction,
-  CalciteActionBar,
-  CalciteLabel,
-  CalciteOption,
-  CalcitePanel,
-  CalciteSelect,
-  CalciteShellPanel,
-} from "@esri/calcite-components-react";
 import Legends from "./Legends";
 import { useState } from "react";
 import AllResults from "./AllResults";
@@ -46,24 +37,25 @@ function UIPanel(props: UIPanelProps) {
 
   return (
     <>
-      <CalciteShellPanel slot="panel-start" displayMode="dock" widthScale="m">
-        <CalciteActionBar slot="action-bar">
-          <CalciteAction
+      <calcite-shell-panel slot="panel-start" displayMode="dock" widthScale="m">
+        <calcite-action-bar slot="action-bar">
+          <calcite-action
             data-action-id="information"
             icon="information"
             text="Information"
-          ></CalciteAction>
-        </CalciteActionBar>
-        <CalcitePanel
+          ></calcite-action>
+        </calcite-action-bar>
+        <calcite-panel
           id="tools"
           scale="m"
           heading={heading}
           data-panel-id="information"
         >
-          <CalciteLabel layout="inline">Select a variable</CalciteLabel>
+          <calcite-label layout="inline">Select a variable</calcite-label>
           <div className="slider-container">
-            <CalciteSelect
-              onCalciteSelectChange={async (event) => {
+            <calcite-select
+              label=""
+              oncalciteSelectChange={async (event) => {
                 const value = event.target.value!;
                 setRendererType(
                   value as
@@ -79,20 +71,20 @@ function UIPanel(props: UIPanelProps) {
             >
               {Object.entries(rendererTypesLayerTitles).map(
                 ([value, label]) => (
-                  <CalciteOption
+                  <calcite-option
                     key={value}
                     label={label}
                     value={value}
                     selected={value === rendererType ? true : false}
-                  ></CalciteOption>
+                  ></calcite-option>
                 )
               )}
-            </CalciteSelect>
+            </calcite-select>
           </div>
           <Legends rendererType={rendererType} onYearInput={onYearInput} />
           <AllResults />
-        </CalcitePanel>
-      </CalciteShellPanel>
+        </calcite-panel>
+      </calcite-shell-panel>
     </>
   );
 }

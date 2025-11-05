@@ -4,18 +4,12 @@ import "@esri/calcite-components/dist/components/calcite-block";
 import "@esri/calcite-components/dist/components/calcite-carousel";
 import "@esri/calcite-components/dist/components/calcite-carousel-item";
 
-import {
-  CalciteBlock,
-  CalciteCarousel,
-  CalciteCarouselItem,
-} from "@esri/calcite-components-react";
-
 function LeanExamples() {
   return (
     <>
-      <CalciteBlock heading="Examples" collapsible>
-        <CalciteCarousel label="Examples">
-          <CalciteCarouselItem label="Slight Democratic swing">
+      <calcite-block heading="Examples" collapsible>
+        <calcite-carousel label="Examples">
+          <calcite-carousel-item label="Slight Democratic swing">
             <div className="custom-content">
               <img
                 className="examples"
@@ -30,8 +24,8 @@ function LeanExamples() {
                 from Republican to Democratic in 2020.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="Dramatic Republican swing">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="Dramatic Republican swing">
             <div className="custom-content">
               <img
                 className="examples"
@@ -46,9 +40,9 @@ function LeanExamples() {
                 those same counties) is running for re-election.
               </span>
             </div>
-          </CalciteCarouselItem>
-        </CalciteCarousel>
-      </CalciteBlock>
+          </calcite-carousel-item>
+        </calcite-carousel>
+      </calcite-block>
     </>
   );
 }

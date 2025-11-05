@@ -1,12 +1,11 @@
 import "../App.css";
 
 import "@esri/calcite-components/dist/components/calcite-block";
-import { CalciteBlock } from "@esri/calcite-components-react";
 
 function SwingLegend() {
   return (
     <>
-      <CalciteBlock heading="Legend" collapsible expanded>
+      <calcite-block heading="Legend" collapsible expanded>
         <p>
           This map shows the swing in support from the selected election
           compared to the previous. The magnitude of the swing is represented by
@@ -41,7 +40,7 @@ function SwingLegend() {
             style={{ width: "180px" }}
           />
         </div>
-      </CalciteBlock>
+      </calcite-block>
     </>
   );
 }

@@ -1,16 +1,16 @@
+/// <reference types="@arcgis/map-components/types/react" />
+/// <reference types="@esri/calcite-components/types/react" />
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import "./App.css";
 
 import { setAssetPath } from "@esri/calcite-components/dist/components";
 // CDN hosted assets
-setAssetPath("https://js.arcgis.com/calcite-components/3.2.1/assets");
+setAssetPath("https://js.arcgis.com/calcite-components/3.3.3/assets");
 
 import "@arcgis/map-components/dist/components/arcgis-map";
-import { ArcgisMap } from "@arcgis/map-components-react";
 
 import "@esri/calcite-components/dist/components/calcite-shell";
-
-import { CalciteShell } from "@esri/calcite-components-react";
 
 import esriConfig from "@arcgis/core/config";
 import Popup from "@arcgis/core/widgets/Popup";
@@ -262,7 +262,7 @@ function App() {
 
   return (
     <>
-      <CalciteShell contentBehind={true}>
+      <calcite-shell contentBehind={true}>
         <h2 id="header-title" slot="header">
           {appTitle}
         </h2>
@@ -281,14 +281,14 @@ function App() {
             activeLayer.visible = true;
           }}
         />
-        <ArcgisMap
+        <arcgis-map
           id="map"
-          class="map-only"
+          className="map-only"
           map={webmap}
           ref={mapRef}
-          onArcgisViewReadyChange={initialize}
-        ></ArcgisMap>
-      </CalciteShell>
+          onarcgisViewReadyChange={initialize}
+        ></arcgis-map>
+      </calcite-shell>
     </>
   );
 }

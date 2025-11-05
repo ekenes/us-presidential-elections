@@ -4,20 +4,14 @@ import "@esri/calcite-components/dist/components/calcite-block";
 import "@esri/calcite-components/dist/components/calcite-carousel";
 import "@esri/calcite-components/dist/components/calcite-carousel-item";
 
-import {
-  CalciteBlock,
-  CalciteCarousel,
-  CalciteCarouselItem,
-} from "@esri/calcite-components-react";
-
 function ChangeExamples() {
   return (
     <>
-      <CalciteBlock heading="Examples" collapsible>
+      <calcite-block heading="Examples" collapsible>
         The following examples all represent change in presidential voting
         patterns from 2004 to 2024 in <b>Utah County, Utah</b>.
-        <CalciteCarousel label="Examples">
-          <CalciteCarouselItem label="Gradual change">
+        <calcite-carousel label="Examples">
+          <calcite-carousel-item label="Gradual change">
             <div className="custom-content">
               <img
                 className="examples"
@@ -28,8 +22,8 @@ function ChangeExamples() {
                 <b>2004</b>. Strong increase in Republican support.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="Bowtie">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="Bowtie">
             <div className="custom-content">
               <img
                 className="examples"
@@ -41,8 +35,8 @@ function ChangeExamples() {
                 increase for support for third party candidates.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="No change">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="No change">
             <div className="custom-content">
               <img
                 className="examples"
@@ -53,8 +47,8 @@ function ChangeExamples() {
                 <b>2012</b>. Strong increase in Republican support.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="Inconsistent">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="Inconsistent">
             <div className="custom-content">
               <img
                 className="examples"
@@ -67,8 +61,8 @@ function ChangeExamples() {
                 decrease in Republican support.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="Inconsistent">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="Inconsistent">
             <div className="custom-content">
               <img
                 className="examples"
@@ -80,8 +74,8 @@ function ChangeExamples() {
                 Democrats.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="Inconsistent">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="Inconsistent">
             <div className="custom-content">
               <img
                 className="examples"
@@ -93,9 +87,9 @@ function ChangeExamples() {
                 and Democrats.
               </span>
             </div>
-          </CalciteCarouselItem>
-        </CalciteCarousel>
-      </CalciteBlock>
+          </calcite-carousel-item>
+        </calcite-carousel>
+      </calcite-block>
     </>
   );
 }

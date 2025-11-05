@@ -1,5 +1,4 @@
 import "@arcgis/map-components/dist/components/arcgis-legend";
-import { ArcgisLegend } from "@arcgis/map-components-react";
 import "./App.css";
 
 import TrendLegend from "./legendComponents/TrendLegend";
@@ -8,7 +7,6 @@ import ChangeLegend from "./legendComponents/ChangeLegend";
 
 import "@esri/calcite-components/dist/components/calcite-label";
 import "@esri/calcite-components/dist/components/calcite-slider";
-import { CalciteLabel, CalciteSlider } from "@esri/calcite-components-react";
 import { useEffect, useState } from "react";
 import ChangeExamples from "./legendComponents/ChangeExamples";
 import SwingExamples from "./legendComponents/SwingExamples";
@@ -72,9 +70,9 @@ function Legends(props: LegendsProps) {
     case "winner":
       legendContent = (
         <>
-          <CalciteLabel layout="inline">Select an election year</CalciteLabel>
+          <calcite-label layout="inline">Select an election year</calcite-label>
           <div className="slider-container">
-            <CalciteSlider
+            <calcite-slider
               min={sliderMin}
               max={sliderMax}
               labelHandles
@@ -84,13 +82,13 @@ function Legends(props: LegendsProps) {
               ticks={4}
               step={4}
               value={year}
-              onCalciteSliderInput={(event) => {
+              oncalciteSliderInput={(event) => {
                 const year = event.target.value as number;
                 // onYearInput(year);
                 setYear(year);
               }}
               snap
-            ></CalciteSlider>
+            ></calcite-slider>
           </div>
           <WinnerLegend />
         </>
@@ -99,9 +97,9 @@ function Legends(props: LegendsProps) {
     case "winner-lean":
       legendContent = (
         <>
-          <CalciteLabel layout="inline">Select an election year</CalciteLabel>
+          <calcite-label layout="inline">Select an election year</calcite-label>
           <div className="slider-container">
-            <CalciteSlider
+            <calcite-slider
               min={sliderMin}
               max={sliderMax}
               labelHandles
@@ -111,13 +109,13 @@ function Legends(props: LegendsProps) {
               ticks={4}
               step={4}
               value={year}
-              onCalciteSliderInput={(event) => {
+              oncalciteSliderInput={(event) => {
                 const year = event.target.value as number;
                 // onYearInput(year);
                 setYear(year);
               }}
               snap
-            ></CalciteSlider>
+            ></calcite-slider>
           </div>
           <LeanLegend />
           <LeanExamples />
@@ -127,9 +125,9 @@ function Legends(props: LegendsProps) {
     case "swing":
       legendContent = (
         <>
-          <CalciteLabel layout="inline">Select an election year</CalciteLabel>
+          <calcite-label layout="inline">Select an election year</calcite-label>
           <div className="slider-container">
-            <CalciteSlider
+            <calcite-slider
               min={sliderMin}
               max={sliderMax}
               labelHandles
@@ -139,13 +137,13 @@ function Legends(props: LegendsProps) {
               ticks={4}
               step={4}
               value={year}
-              onCalciteSliderInput={(event) => {
+              oncalciteSliderInput={(event) => {
                 const year = event.target.value as number;
                 // onYearInput(year);
                 setYear(year);
               }}
               snap
-            ></CalciteSlider>
+            ></calcite-slider>
           </div>
           <SwingLegend />
           <SwingExamples />
@@ -155,9 +153,9 @@ function Legends(props: LegendsProps) {
     case "trend":
       legendContent = (
         <>
-          <CalciteLabel layout="inline">Select an election year</CalciteLabel>
+          <calcite-label layout="inline">Select an election year</calcite-label>
           <div className="slider-container">
-            <CalciteSlider
+            <calcite-slider
               min={sliderMin}
               max={sliderMax}
               labelHandles
@@ -167,13 +165,13 @@ function Legends(props: LegendsProps) {
               ticks={4}
               step={4}
               value={year}
-              onCalciteSliderInput={(event) => {
+              oncalciteSliderInput={(event) => {
                 const year = event.target.value as number;
                 // onYearInput(year);
                 setYear(year);
               }}
               snap
-            ></CalciteSlider>
+            ></calcite-slider>
           </div>
           <TrendLegend />
           <TrendExamples />
@@ -183,9 +181,9 @@ function Legends(props: LegendsProps) {
     case "change":
       legendContent = (
         <>
-          <CalciteLabel layout="inline">Select an election year</CalciteLabel>
+          <calcite-label layout="inline">Select an election year</calcite-label>
           <div className="slider-container">
-            <CalciteSlider
+            <calcite-slider
               min={sliderMin}
               max={sliderMax}
               labelHandles
@@ -195,13 +193,13 @@ function Legends(props: LegendsProps) {
               ticks={4}
               step={4}
               value={year}
-              onCalciteSliderInput={(event) => {
+              oncalciteSliderInput={(event) => {
                 const years = event.target.value as number;
                 // onYearInput(years);
                 setYear(years);
               }}
               snap
-            ></CalciteSlider>
+            ></calcite-slider>
           </div>
           <ChangeLegend />
           <ChangeExamples />
@@ -211,7 +209,7 @@ function Legends(props: LegendsProps) {
     default:
       legendContent = (
         <>
-          <ArcgisLegend />
+          <arcgis-legend />
         </>
       );
       break;

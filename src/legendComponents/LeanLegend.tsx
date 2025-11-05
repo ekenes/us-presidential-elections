@@ -1,12 +1,12 @@
+
 import "../App.css";
 
 import "@esri/calcite-components/dist/components/calcite-block";
-import { CalciteBlock } from "@esri/calcite-components-react";
 
 function LeanLegend() {
   return (
     <>
-      <CalciteBlock heading="Legend" collapsible expanded>
+      <calcite-block heading="Legend" collapsible expanded>
         <p>
           This map shows the winner of the election. The shade of the state
           indicates the party awarded electoral votes in the given election. The
@@ -36,7 +36,7 @@ function LeanLegend() {
             style={{ width: "180px" }}
           />
         </div>
-      </CalciteBlock>
+      </calcite-block>
     </>
   );
 }
