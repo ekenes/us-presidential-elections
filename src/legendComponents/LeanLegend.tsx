@@ -1,4 +1,3 @@
-
 import "../App.css";
 
 import "@esri/calcite-components/dist/components/calcite-block";
@@ -9,10 +8,10 @@ function LeanLegend() {
       <calcite-block heading="Legend" collapsible expanded>
         <p>
           This map shows the winner of the election. The shade of the state
-          indicates the party awarded electoral votes in the given election. The
-          arrows represent how far right or left the state leaned in that
-          election in terms of the proportion of votes received by the winning
-          party.
+          indicates the party that was awarded electoral votes in the given
+          election. The orientation of the arrows represent how far right or
+          left the state (or county) leaned in terms of the proportion of votes
+          received by the winning party.
         </p>
         <div className="legendElement">
           <b>Lean</b>

@@ -36,8 +36,8 @@ function LeanExamples() {
               <span>
                 <b>Dramatic Republican swing</b>. Many rural counties in the
                 midwest tend to have dramatic swings toward Republican support
-                when an incumbent Democratic president (who performed well in
-                those same counties) is running for re-election.
+                when an incumbent Democratic president (who previously performed
+                well in those same counties) is running for re-election.
               </span>
             </div>
           </calcite-carousel-item>
