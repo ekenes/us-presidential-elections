@@ -29,12 +29,14 @@ function Legends(props: LegendsProps) {
   const [year, setYear] = useState<number>(defaultMax);
   const [sliderMin, setSliderMin] = useState<number>(defaultMin);
   const [sliderMax, setSliderMax] = useState<number>(defaultMax);
+  const [ticks, setTicks] = useState<number>(4);
 
   useEffect(() => {
     onYearInput(year);
     if (rendererType === "winner" || rendererType === "winner-lean") {
       setSliderMin(defaultMin);
       setSliderMax(defaultMax);
+      setTicks(4);
       if (year < defaultMin) {
         setYear(defaultMin);
         onYearInput(defaultMin);
@@ -45,6 +47,7 @@ function Legends(props: LegendsProps) {
     } else if (rendererType === "swing" || rendererType === "change") {
       setSliderMin(defaultMin);
       setSliderMax(defaultMax);
+      setTicks(4);
       if (year < defaultMin) {
         setYear(defaultMin);
         onYearInput(defaultMin);
@@ -55,6 +58,7 @@ function Legends(props: LegendsProps) {
     } else if (rendererType === "trend") {
       setSliderMin(2016);
       setSliderMax(defaultMax);
+      setTicks(2);
       if (year < 2016) {
         setYear(2016);
         onYearInput(2016);
@@ -79,7 +83,7 @@ function Legends(props: LegendsProps) {
               labelTicks
               maxLabel={sliderMax.toString()}
               minLabel={sliderMin.toString()}
-              ticks={4}
+              ticks={ticks}
               step={4}
               value={year}
               oncalciteSliderInput={(event) => {
@@ -106,7 +110,7 @@ function Legends(props: LegendsProps) {
               labelTicks
               maxLabel={sliderMax.toString()}
               minLabel={sliderMin.toString()}
-              ticks={4}
+              ticks={ticks}
               step={4}
               value={year}
               oncalciteSliderInput={(event) => {
@@ -134,7 +138,7 @@ function Legends(props: LegendsProps) {
               labelTicks
               maxLabel={sliderMax.toString()}
               minLabel={sliderMin.toString()}
-              ticks={4}
+              ticks={ticks}
               step={4}
               value={year}
               oncalciteSliderInput={(event) => {
@@ -162,7 +166,7 @@ function Legends(props: LegendsProps) {
               labelTicks
               maxLabel={sliderMax.toString()}
               minLabel={sliderMin.toString()}
-              ticks={4}
+              ticks={ticks}
               step={4}
               value={year}
               oncalciteSliderInput={(event) => {
@@ -190,7 +194,7 @@ function Legends(props: LegendsProps) {
               labelTicks
               maxLabel={sliderMax.toString()}
               minLabel={sliderMin.toString()}
-              ticks={4}
+              ticks={ticks}
               step={4}
               value={year}
               oncalciteSliderInput={(event) => {
