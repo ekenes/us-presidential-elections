@@ -111,10 +111,15 @@ function App() {
       const swingGroupLayer = webmap.allLayers.find(
         (layer) => layer.title === "Swing"
       ) as __esri.GroupLayer;
+
+      const swingStateLayer = swingGroupLayer.layers.find(
+        (layer) => layer.title === "States"
+      ) as FeatureLayer;
       const swingCountyLayer = swingGroupLayer.layers.find(
         (layer) => layer.title === "Counties"
       ) as FeatureLayer;
       swingCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
+      swingStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
     }
 
     const trendGroupLayer = webmap.allLayers.find(
