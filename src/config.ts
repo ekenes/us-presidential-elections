@@ -1,9 +1,28 @@
 import Color from "@arcgis/core/Color";
 import Graphic from "@arcgis/core/Graphic";
 import Point from "@arcgis/core/geometry/Point";
+import Extent from "@arcgis/core/geometry/Extent";
 
-export const webmapId = "6e7cf1cccdbd4711b9c79d568d8c108b";
 export const appTitle = "U.S. Presidential Election Trends (2000-2024)";
+export const webmapId = "6e7cf1cccdbd4711b9c79d568d8c108b";
+export const akWebmapId = "1005219944034967a285bfef7d1dec32";
+export const hiWebmapId = "1c13f94b20a74d0499c4d15b16034c3b";
+
+export const akExtent = new Extent({
+  spatialReference: { wkid: 102006 },
+  xmin: -1749768.5309133371,
+  ymin: 44367.01071232185,
+  xmax: 1671745.042054886,
+  ymax: 2871867.810595784,
+});
+
+export const hiExtent = new Extent({
+  spatialReference: { wkid: 102006 },
+  xmin: -827832.6722244895,
+  ymin: -3316473.2355820592,
+  xmax: -31490.98511627532,
+  ymax: -2796639.078719753,
+});
 
 export const maxScale = 4622324 / 16;
 export const trendReferenceScale = 2311162;
@@ -172,6 +191,19 @@ export const fieldInfos = {
     country: `U.S. Presidential Election Results ${startYear}-${endYear}`,
   },
 };
+
+// popup styles
+
+export const demTrStyle = "style='background-color: rgba(60, 108, 204, 0.08);'";
+export const repTrStyle = "style='background-color: rgba(220, 75, 0, 0.08);'";
+export const othTrStyle = "style='background-color: rgba(224, 206, 0, 0.08);'";
+export const tableContainerStyle =
+  "style='margin: 0 auto; width: 100%; height: 100%; text-align: center;'";
+export const centerTableStyle = "style='margin: 0 auto;'";
+export const numberTdClass = "style='text-align: right; padding: 3px;'";
+export const tdPadding = "style='padding: 3px;'";
+export const tableClass = "style='margin: 0 auto;'";
+export const headTrClass = "style='text-align: center; font-weight: bold;'";
 
 // Renderer config
 

@@ -4,18 +4,12 @@ import "@esri/calcite-components/dist/components/calcite-block";
 import "@esri/calcite-components/dist/components/calcite-carousel";
 import "@esri/calcite-components/dist/components/calcite-carousel-item";
 
-import {
-  CalciteBlock,
-  CalciteCarousel,
-  CalciteCarouselItem,
-} from "@esri/calcite-components-react";
-
 function TrendExamples() {
   return (
     <>
-      <CalciteBlock heading="Examples" collapsible>
-        <CalciteCarousel label="Examples">
-          <CalciteCarouselItem label="Gradual change">
+      <calcite-block heading="Examples" collapsible>
+        <calcite-carousel label="Examples">
+          <calcite-carousel-item label="Gradual change">
             <div className="custom-content">
               <img
                 className="examples"
@@ -30,8 +24,8 @@ function TrendExamples() {
                 increased support for Democrats in 2012, 2016, and 2020.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="Bowtie">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="Bowtie">
             <div className="custom-content">
               <img className="examples" src="./flip.png" alt="Bowtie" />
               <span>
@@ -42,8 +36,8 @@ function TrendExamples() {
                 in the symbol.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="No change">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="No change">
             <div className="custom-content">
               <img className="examples" src="./solid-r.png" alt="No change" />
               <span>
@@ -55,8 +49,8 @@ function TrendExamples() {
                 elections.
               </span>
             </div>
-          </CalciteCarouselItem>
-          <CalciteCarouselItem label="Inconsistent">
+          </calcite-carousel-item>
+          <calcite-carousel-item label="Inconsistent">
             <div className="custom-content">
               <img className="examples" src="./contested.png" alt="Contested" />
               <span>
@@ -67,9 +61,9 @@ function TrendExamples() {
                 otherwise sided with Republicans in other elections.
               </span>
             </div>
-          </CalciteCarouselItem>
-        </CalciteCarousel>
-      </CalciteBlock>
+          </calcite-carousel-item>
+        </calcite-carousel>
+      </calcite-block>
     </>
   );
 }
