@@ -1,0 +1,2 @@
+import{es as o}from"./index-Dbb7O7mW.js";import"./Point2D-DewhMC-H.js";import{H as c}from"./ProjectionTransformation-BjICI2__.js";const r=new c;function a(e,n){return r.accelerateGeometry(e,n,1)}function p(e,n,t){return r.execute(e,n,t,null)}function l(e,n,t,u){const s=r.executeMany(new o(e),new o([n]),t,null,u);return Array.from(s)}function w(){return r.supportsCurves()}export{p as o,w as s,a as t,l as u};
+//# sourceMappingURL=operatorIntersection-BtqeLb42.js.map

@@ -1,0 +1,2 @@
+import{M as a,el as s}from"./index-Dbb7O7mW.js";function o(e){var i,l;const t="metric";if(e==null)return t;const r=e.map,n=(r&&"portalItem"in r?(i=r.portalItem)==null?void 0:i.portal:null)??a.getDefault();switch(((l=n.user)==null?void 0:l.units)??n.units){case t:return t;case"english":return"imperial"}return s(e.spatialReference)??t}export{o as e};
+//# sourceMappingURL=getDefaultUnitForView-D_xKnKLZ.js.map
