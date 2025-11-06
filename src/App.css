@@ -78,3 +78,19 @@ calcite-label {
   display: grid;
   place-items: center;
 }
+
+#ak-view {
+  height: 250px;
+  width: 300px;
+}
+
+#hi-view {
+  height: 200px;
+  width: 300px;
+}
+
+.inset-views {
+  background-color: white;
+  padding: 5px;
+  border: 1px solid black;
+}
