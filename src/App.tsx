@@ -9,7 +9,6 @@ import "@arcgis/map-components/dist/components/arcgis-map";
 import "@esri/calcite-components/dist/components/calcite-shell";
 
 import esriConfig from "@arcgis/core/config";
-import Popup from "@arcgis/core/widgets/Popup";
 
 import { useRef } from "react";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
@@ -44,6 +43,7 @@ function App() {
   const mapRef = useRef<HTMLArcgisMapElement | null>(null);
   const akMapRef = useRef<HTMLArcgisMapElement | null>(null);
   const hiMapRef = useRef<HTMLArcgisMapElement | null>(null);
+  const featuresRef = useRef<HTMLArcgisFeaturesElement | null>(null);
 
   const webmap = new WebMap({
     portalItem: {
@@ -203,14 +203,6 @@ function App() {
         }
       });
     }
-
-    view.popup = new Popup();
-    view.popup.dockEnabled = true;
-    view.popup.dockOptions = {
-      buttonEnabled: false,
-      breakpoint: false,
-      position: "top-right",
-    };
 
     if (
       (mapElement?.map as WebMap)?.portalItem?.title ===
@@ -414,10 +406,27 @@ function App() {
           onarcgisViewReadyChange={() => {
             initialize(mapRef.current!);
           }}
+          popupDisabled={true}
+          onarcgisViewClick={(event) => {
+            if (!featuresRef.current || !mapRef.current) return;
+            mapRef.current!.hitTest(event.detail).then((response) => {
+              const graphics = response.results
+                .filter(({ type }) => {
+                  return type === "graphic";
+                })
+                .map((result) => (result as __esri.MapViewGraphicHit).graphic);
+
+              featuresRef.current!.features = [graphics[1]];
+              featuresRef.current!.view = mapRef.current!.view;
+              featuresRef.current!.visible = true;
+            });
+          }}
         >
-          {/* <div id="ak-view" slot="bottom-left">
-            I'm testing to see if this works
-          </div> */}
+          <arcgis-features
+            ref={featuresRef}
+            slot="top-right"
+            visible={false}
+          ></arcgis-features>
           <arcgis-map
             id="ak-view"
             className="inset-views"
@@ -426,9 +435,22 @@ function App() {
             extent={akExtent}
             onarcgisViewReadyChange={() => {
               initialize(akMapRef.current!);
-              akMapRef.current!.view!.watch("center", () => {
-                console.log(view.scale);
-                console.log(JSON.stringify(view.center));
+            }}
+            popupDisabled={true}
+            onarcgisViewClick={(event) => {
+              if (!featuresRef.current || !akMapRef.current) return;
+              akMapRef.current!.hitTest(event.detail).then((response) => {
+                const graphics = response.results
+                  .filter(({ type }) => {
+                    return type === "graphic";
+                  })
+                  .map(
+                    (result) => (result as __esri.MapViewGraphicHit).graphic
+                  );
+
+                featuresRef.current!.features = [graphics[0]];
+                featuresRef.current!.view = akMapRef.current!.view;
+                featuresRef.current!.visible = true;
               });
             }}
             onBlur={() => {
@@ -460,6 +482,24 @@ function App() {
             extent={hiExtent}
             onarcgisViewReadyChange={() => {
               initialize(hiMapRef.current!);
+            }}
+            popupDisabled={true}
+            onarcgisViewClick={(event) => {
+              if (!featuresRef.current || !mapRef.current) return;
+              mapRef.current!.hitTest(event.detail).then((response) => {
+                const graphics = response.results
+                  .filter(({ type }) => {
+                    return type === "graphic";
+                  })
+                  .map(
+                    (result) => (result as __esri.MapViewGraphicHit).graphic
+                  );
+
+                console.log(graphics);
+                featuresRef.current!.features = [graphics[0]];
+                featuresRef.current!.view = mapRef.current!.view;
+                featuresRef.current!.visible = true;
+              });
             }}
             onBlur={() => {
               const hiElement = hiMapRef.current!;
