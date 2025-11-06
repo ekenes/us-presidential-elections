@@ -423,13 +423,11 @@ function App() {
             className="inset-views"
             map={akWebmap}
             ref={akMapRef}
-            extent={akExtent}
+            scale={38000000}
+            center={akExtent.center}
+            popupDisabled={true}
             onarcgisViewReadyChange={() => {
               initialize(akMapRef.current!);
-              akMapRef.current!.view!.watch("center", () => {
-                console.log(view.scale);
-                console.log(JSON.stringify(view.center));
-              });
             }}
             onBlur={() => {
               const akElement = akMapRef.current!;
@@ -457,7 +455,9 @@ function App() {
             className="inset-views"
             map={hiWebmap}
             ref={hiMapRef}
-            extent={hiExtent}
+            scale={10833054}
+            center={hiExtent.center}
+            popupDisabled={true}
             onarcgisViewReadyChange={() => {
               initialize(hiMapRef.current!);
             }}
