@@ -9,17 +9,12 @@ body {
 
 #root,
 arcgis-map {
-  /* height: 49%; */
   width: 100%;
 }
 
 #header-title {
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.esri-popup__main-container {
-  width: 500px;
 }
 
 calcite-shell-panel {
@@ -31,9 +26,7 @@ calcite-shell-panel {
   background-color: white;
   font-size: 18pt;
   font-weight: 400;
-  /* width: 250px; */
   display: flex;
-  /* flex-direction: #{column; */
   justify-content: space-between;
 }
 

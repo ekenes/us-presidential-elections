@@ -5,11 +5,11 @@
 import "./App.css";
 
 import "@arcgis/map-components/dist/components/arcgis-map";
+import "@arcgis/map-components/dist/components/arcgis-popup";
 
 import "@esri/calcite-components/dist/components/calcite-shell";
 
 import esriConfig from "@arcgis/core/config";
-import Popup from "@arcgis/core/widgets/Popup";
 
 import { useRef } from "react";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
@@ -203,14 +203,6 @@ function App() {
         }
       });
     }
-
-    view.popup = new Popup();
-    view.popup.dockEnabled = true;
-    view.popup.dockOptions = {
-      buttonEnabled: false,
-      breakpoint: false,
-      position: "top-right",
-    };
 
     if (
       (mapElement?.map as WebMap)?.portalItem?.title ===
@@ -415,9 +407,15 @@ function App() {
             initialize(mapRef.current!);
           }}
         >
-          {/* <div id="ak-view" slot="bottom-left">
-            I'm testing to see if this works
-          </div> */}
+          <arcgis-popup
+            slot="popup"
+            alignment="top-right"
+            dockEnabled
+            dockOptions={{
+              breakpoint: false,
+              buttonEnabled: false,
+            }}
+          ></arcgis-popup>
           <arcgis-map
             id="ak-view"
             className="inset-views"
