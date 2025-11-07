@@ -1,2 +1,0 @@
-import{D as o,ht as c,c4 as u,hu as f}from"./index-Dbb7O7mW.js";async function y(n,t,s,r){const i=o(n),{data:a}=await c(i,u.from(t),s,r);return a.count}async function d(n,t,s,r){const i=o(n),{data:a}=await f(i,u.from(t),s,r);return a.objectIds??m(a.uniqueIds)??[]}function e(n){return!Array.isArray(n[0])}function m(n){if(n)return e(n)?n:n.map(t=>JSON.stringify(t))}export{d as i,y as s};
-//# sourceMappingURL=executeForIds-CQynkqZv.js.map

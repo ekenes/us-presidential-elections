@@ -1,0 +1,2 @@
+import{eB as o}from"./index-Wrx4-yWN.js";import"./Point2D-CDWHr2sJ.js";import{E as s}from"./ProjectionTransformation-BkPiU8OU.js";const t=new s;function f(n,r,e){return t.execute(n,r,e,null)}function m(n,r,e){const u=t.executeMany(new o(n),r,e,null);return Array.from(u)}function p(n,r,e){return t.isSimpleAsFeature(n,r,e,null,null)}function a(){return t.supportsCurves()}export{f as e,p as o,a as s,m as u};
+//# sourceMappingURL=operatorSimplify-DMIZSUXp.js.map
