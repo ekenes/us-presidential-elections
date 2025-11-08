@@ -204,10 +204,7 @@ function App() {
       });
     }
 
-    if (
-      (mapElement?.map as WebMap)?.portalItem?.title ===
-      "U.S. Presidential Election Trends"
-    ) {
+    if (mapElement.id === "map") {
       mapElement.padding = {
         left: 468,
       };
@@ -218,7 +215,30 @@ function App() {
     }
 
     view.when(() => {
-      let activeWidget: any = null;
+      let activePanel: "information" | null = "information";
+
+      const updatePadding = (
+        actionBarExpanded: boolean,
+        calciteShellPanelCollapsed: boolean
+      ) => {
+        let paddingLeft = 49;
+        if (actionBarExpanded) {
+          paddingLeft += 86;
+        }
+        if (!calciteShellPanelCollapsed) {
+          paddingLeft += 419;
+        }
+
+        if (mapElement.id === "map") {
+          mapElement.padding = {
+            left: paddingLeft,
+          };
+          mapElement.style.setProperty(
+            "--arcgis-layout-overlay-space-left",
+            `${paddingLeft}px`
+          );
+        }
+      };
 
       const handleActionBarClick = ({ target }: any) => {
         if (!document) {
@@ -228,79 +248,39 @@ function App() {
           return;
         }
 
-        const calciteShellPanel = document.querySelector(
-          "calcite-shell-panel"
-        ) as any;
+        const calciteShellPanel = document.querySelector("calcite-shell-panel");
 
-        if (activeWidget) {
+        if (activePanel) {
           (document as any).querySelector(
-            `[data-action-id=${activeWidget}]`
+            `[data-action-id=${activePanel}]`
           ).active = false;
           (document as any).querySelector(
-            `[data-panel-id=${activeWidget}]`
+            `[data-panel-id=${activePanel}]`
           ).closed = true;
         }
 
-        const nextWidget = target.dataset.actionId;
-        if (nextWidget !== activeWidget) {
+        const nextPanel = target.dataset.actionId;
+        if (nextPanel !== activePanel) {
           calciteShellPanel!.collapsed = false;
-          if (
-            (mapElement?.map as WebMap)?.portalItem?.title ===
-            "U.S. Presidential Election Trends"
-          ) {
-            if (actionBarExpanded) {
-              mapElement.padding = {
-                left: 554,
-              };
-              mapElement.style.setProperty(
-                "--arcgis-layout-overlay-space-left",
-                "554px"
-              );
-            } else {
-              mapElement.padding = {
-                left: 468,
-              };
-              mapElement.style.setProperty(
-                "--arcgis-layout-overlay-space-left",
-                "468px"
-              );
-            }
+          if (mapElement.id === "map") {
+            updatePadding(actionBarExpanded, calciteShellPanel!.collapsed);
           }
 
           (document as any).querySelector(
-            `[data-action-id=${nextWidget}]`
+            `[data-action-id=${nextPanel}]`
           ).active = true;
           (document as any).querySelector(
-            `[data-panel-id=${nextWidget}]`
+            `[data-panel-id=${nextPanel}]`
           ).closed = false;
-          activeWidget = nextWidget;
+          activePanel = nextPanel;
           (document as any)
-            .querySelector(`[data-panel-id=${nextWidget}]`)
+            .querySelector(`[data-panel-id=${nextPanel}]`)
             .setFocus();
         } else {
-          activeWidget = null;
+          activePanel = null;
           calciteShellPanel!.collapsed = true;
-          if (
-            (mapElement?.map as WebMap)?.portalItem?.title ===
-            "U.S. Presidential Election Trends"
-          ) {
-            if (actionBarExpanded) {
-              mapElement.padding = {
-                left: 135,
-              };
-              mapElement.style.setProperty(
-                "--arcgis-layout-overlay-space-left",
-                "135px"
-              );
-            } else {
-              mapElement.padding = {
-                left: 49,
-              };
-              mapElement.style.setProperty(
-                "--arcgis-layout-overlay-space-left",
-                "49px"
-              );
-            }
+          if (mapElement.id === "map") {
+            updatePadding(actionBarExpanded, calciteShellPanel!.collapsed);
           }
         }
       };
@@ -317,12 +297,12 @@ function App() {
           calciteShellPanel!.collapsed = true;
 
           (document as any).querySelector(
-            `[data-action-id=${activeWidget}]`
+            `[data-action-id=${activePanel}]`
           ).active = false;
           (document as any)
-            .querySelector(`[data-action-id=${activeWidget}]`)
+            .querySelector(`[data-action-id=${activePanel}]`)
             .setFocus();
-          activeWidget = null;
+          activePanel = null;
         });
       }
 
@@ -332,28 +312,10 @@ function App() {
 
       document.addEventListener("calciteActionBarToggle", () => {
         actionBarExpanded = !actionBarExpanded;
-        if (
-          (mapElement?.map as WebMap)?.portalItem?.title ===
-          "U.S. Presidential Election Trends"
-        ) {
-          if (actionBarExpanded) {
-            mapElement.padding = {
-              left: 135,
-            };
-            mapElement.style.setProperty(
-              "--arcgis-layout-overlay-space-left",
-              "135px"
-            );
-          } else {
-            mapElement.padding = {
-              left: 49,
-            };
-            mapElement.style.setProperty(
-              "--arcgis-layout-overlay-space-left",
-              "49px"
-            );
-          }
-        }
+        const calciteShellPanel = document.querySelector(
+          "calcite-shell-panel"
+        ) as any;
+        updatePadding(actionBarExpanded, calciteShellPanel!.collapsed);
       });
     });
   };
