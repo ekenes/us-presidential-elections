@@ -1,0 +1,2 @@
+import{t as r}from"./OperatorTouches-DxA_I_iQ.js";import{fromGeometry as m,fromGeometryToGXGeometry as i}from"./jsonConverter-D2dJ8fer.js";import"./ProjectionTransformation-C_5dHI4w.js";import"./Point2D-CDWHr2sJ.js";import"./Envelope2D-GWq9cpem.js";import"./Transformation2D-BfhlBiHu.js";import"./index-CKfPgHC1.js";import"./OperatorDefinitions-DP7_WWTp.js";const p=new r;function l(t,o){const e=m(t);return p.execute(e.getGeometry(),i(o),e.getSpatialReference(),null)}export{l as execute};
+//# sourceMappingURL=touchesOperator-DdPgS1YI.js.map

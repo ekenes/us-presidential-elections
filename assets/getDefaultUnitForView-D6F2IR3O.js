@@ -1,2 +1,0 @@
-import{M as u,eu as a}from"./index-Wrx4-yWN.js";function o(e){var i,l;const t="metric";if(e==null)return t;const r=e.map,n=(r&&"portalItem"in r?(i=r.portalItem)==null?void 0:i.portal:null)??u.getDefault();switch(((l=n.user)==null?void 0:l.units)??n.units){case t:return t;case"english":return"imperial"}return a(e.spatialReference)??t}export{o as e};
-//# sourceMappingURL=getDefaultUnitForView-D6F2IR3O.js.map

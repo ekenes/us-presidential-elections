@@ -1,0 +1,2 @@
+import{h as i,C as n,z as e,A as r,B as p}from"./index-CKfPgHC1.js";var o;let t=o=class extends i{static from(s){return n(o,s)}constructor(s){super(s),this.objects=null,this.gdbVersion=null,this.sessionId=null}};e([r({json:{type:[Object],write:!0}})],t.prototype,"objects",void 0),e([r({type:String,json:{write:!0}})],t.prototype,"gdbVersion",void 0),e([r({type:String,json:{write:!0}})],t.prototype,"sessionId",void 0),t=o=e([p("esri.rest.networks.unitIdentifiers.support.ResetParameters")],t);const u=t;export{u as default};
+//# sourceMappingURL=ResetParameters-8p2au_CF.js.map

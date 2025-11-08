@@ -1,2 +1,0 @@
-import{eB as o}from"./index-Wrx4-yWN.js";import"./Point2D-CDWHr2sJ.js";import{h as u}from"./ProjectionTransformation-BkPiU8OU.js";import"./Envelope2D-GWq9cpem.js";const r=new u;function m(e,n,t){return r.execute(e,n,t,null)}function f(e,n){return r.executeMany(new o(e),n,null).next()}function l(){return r.supportsCurves()}export{f as o,m as r,l as s};
-//# sourceMappingURL=operatorUnion-Q00_BG9i.js.map

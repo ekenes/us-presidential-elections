@@ -1,2 +1,0 @@
-import{t as r}from"./OperatorOverlaps-86dO2rJP.js";import{fromGeometry as m,fromGeometryToGXGeometry as i}from"./jsonConverter-C92PXBwN.js";import"./ProjectionTransformation-BkPiU8OU.js";import"./Point2D-CDWHr2sJ.js";import"./Envelope2D-GWq9cpem.js";import"./Transformation2D-BfhlBiHu.js";import"./index-Wrx4-yWN.js";import"./OperatorDefinitions-DP7_WWTp.js";const p=new r;function l(t,o){const e=m(t);return p.execute(e.getGeometry(),i(o),e.getSpatialReference(),null)}export{l as execute};
-//# sourceMappingURL=overlapsOperator-D_8ANKp3.js.map
