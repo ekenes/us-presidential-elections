@@ -12,7 +12,7 @@ Kristian Ekenes
 
 ## Video
 
-Will share when posted
+[Watch the presentation here](https://www.youtube.com/watch?v=YsrWY46f_I8)
 
 ## Slides
 
