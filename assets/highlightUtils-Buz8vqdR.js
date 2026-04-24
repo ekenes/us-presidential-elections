@@ -1,0 +1,2 @@
+import{et as r,eu as n,aK as a}from"./index-CM3qOuWq.js";function i(e){if(!e)return[];let t=r(e)?[e]:n.isCollection(e)?e.toArray():Array.isArray(e)?e:[];return t=t==null?void 0:t.filter(a),((t==null?void 0:t.length)??0)===0?[]:t}function l(e){return!!(e&&typeof e=="object"&&"pixelRanges"in e&&e.pixelRanges)}function s(e){return Array.isArray(e.pixelRanges)&&e.pixelRanges.length===0}export{i,l as n,s as o};
+//# sourceMappingURL=highlightUtils-Buz8vqdR.js.map

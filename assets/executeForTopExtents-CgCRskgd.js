@@ -1,0 +1,2 @@
+import{D as m,A as r}from"./index-CM3qOuWq.js";import{c as s}from"./queryTopFeatures-DAH-zVKd.js";import x from"./TopFeaturesQuery-B8NDD1wn.js";async function f(o,n,e){const i=m(o),a=await s(i,x.from(n),{...e}),t=a.data.extent;return!t||isNaN(t.xmin)||isNaN(t.ymin)||isNaN(t.xmax)||isNaN(t.ymax)?{count:a.data.count,extent:null}:{count:a.data.count,extent:r.fromJSON(t)}}export{f as executeForTopExtents};
+//# sourceMappingURL=executeForTopExtents-CgCRskgd.js.map
