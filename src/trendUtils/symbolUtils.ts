@@ -1,54 +1,58 @@
 const cimSquareGeometry = {
-  rings: [[
-    [ 0,0 ],
-    [ 0,10 ],
-    [ 10,10 ],
-    [ 10,0 ],
-    [ 0,0 ]
-  ]]
+  rings: [
+    [
+      [0, 0],
+      [0, 10],
+      [10, 10],
+      [10, 0],
+      [0, 0],
+    ],
+  ],
 };
 
 interface CreateSymbolLayerParams {
-  primitiveName: string,
-  color: number[],
-  donutEnabled: boolean,
+  primitiveName: string;
+  color: number[];
+  donutEnabled: boolean;
   outline?: {
-    color: number[]
-  },
-  offsetX: number
+    color: number[];
+  };
+  offsetX: number;
 }
 
-export function createSquareSymbolLayer (params: CreateSymbolLayerParams){
+export function createSquareSymbolLayer(params: CreateSymbolLayerParams) {
   const { primitiveName, color, donutEnabled, outline, offsetX } = params;
 
-  const symbol = donutEnabled ? {
-    type: "CIMLineSymbol",
-    symbolLayers: [
-      {
-        type: "CIMSolidStroke",
-        enable: true,
-        color,
-        width: 2.4
+  const symbol = donutEnabled
+    ? {
+        type: "CIMLineSymbol",
+        symbolLayers: [
+          {
+            type: "CIMSolidStroke",
+            enable: true,
+            color,
+            width: 2.4,
+          },
+        ],
       }
-    ]
-  } : {
-    type: "CIMPolygonSymbol",
-    symbolLayers: [
-      {
-        type: "CIMSolidFill",
-        enable: true,
-        color,
-        primitiveName
-      }
-    ]
-  };
+    : {
+        type: "CIMPolygonSymbol",
+        symbolLayers: [
+          {
+            type: "CIMSolidFill",
+            enable: true,
+            color,
+            primitiveName,
+          },
+        ],
+      };
 
-  if(outline && outline.color){
+  if (outline && outline.color) {
     symbol.symbolLayers.push({
       type: `CIMSolidStroke`,
       enable: true,
       color: outline.color,
-      width: 0.5
+      width: 0.5,
     } as never);
   }
 
@@ -68,10 +72,10 @@ export function createSquareSymbolLayer (params: CreateSymbolLayerParams){
       {
         type: "CIMMarkerGraphic",
         geometry: cimSquareGeometry,
-        symbol
-      }
+        symbol,
+      },
     ],
     scaleSymbolsProportionally: true,
-    respectFrame: true
-  } as __esri.CIMVectorMarker;
+    respectFrame: true,
+  };
 }

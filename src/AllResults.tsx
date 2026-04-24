@@ -26,7 +26,7 @@ function AllResults() {
           hideFeatureMenuHeading
           hideFeatureNavigation
           hideHeading
-          visible
+          open
         ></arcgis-features>
       </calcite-block>
     </>
