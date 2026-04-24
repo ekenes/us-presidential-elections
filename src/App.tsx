@@ -29,6 +29,8 @@ import {
   validYears,
   webmapId,
 } from "./config";
+import type GroupLayer from "@arcgis/core/layers/GroupLayer";
+import type MapView from "@arcgis/core/views/MapView";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 
@@ -88,14 +90,14 @@ function App() {
     });
 
     const changeGroupLayer = mapElement.map!.allLayers.find(
-      (layer) => layer.title === "Change - all parties"
-    ) as __esri.GroupLayer;
+      (layer) => layer.title === "Change - all parties",
+    ) as GroupLayer;
     if (changeGroupLayer && !Array.isArray(year)) {
       const countyChangeConfig = createChangeConfig({ level: "county", year });
       const stateChangeConfig = createChangeConfig({ level: "state", year });
 
       const changeCountyLayer = changeGroupLayer.layers.find(
-        (layer) => layer.title === "Counties"
+        (layer) => layer.title === "Counties",
       ) as FeatureLayer;
 
       changeCountyLayer.renderer = countyChangeConfig.renderer;
@@ -103,53 +105,53 @@ function App() {
       changeCountyLayer.labelingInfo = countyChangeConfig.labelingInfo;
 
       const changeStateLayer = changeGroupLayer.layers.find(
-        (layer) => layer.title === "States"
+        (layer) => layer.title === "States",
       ) as FeatureLayer;
       changeStateLayer.renderer = stateChangeConfig.renderer;
       changeStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
       changeStateLayer.labelingInfo = stateChangeConfig.labelingInfo;
 
       const winnerGroupLayer = mapElement.map!.allLayers.find(
-        (layer) => layer.title === "Winner"
-      ) as __esri.GroupLayer;
+        (layer) => layer.title === "Winner",
+      ) as GroupLayer;
       const winnerStateLayer = winnerGroupLayer.layers.find(
-        (layer) => layer.title === "States"
+        (layer) => layer.title === "States",
       ) as FeatureLayer;
       const winnerCountyLayer = winnerGroupLayer.layers.find(
-        (layer) => layer.title === "Counties"
+        (layer) => layer.title === "Counties",
       ) as FeatureLayer;
       winnerCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
       winnerStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
 
       const winnerLeanGroupLayer = mapElement.map!.allLayers.find(
-        (layer) => layer.title === "Winner - with lean"
-      ) as __esri.GroupLayer;
+        (layer) => layer.title === "Winner - with lean",
+      ) as GroupLayer;
       const winnerLeanStateLayer = winnerLeanGroupLayer.layers.find(
-        (layer) => layer.title === "States"
+        (layer) => layer.title === "States",
       ) as FeatureLayer;
       const winnerLeanCountyLayer = winnerLeanGroupLayer.layers.find(
-        (layer) => layer.title === "Counties"
+        (layer) => layer.title === "Counties",
       ) as FeatureLayer;
       winnerLeanCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
       winnerLeanStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
 
       const swingGroupLayer = mapElement.map!.allLayers.find(
-        (layer) => layer.title === "Swing"
-      ) as __esri.GroupLayer;
+        (layer) => layer.title === "Swing",
+      ) as GroupLayer;
 
       const swingStateLayer = swingGroupLayer.layers.find(
-        (layer) => layer.title === "States"
+        (layer) => layer.title === "States",
       ) as FeatureLayer;
       const swingCountyLayer = swingGroupLayer.layers.find(
-        (layer) => layer.title === "Counties"
+        (layer) => layer.title === "Counties",
       ) as FeatureLayer;
       swingCountyLayer.popupTemplate = countyChangeConfig.popupTemplate;
       swingStateLayer.popupTemplate = stateChangeConfig.popupTemplate;
     }
 
     const trendGroupLayer = mapElement.map!.allLayers.find(
-      (layer) => layer.title === "Trend"
-    ) as __esri.GroupLayer;
+      (layer) => layer.title === "Trend",
+    ) as GroupLayer;
 
     if (trendGroupLayer) {
       const countyTrendConfig = createTrendConfig({
@@ -162,20 +164,20 @@ function App() {
       });
 
       const trendCountyLayer = trendGroupLayer.layers.find(
-        (layer) => layer.title === "Counties"
+        (layer) => layer.title === "Counties",
       ) as FeatureLayer;
       trendCountyLayer.renderer = countyTrendConfig.renderer;
       trendCountyLayer.popupTemplate = countyTrendConfig.popupTemplate;
 
       const trendStateLayer = trendGroupLayer.layers.find(
-        (layer) => layer.title === "States"
+        (layer) => layer.title === "States",
       ) as FeatureLayer;
       trendStateLayer.renderer = stateTrendConfig.renderer;
       trendStateLayer.popupTemplate = stateTrendConfig.popupTemplate;
     }
   };
 
-  let view: __esri.MapView;
+  let view: MapView;
 
   const initialize = async (mapElement: HTMLArcgisMapElement) => {
     if (!mapElement) return;
@@ -205,12 +207,10 @@ function App() {
     }
 
     if (mapElement.id === "map") {
-      mapElement.padding = {
-        left: 468,
-      };
+      mapElement.padding.left = 468;
       mapElement.style.setProperty(
         "--arcgis-layout-overlay-space-left",
-        "468px"
+        "468px",
       );
     }
 
@@ -219,7 +219,7 @@ function App() {
 
       const updatePadding = (
         actionBarExpanded: boolean,
-        calciteShellPanelCollapsed: boolean
+        calciteShellPanelCollapsed: boolean,
       ) => {
         let paddingLeft = 49;
         if (actionBarExpanded) {
@@ -230,12 +230,10 @@ function App() {
         }
 
         if (mapElement.id === "map") {
-          mapElement.padding = {
-            left: paddingLeft,
-          };
+          mapElement.padding.left = paddingLeft;
           mapElement.style.setProperty(
             "--arcgis-layout-overlay-space-left",
-            `${paddingLeft}px`
+            `${paddingLeft}px`,
           );
         }
       };
@@ -252,10 +250,10 @@ function App() {
 
         if (activePanel) {
           (document as any).querySelector(
-            `[data-action-id=${activePanel}]`
+            `[data-action-id=${activePanel}]`,
           ).active = false;
           (document as any).querySelector(
-            `[data-panel-id=${activePanel}]`
+            `[data-panel-id=${activePanel}]`,
           ).closed = true;
         }
 
@@ -267,10 +265,10 @@ function App() {
           }
 
           (document as any).querySelector(
-            `[data-action-id=${nextPanel}]`
+            `[data-action-id=${nextPanel}]`,
           ).active = true;
           (document as any).querySelector(
-            `[data-panel-id=${nextPanel}]`
+            `[data-panel-id=${nextPanel}]`,
           ).closed = false;
           activePanel = nextPanel;
           (document as any)
@@ -292,12 +290,12 @@ function App() {
       for (let i = 0; i < panelEls.length; i++) {
         panelEls[i].addEventListener("calcitePanelClose", () => {
           const calciteShellPanel = document.querySelector(
-            "calcite-shell-panel"
+            "calcite-shell-panel",
           ) as any;
           calciteShellPanel!.collapsed = true;
 
           (document as any).querySelector(
-            `[data-action-id=${activePanel}]`
+            `[data-action-id=${activePanel}]`,
           ).active = false;
           (document as any)
             .querySelector(`[data-action-id=${activePanel}]`)
@@ -313,7 +311,7 @@ function App() {
       document.addEventListener("calciteActionBarToggle", () => {
         actionBarExpanded = !actionBarExpanded;
         const calciteShellPanel = document.querySelector(
-          "calcite-shell-panel"
+          "calcite-shell-panel",
         ) as any;
         updatePadding(actionBarExpanded, calciteShellPanel!.collapsed);
       });
@@ -351,11 +349,11 @@ function App() {
               if (!mapElement) return;
               const activeLayer = (
                 mapElement.map!.layers.find(
-                  (layer) => layer.title === "Election Visualizations"
-                ) as __esri.GroupLayer
+                  (layer) => layer.title === "Election Visualizations",
+                ) as GroupLayer
               ).layers.find(
                 (layer) =>
-                  layer.title === rendererTypesLayerTitles[rendererType]
+                  layer.title === rendererTypesLayerTitles[rendererType],
               )!;
               activeLayer.visible = true;
             });
@@ -402,7 +400,7 @@ function App() {
                     animate: true,
                     duration: 1000,
                     easing: "ease-in",
-                  }
+                  },
                 )
                 .catch((error) => {
                   console.error("Error going to AK center:", error);
@@ -434,7 +432,7 @@ function App() {
                     animate: true,
                     duration: 1000,
                     easing: "ease-in",
-                  }
+                  },
                 )
                 .catch((error) => {
                   console.error("Error going to HI center:", error);
