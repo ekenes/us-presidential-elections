@@ -30,7 +30,8 @@ import {
   webmapId,
 } from "./config";
 import type GroupLayer from "@arcgis/core/layers/GroupLayer";
-import type MapView from "@arcgis/core/views/MapView";
+import { watch } from "@arcgis/core/core/reactiveUtils";
+import { ArcgisMap } from "@arcgis/map-components/dist/components/arcgis-map";
 
 esriConfig.applicationName = "U.S. Presidential Election Results (2000-2024)";
 
@@ -177,7 +178,7 @@ function App() {
     }
   };
 
-  let view: MapView;
+  let view: ArcgisMap;
 
   const initialize = async (mapElement: HTMLArcgisMapElement) => {
     if (!mapElement) return;
@@ -187,23 +188,24 @@ function App() {
 
     await updateRendererFromYear({ year, mapElement });
 
-    view = mapElement?.view;
-    view.constraints = {
-      snapToZoom: false,
-    };
+    view = mapElement;
+    view.constraints.snapToZoom = false;
 
     if (mapElement.id === "map") {
-      view.watch("scale", () => {
-        if (!akMapRef.current || !hiMapRef.current) return;
+      watch(
+        () => mapElement.scale,
+        (scale) => {
+          if (!akMapRef.current || !hiMapRef.current) return;
 
-        if (view.scale < 5710191) {
-          akMapRef.current!.hidden = true;
-          hiMapRef.current!.hidden = true;
-        } else {
-          akMapRef.current!.hidden = false;
-          hiMapRef.current!.hidden = false;
-        }
-      });
+          if (scale < 5710191) {
+            akMapRef.current!.hidden = true;
+            hiMapRef.current!.hidden = true;
+          } else {
+            akMapRef.current!.hidden = false;
+            hiMapRef.current!.hidden = false;
+          }
+        },
+      );
     }
 
     if (mapElement.id === "map") {
@@ -214,7 +216,7 @@ function App() {
       );
     }
 
-    view.when(() => {
+    view.viewOnReady(() => {
       let activePanel: "information" | null = "information";
 
       const updatePadding = (
