@@ -12,15 +12,15 @@ import {
 } from "../config";
 
 interface ColorPrimitiveOverrideParams {
-  primitiveName: string;
+  primitiveName: __esri.PrimitiveOverride["primitiveName"];
   year: validYears;
   fieldPrefix: string;
   level?: "state" | "county" | "country";
 }
 
 export function createColorPrimitiveOverride(
-  params: ColorPrimitiveOverrideParams,
-) {
+  params: ColorPrimitiveOverrideParams
+): __esri.PrimitiveOverride {
   const { year, primitiveName, fieldPrefix } = params;
 
   return {
@@ -69,29 +69,29 @@ const sizeFactorStates = `
   var sizeFactor = When(
     value >= ${stateTrendSizeStops[4].value}, ${stateTrendSizeStops[4].size},
     value >= ${stateTrendSizeStops[3].value}, ${
-      stateTrendSizeStops[3].size
-    } + (${interpolateBetweenStops(
-      stateTrendSizeStops[3],
-      stateTrendSizeStops[4],
-    )} * (value - ${stateTrendSizeStops[3].value})),
+  stateTrendSizeStops[3].size
+} + (${interpolateBetweenStops(
+  stateTrendSizeStops[3],
+  stateTrendSizeStops[4]
+)} * (value - ${stateTrendSizeStops[3].value})),
     value >= ${stateTrendSizeStops[2].value}, ${
-      stateTrendSizeStops[2].size
-    } + (${interpolateBetweenStops(
-      stateTrendSizeStops[2],
-      stateTrendSizeStops[3],
-    )} * (value - ${stateTrendSizeStops[2].value})),
+  stateTrendSizeStops[2].size
+} + (${interpolateBetweenStops(
+  stateTrendSizeStops[2],
+  stateTrendSizeStops[3]
+)} * (value - ${stateTrendSizeStops[2].value})),
     value >= ${stateTrendSizeStops[1].value}, ${
-      stateTrendSizeStops[1].size
-    } + (${interpolateBetweenStops(
-      stateTrendSizeStops[1],
-      stateTrendSizeStops[2],
-    )} * (value - ${stateTrendSizeStops[1].value})),
+  stateTrendSizeStops[1].size
+} + (${interpolateBetweenStops(
+  stateTrendSizeStops[1],
+  stateTrendSizeStops[2]
+)} * (value - ${stateTrendSizeStops[1].value})),
     value > ${stateTrendSizeStops[0].value}, ${
-      stateTrendSizeStops[0].size
-    } + (${interpolateBetweenStops(
-      stateTrendSizeStops[0],
-      stateTrendSizeStops[1],
-    )} * value),
+  stateTrendSizeStops[0].size
+} + (${interpolateBetweenStops(
+  stateTrendSizeStops[0],
+  stateTrendSizeStops[1]
+)} * value),
     0
   );
 `;
@@ -109,29 +109,29 @@ const sizeFactorCounties = `
   var sizeFactor = When(
     value >= ${countyTrendSizeStops[4].value}, ${countyTrendSizeStops[4].size},
     value >= ${countyTrendSizeStops[3].value}, ${
-      countyTrendSizeStops[3].size
-    } + (${interpolateBetweenStops(
-      countyTrendSizeStops[3],
-      countyTrendSizeStops[4],
-    )} * (value - ${countyTrendSizeStops[3].value})),
+  countyTrendSizeStops[3].size
+} + (${interpolateBetweenStops(
+  countyTrendSizeStops[3],
+  countyTrendSizeStops[4]
+)} * (value - ${countyTrendSizeStops[3].value})),
     value >= ${countyTrendSizeStops[2].value}, ${
-      countyTrendSizeStops[2].size
-    } + (${interpolateBetweenStops(
-      countyTrendSizeStops[2],
-      countyTrendSizeStops[3],
-    )} * (value - ${countyTrendSizeStops[2].value})),
+  countyTrendSizeStops[2].size
+} + (${interpolateBetweenStops(
+  countyTrendSizeStops[2],
+  countyTrendSizeStops[3]
+)} * (value - ${countyTrendSizeStops[2].value})),
     value >= ${countyTrendSizeStops[1].value}, ${
-      countyTrendSizeStops[1].size
-    } + (${interpolateBetweenStops(
-      countyTrendSizeStops[1],
-      countyTrendSizeStops[2],
-    )} * (value - ${countyTrendSizeStops[1].value})),
+  countyTrendSizeStops[1].size
+} + (${interpolateBetweenStops(
+  countyTrendSizeStops[1],
+  countyTrendSizeStops[2]
+)} * (value - ${countyTrendSizeStops[1].value})),
     value > ${countyTrendSizeStops[0].value}, ${
-      countyTrendSizeStops[0].size
-    } + (${interpolateBetweenStops(
-      countyTrendSizeStops[0],
-      countyTrendSizeStops[1],
-    )} * value),
+  countyTrendSizeStops[0].size
+} + (${interpolateBetweenStops(
+  countyTrendSizeStops[0],
+  countyTrendSizeStops[1]
+)} * value),
     0
   );
 `;
@@ -170,8 +170,8 @@ function interpolateBetweenStops(firstStop: SizeStop, nextStop: SizeStop) {
 }
 
 export function createSizePrimitiveOverride(
-  params: ColorPrimitiveOverrideParams,
-) {
+  params: ColorPrimitiveOverrideParams
+): __esri.PrimitiveOverride {
   const { year, primitiveName, fieldPrefix } = params;
 
   return {
@@ -204,8 +204,8 @@ export function createSizePrimitiveOverride(
 }
 
 export function createOffsetXPrimitiveOverride(
-  params: ColorPrimitiveOverrideParams,
-) {
+  params: ColorPrimitiveOverrideParams
+): __esri.PrimitiveOverride {
   const { year, primitiveName, fieldPrefix } = params;
 
   return {
