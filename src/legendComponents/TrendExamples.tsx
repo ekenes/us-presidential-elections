@@ -7,7 +7,7 @@ import "@esri/calcite-components/dist/components/calcite-carousel-item";
 function TrendExamples() {
   return (
     <>
-      <calcite-block heading="Examples" collapsible>
+      <calcite-block heading="Examples" expandable>
         <calcite-carousel label="Examples">
           <calcite-carousel-item label="Gradual change">
             <div className="custom-content">

@@ -5,7 +5,7 @@ import "@esri/calcite-components/dist/components/calcite-block";
 function SwingLegend() {
   return (
     <>
-      <calcite-block heading="Legend" collapsible expanded>
+      <calcite-block heading="Legend" expandable expanded>
         <p>
           This map shows the party that experienced the largest swing in support
           from the previous election in each state and county.

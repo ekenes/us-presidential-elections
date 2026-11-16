@@ -5,7 +5,7 @@ import "@esri/calcite-components/dist/components/calcite-block";
 function TrendLegend() {
   return (
     <>
-      <calcite-block heading="Legend" collapsible expanded>
+      <calcite-block heading="Legend" expandable expanded>
         <p>
           This map shows the results of each of the previous 5 U.S. presidential
           elections from 2000 to 2024. Each square represents the election

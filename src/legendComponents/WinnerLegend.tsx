@@ -5,7 +5,7 @@ import "@esri/calcite-components/dist/components/calcite-block";
 function WinnerLegend() {
   return (
     <>
-      <calcite-block heading="Legend" collapsible expanded>
+      <calcite-block heading="Legend" expandable expanded>
         <p>
           This map shows the winner of the election on the state and county
           level.

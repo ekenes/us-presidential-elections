@@ -6,7 +6,7 @@ import "@esri/calcite-components/dist/components/calcite-tab-nav";
 import "@esri/calcite-components/dist/components/calcite-tabs";
 import "@esri/calcite-components/dist/components/calcite-tab-title";
 
-import "@arcgis/map-components/dist/components/arcgis-features";
+import "@arcgis/map-components/dist/components/arcgis-features-next";
 import { createPopupTemplate } from "./trendUtils/popupUtils";
 import { usaGraphic } from "./config";
 
@@ -18,8 +18,8 @@ function AllResults() {
   });
   return (
     <>
-      <calcite-block heading="Election results" collapsible>
-        <arcgis-features
+      <calcite-block heading="Election results" expandable>
+        <arcgis-features-next
           features={[graphic]}
           hideActionBar
           hideCloseButton
@@ -27,7 +27,7 @@ function AllResults() {
           hideFeatureNavigation
           hideHeading
           open
-        ></arcgis-features>
+        ></arcgis-features-next>
       </calcite-block>
     </>
   );

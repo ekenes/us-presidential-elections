@@ -6,7 +6,9 @@ import {
   formatNumber,
 } from "@arcgis/core/intl";
 
-import { CustomContent, ExpressionContent } from "@arcgis/core/popup/content";
+import CustomContent from "@arcgis/core/popup/content/CustomContent";
+import ExpressionContent from "@arcgis/core/popup/content/ExpressionContent";
+
 import {
   fieldInfos,
   dColor,
@@ -160,7 +162,7 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
             allEVvotesSorted[0] - allEVvotesSorted[1],
             {
               signDisplay: "always",
-            }
+            },
           );
 
           const marginPVtotal = formatNumber(
@@ -171,7 +173,7 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
               minimumFractionDigits: 1,
               maximumFractionDigits: 1,
               signDisplay: "always",
-            }
+            },
           );
 
           evResults[evWinner].margin = marginEVtotal;
@@ -751,7 +753,7 @@ export const createPopupTemplate = (params: PopupTemplateParams) => {
           `,
           },
         }),
-      ]
+      ],
     );
   }
 

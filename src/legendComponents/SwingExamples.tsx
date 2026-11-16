@@ -7,7 +7,7 @@ import "@esri/calcite-components/dist/components/calcite-carousel-item";
 function SwingExamples() {
   return (
     <>
-      <calcite-block heading="Examples" collapsible>
+      <calcite-block heading="Examples" expandable>
         <calcite-carousel label="Examples">
           <calcite-carousel-item label="Slight Democratic swing">
             <div className="custom-content">

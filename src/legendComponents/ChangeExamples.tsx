@@ -7,7 +7,7 @@ import "@esri/calcite-components/dist/components/calcite-carousel-item";
 function ChangeExamples() {
   return (
     <>
-      <calcite-block heading="Examples" collapsible>
+      <calcite-block heading="Examples" expandable>
         The following examples all represent change in presidential voting
         patterns from 2004 to 2024 in <b>Utah County, Utah</b>.
         <calcite-carousel label="Examples">

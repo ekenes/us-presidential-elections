@@ -32,7 +32,7 @@ import {
 } from "./expressionUtils";
 import FieldInfo from "@arcgis/core/popup/FieldInfo";
 import FieldInfoFormat from "@arcgis/core/popup/support/FieldInfoFormat";
-import { TextContent } from "@arcgis/core/popup/content";
+import TextContent from "@arcgis/core/popup/content/TextContent";
 
 ////////////////////////////////////////////////////
 //
@@ -116,8 +116,9 @@ export const statePopupTemplate = (year: number) => {
 
               <tr ${demTrStyle}>
                 <td ${tdPadding}><span style='color:${dColor}; font-weight:bolder;'>${
-          results[currentYear as keyof typeof results].democrat.candidate
-        }</span></td>
+                  results[currentYear as keyof typeof results].democrat
+                    .candidate
+                }</span></td>
                 <td ${numberTdClass}>{SUM_dem_${currentYear}}</td>
                 <td ${numberTdClass}><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}diff${currentYear}}</span></td>
 
@@ -129,8 +130,9 @@ export const statePopupTemplate = (year: number) => {
 
 
               <tr ${repTrStyle}><td ${tdPadding}><span style='color:${rColor}; font-weight:bolder'>${
-          results[currentYear as keyof typeof results].republican.candidate
-        }</span></td><td ${numberTdClass}>{SUM_rep_${currentYear}}</td><td ${numberTdClass}><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}diff${currentYear}}</span></td>
+                results[currentYear as keyof typeof results].republican
+                  .candidate
+              }</span></td><td ${numberTdClass}>{SUM_rep_${currentYear}}</td><td ${numberTdClass}><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}diff${currentYear}}</span></td>
 
               <td ${numberTdClass}>{expression/repShare${currentYear}}</td>
               <td ${numberTdClass}><span style='color: {expression/rep-shift-color}'>{expression/rep${previousYear}shift${currentYear}}</span></td>
@@ -139,8 +141,8 @@ export const statePopupTemplate = (year: number) => {
 
 
               <tr ${othTrStyle}><td ${tdPadding}><span style='color:${oColor}; font-weight:bolder'>${
-          results[currentYear as keyof typeof results].other.candidate
-        }</span></td><td ${numberTdClass}>{SUM_oth_${currentYear}}</td><td ${numberTdClass}><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}diff${currentYear}}</span></td>
+                results[currentYear as keyof typeof results].other.candidate
+              }</span></td><td ${numberTdClass}>{SUM_oth_${currentYear}}</td><td ${numberTdClass}><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}diff${currentYear}}</span></td>
 
               <td ${numberTdClass}>{expression/othShare${currentYear}}</td>
               <td ${numberTdClass}><span style='color: {expression/oth-shift-color}'>{expression/oth${previousYear}shift${currentYear}}</span></td>
@@ -504,8 +506,8 @@ export const countyPopupTemplate = (year: number) => {
               <tr ${headTrClass}><td ${tdPadding}>Party</td><td ${tdPadding}>Votes</td><td ${tdPadding}>+/-</td><td ${tdPadding}>%</td><td ${tdPadding}>+/-</td><td ${tdPadding}>% Change</td></tr>
 
               <tr ${demTrStyle}><td ${tdPadding}><span style='color:${dColor}; font-weight:bolder'>${
-          results[currentYear as keyof typeof results].democrat.candidate
-        }</span></td><td ${numberTdClass}>{${`dem_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}diff${currentYear}}</span></td>
+                results[currentYear as keyof typeof results].democrat.candidate
+              }</span></td><td ${numberTdClass}>{${`dem_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/dem-change-color}'>{expression/dem${previousYear}diff${currentYear}}</span></td>
 
               <td ${numberTdClass}>{expression/demShare${currentYear}}</td>
               <td ${numberTdClass}><span style='color: {expression/dem-shift-color}'>{expression/dem${previousYear}shift${currentYear}}</span></td>
@@ -514,8 +516,9 @@ export const countyPopupTemplate = (year: number) => {
 
 
               <tr ${repTrStyle}><td ${tdPadding}><span style='color:${rColor}; font-weight:bolder'>${
-          results[currentYear as keyof typeof results].republican.candidate
-        }</span></td><td ${numberTdClass}>{${`rep_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}diff${currentYear}}</span></td>
+                results[currentYear as keyof typeof results].republican
+                  .candidate
+              }</span></td><td ${numberTdClass}>{${`rep_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/rep-change-color}'>{expression/rep${previousYear}diff${currentYear}}</span></td>
 
               <td ${numberTdClass}>{expression/repShare${currentYear}}</td>
               <td ${numberTdClass}><span style='color: {expression/rep-shift-color}'>{expression/rep${previousYear}shift${currentYear}}</span></td>
@@ -524,8 +527,8 @@ export const countyPopupTemplate = (year: number) => {
 
 
               <tr ${othTrStyle}><td ${tdPadding}><span style='color:${oColor}; font-weight:bolder'>${
-          results[currentYear as keyof typeof results].other.candidate
-        }</span></td><td ${numberTdClass}>{${`oth_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}diff${currentYear}}</span></td>
+                results[currentYear as keyof typeof results].other.candidate
+              }</span></td><td ${numberTdClass}>{${`oth_${currentYear}`}}</td><td ${numberTdClass}><span style='color: {expression/oth-change-color}'>{expression/oth${previousYear}diff${currentYear}}</span></td>
 
               <td ${numberTdClass}>{expression/othShare${currentYear}}</td>
               <td ${numberTdClass}><span style='color: {expression/oth-shift-color}'>{expression/oth${previousYear}shift${currentYear}}</span></td>
