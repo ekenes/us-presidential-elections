@@ -1,0 +1,2 @@
+import{B as n,ez as s}from"./index-DvjtuTaf.js";function p(t){var i,l;let e="metric";if(!t)return e;let{map:r}=t,a=(r&&"portalItem"in r?(i=r.portalItem)==null?void 0:i.portal:null)??n.getDefault();switch(((l=a.user)==null?void 0:l.units)??a.units){case e:return e;case"english":return"imperial"}return s(t.spatialReference)??e}export{p as n};
+//# sourceMappingURL=getDefaultUnitForView-11MjX3Or.js.map

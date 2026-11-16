@@ -1,0 +1,2 @@
+import{r as f,a6 as u,a7 as l,a8 as p,f as m}from"./index-DvjtuTaf.js";async function c(a,s,r,e){if(!s)throw new f("post:missing-guid","guid for version is missing");let t=u(a),i=r.toJSON(),o=l(t.query,{query:p({...i,f:"json"}),...e,method:"post"});s.startsWith("{")&&(s=s.slice(1,-1));let d=`${t.path}/versions/${s}/deleteForwardEdits`,{data:n}=await m(d,o);return n}export{c as deleteForwardEdits};
+//# sourceMappingURL=deleteForwardEdits-BtCUoBVl.js.map

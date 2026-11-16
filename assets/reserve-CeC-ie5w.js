@@ -1,0 +1,2 @@
+import{a6 as f,a8 as n,a7 as u,f as d}from"./index-DvjtuTaf.js";import{o as c}from"./EditUnitIdentifiersResult-yqSbtzNl.js";import"./utils-CbEOcqzW.js";import"./applyEditsUtils-Bvql65YZ.js";import"./MeshTransform-CvD-hdXE.js";import"./quat-C4QyOCcE.js";import"./quatf64-DO3BzXFi.js";async function O(t,r,a){let o=f(t),e={...r.toJSON(),f:"json"},p=n({...o.query,...e}),s=u(p,{...a,method:"post",authMode:"no-prompt"}),i=`${o.path}/unitIdentifiers/reserve`,{data:m}=await d(i,s);return c.fromJSON(m)}export{O as reserve};
+//# sourceMappingURL=reserve-CeC-ie5w.js.map

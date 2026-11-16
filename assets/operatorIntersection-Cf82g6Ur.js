@@ -1,0 +1,2 @@
+import{aQ as o}from"./index-DvjtuTaf.js";import"./Envelope2D--EIxTnqB.js";import{E as c}from"./OperatorContains-ClDIz23-.js";import"./MultiPathImpl-BwNbFaOa.js";const t=new c;function f(e,r){return t.accelerateGeometry(e,r,1)}function l(e,r,n){return t.execute(e,r,n,null)}function x(e,r,n,u){let a=t.executeMany(new o(e),new o([r]),n,null,u);return Array.from(a)}function y(){return t.supportsCurves()}export{f as accelerateGeometry,l as execute,x as executeMany,y as supportsCurves};
+//# sourceMappingURL=operatorIntersection-Cf82g6Ur.js.map

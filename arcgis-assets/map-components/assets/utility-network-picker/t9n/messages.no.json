@@ -1,0 +1,1 @@
+{"componentLabel":"Forsyningsnettverkvelger","errors":{"mapLoadFailed":"Det oppstod en feil under lasting av kartet.","noUtilityNetwork":"Finner ingen forsyningsnettverk på kartet.","noView":"Kan ikke finne kartvisning.","utilityNetworkLoadFailed":"Det oppsto en feil under innlasting av valgt forsyningsnettverk."},"labels":{"utilityNetwork":"Utility Network"}}

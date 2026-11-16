@@ -1,0 +1,2 @@
+import{bU as o,bV as i,a_ as u,bW as b,r as l,aZ as c,b3 as f,bX as n,aY as d,b1 as $,a$ as h,bY as v}from"./index-DvjtuTaf.js";function x(a,e,t){if(o(e))return i(a,e,t);if(u(e)){let r=b(a,e,t)[0];if(r==null)throw new l("closestPointOnCurve:unexpected-error","Failed to find close point on bezier curve");return r}if(c(e)){let r=f(a,e);return n(r,t)}if(d(e)){let r=$(a,e);return n(r,t)}let s=h(a,e);return v(s,t)}export{x as f};
+//# sourceMappingURL=closestPointOnCurve-Cfd6baj1.js.map

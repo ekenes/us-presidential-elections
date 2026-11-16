@@ -1,0 +1,2 @@
+import{aA as f,eY as m,P as n}from"./index-DvjtuTaf.js";import{a as s}from"./projectPointToVector-D1GKyFPC.js";import{e as i}from"./dehydratedPoint-CwDQJT2l.js";function u(e,a,o,l){return a==null||l==null||e.length<2?!1:f(a,l)?m(e,a,0,o,l,0,1):(r.x=e[0],r.y=e[1],r.z=e[2],r.spatialReference=a,s(r,o,l))}const r=i(0,0,0,n.WGS84);export{u as o};
+//# sourceMappingURL=projectVectorToVector-_MVibsd-.js.map

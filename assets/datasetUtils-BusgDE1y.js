@@ -1,0 +1,2 @@
+function C(t){return(t==null?void 0:t.datasetFormat)==="Function"}function R(t){return C(t)?t.primaryRasters.rasters:[t]}function S(t,e,s,o){let{x:i,y:h}=e,{x:r,y:a}=s,{xmin:y,xmax:M,ymin:c,ymax:d}=t,{width:g,height:p}=t,m=g/r,u=p/a,x=Math.min(m,u),n=x<=1?0:Math.min(.1,x/100),f=Math.floor((y-i)/r+n),l=Math.floor((h-d)/a+n),w=Math.floor((M-i)/r-n),F=Math.floor((h-c)/a-n),b=o>0&&m<.1?0:w-f+1,v=o>0&&u<.1?0:F-l+1;return{ul:{x:f,y:l},width:b,height:v}}export{C as e,S as n,R as t};
+//# sourceMappingURL=datasetUtils-BusgDE1y.js.map

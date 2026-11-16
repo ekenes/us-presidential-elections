@@ -1,0 +1,2 @@
+import{h as s,i,G as p,j as u}from"./OperatorContains-ClDIz23-.js";import"./index-DvjtuTaf.js";import"./Envelope2D--EIxTnqB.js";import"./MultiPathImpl-BwNbFaOa.js";class y{supportsCurves(){return!0}getOperatorType(){return 1}execute(r,e,t,a,o){return s(r,e,t,a,o)}isValidDE9IM(r){return i(r)===0}accelerateGeometry(r,e,t){return p(r,e,t)}canAccelerateGeometry(r){return u(r)}}export{y as OperatorRelate};
+//# sourceMappingURL=OperatorRelate-CnTpJyvF.js.map

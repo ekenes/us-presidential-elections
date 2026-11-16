@@ -1,0 +1,1 @@
+{"componentLabel":"Kommunaalvõrgu valija","errors":{"mapLoadFailed":"Kaardi laadimisel ilmnes viga.","noUtilityNetwork":"Kaardilt ei leitud ühtegi kommunaalvõrku.","noView":"Kaartvaadet ei leitud.","utilityNetworkLoadFailed":"Valitud kommunaalvõrgu laadimisel tekkis viga."},"labels":{"utilityNetwork":"Utility network"}}

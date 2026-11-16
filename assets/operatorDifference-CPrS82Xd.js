@@ -1,0 +1,2 @@
+import{aQ as u}from"./index-DvjtuTaf.js";import"./Envelope2D--EIxTnqB.js";import{k as s}from"./OperatorContains-ClDIz23-.js";import"./MultiPathImpl-BwNbFaOa.js";const n=new s;function m(e,r,t){return n.execute(e,r,t,null)}function f(e,r,t){let o=n.executeMany(new u(e),new u([r]),t,null);return Array.from(o)}function l(){return n.supportsCurves()}export{m as execute,f as executeMany,l as supportsCurves};
+//# sourceMappingURL=operatorDifference-CPrS82Xd.js.map

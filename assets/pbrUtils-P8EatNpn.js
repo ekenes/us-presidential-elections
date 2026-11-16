@@ -1,0 +1,2 @@
+import{da as a,fC as l,fD as c}from"./index-DvjtuTaf.js";function m({normalTexture:n,metallicRoughnessTexture:o,metallicFactor:e,roughnessFactor:u,emissiveTexture:t,emissiveFactor:r,occlusionTexture:s}){return n==null&&o==null&&t==null&&(r==null||a(r,c))&&s==null&&(u==null||u===1)&&(e==null||e===1)}const x=l(1,1,.5),f=l(0,.6,.2),T=l(0,1,.2);export{f as a,x as i,T as o,m as r};
+//# sourceMappingURL=pbrUtils-P8EatNpn.js.map

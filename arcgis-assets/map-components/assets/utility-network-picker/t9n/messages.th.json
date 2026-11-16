@@ -1,0 +1,1 @@
+{"componentLabel":"ตัวเลือกเครือข่ายสาธารณูปโภค","errors":{"mapLoadFailed":"เกิดข้อผิดพลาดขึ้นในระหว่างการโหลดแผนที่","noUtilityNetwork":"ไม่พบเครือข่ายสาธารณูปโภคในแผนที่","noView":"ไม่พบมุมมองแผนที่","utilityNetworkLoadFailed":"เกิดข้อผิดพลาดขึ้นขณะโหลด Utility Network ที่เลือก"},"labels":{"utilityNetwork":"เครือข่ายสาธารณูปโภค"}}

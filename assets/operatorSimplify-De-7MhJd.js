@@ -1,0 +1,2 @@
+import{aQ as s}from"./index-DvjtuTaf.js";import"./Envelope2D--EIxTnqB.js";import"./MultiPathImpl-BwNbFaOa.js";import{x as o}from"./OperatorContains-ClDIz23-.js";const n=new o;function c(e,r,t){return n.execute(e,r,t,null)}function m(e,r,t){let u=n.executeMany(new s(e),r,t,null);return Array.from(u)}function f(e,r,t){return n.isSimpleAsFeature(e,r,t,null,null)}function x(){return n.supportsCurves()}export{c as execute,m as executeMany,f as isSimpleAsFeature,x as supportsCurves};
+//# sourceMappingURL=operatorSimplify-De-7MhJd.js.map

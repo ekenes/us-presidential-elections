@@ -1,0 +1,2 @@
+import{OperatorIntersects as o}from"./OperatorIntersects-Cpwv-kBD.js";const t=new o;function c(e,r){return t.accelerateGeometry(e,r,1)}function s(e,r,n){return t.execute(e,r,n,null)}function i(){return t.supportsCurves()}export{i,c as n,s as r};
+//# sourceMappingURL=operatorIntersects-DXpnsZPu.js.map

@@ -1,0 +1,2 @@
+import{aQ as o}from"./index-DvjtuTaf.js";import{C as s}from"./OperatorContains-ClDIz23-.js";import"./Envelope2D--EIxTnqB.js";import"./MultiPathImpl-BwNbFaOa.js";const n=new s;function m(e,r,t){return n.execute(e,r,t,null)}function f(e,r,t){let u=n.executeMany(new o(e),r,t,null);return Array.from(u)}function l(){return n.supportsCurves()}export{m as execute,f as executeMany,l as supportsCurves};
+//# sourceMappingURL=operatorClip-BeizeU2Q.js.map

@@ -1,0 +1,2 @@
+import{aQ as o}from"./index-DvjtuTaf.js";import{v as s}from"./OperatorGeneralize-BlMsI7Sv.js";import"./Envelope2D--EIxTnqB.js";import"./MultiPathImpl-BwNbFaOa.js";import"./OperatorContains-ClDIz23-.js";const n=new s;function f(r,e,t){return n.execute(r,e,t,null)}function l(r,e,t){let u=n.executeMany(new o(r),e,t,null);return Array.from(u)}function x(){return n.supportsCurves()}export{f as execute,l as executeMany,x as supportsCurves};
+//# sourceMappingURL=operatorGeneralize-CAKl04ja.js.map

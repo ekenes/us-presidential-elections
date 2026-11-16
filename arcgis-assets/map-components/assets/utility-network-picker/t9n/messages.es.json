@@ -1,0 +1,1 @@
+{"componentLabel":"Selector de red de servicios","errors":{"mapLoadFailed":"Se ha producido un error al cargar el mapa.","noUtilityNetwork":"No se han encontrado redes de servicios en el mapa.","noView":"Vista de mapa no encontrada.","utilityNetworkLoadFailed":"Se ha producido un error al cargar la red de servicios seleccionada."},"labels":{"utilityNetwork":"Red de servicios"}}

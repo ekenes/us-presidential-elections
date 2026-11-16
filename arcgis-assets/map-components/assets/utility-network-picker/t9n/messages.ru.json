@@ -1,0 +1,1 @@
+{"componentLabel":"Выбор инженерной сети","errors":{"mapLoadFailed":"При загрузке карты произошла ошибка.","noUtilityNetwork":"Инженерные сети на карте не найдены.","noView":"Вид карты не найден.","utilityNetworkLoadFailed":"Произошла ошибка при загрузке выбранной инженерной сети."},"labels":{"utilityNetwork":"Инженерная сеть"}}
